@@ -7,5 +7,5 @@ This is the repository for the GD4 Collaborative Project 2022/2023.
 - UI & Scrum Master: Alex Connolly
 
 # Implementation
-[ ] Player Controller
-[ ] Camera System
+- [ ] Player Controller
+- [ ] Camera System
