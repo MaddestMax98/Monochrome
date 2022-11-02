@@ -43,7 +43,7 @@ namespace ScriptedCamera
 
         private void OnTriggerExit(Collider other)
         {
-            Debug.Log("Ah merde");
+            //Debug.Log("Ah merde");
         }
     }
 }

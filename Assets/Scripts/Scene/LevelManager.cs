@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 
 namespace Manager
 {
-    public class SceneManager : MonoBehaviour
+    public class LevelManager : MonoBehaviour
     {
+
         void OnEnable()
         {
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -20,8 +21,9 @@ namespace Manager
 
         void OnDisable()
         {
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
+
     }
 }
 
