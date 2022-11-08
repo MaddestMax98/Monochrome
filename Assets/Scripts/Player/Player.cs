@@ -1,3 +1,4 @@
+using Item;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,21 @@ namespace PlayerCharacter
 {
     public class Player : MonoBehaviour
     {
+        private Phone phone;
+
+        private int sanity = 10;
+
+
         private Transform playerTransform = null;
         private float playerInteractionDistance = 35f;
+
+        public int Sanity { get => sanity; set => sanity = value; }
+
 
         private void Awake()
         {
             playerTransform = GetComponent<Transform>();
+            phone = GetComponent<Phone>();
         }
 
         private void Update()
@@ -36,6 +46,18 @@ namespace PlayerCharacter
                     {
                         door.Open(transform.position);
                     }
+                }
+                if (hit.collider.TryGetComponent<PickupItem>(out PickupItem item))
+                {
+                    item.Pickup();
+                }
+                if (hit.collider.TryGetComponent<TaskMachine>(out TaskMachine taskMachine))
+                {
+                    phone.CurrentTask = taskMachine.GetTask();//Handle UI
+                }
+                if (hit.collider.TryGetComponent<LoadNextLevel>(out LoadNextLevel loadLevel))
+                {
+                    loadLevel.LoadNextScene();
                 }
             }
         }

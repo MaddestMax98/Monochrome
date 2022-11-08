@@ -1,10 +1,11 @@
 # Monochrome
 This is the repository for the GD4 Collaborative Project 2022/2023.
 ## Team: The Nameless Pebbles
-- Lead Programmer & Level Designer: Jay Hriscu
-- Game Designer & Programmer: Mariano Cayzac
-- Sound/Music & Environmental Artist: Rachel Dally
-- UI & Scrum Master: Alex Connolly
+- Mariano Cayzac – Lead Game & Narrative Designer, Programmer
+- Rachel Daly – Lead Sound & Environment Design, UI 
+- Jay Hriscu - Lead Programmer, Level Designer
+- Alex Connolly - Scrum Master & Lead Modeler, UI/UX
+
 
 # Implementation
 - [ ] Player Controller

@@ -1,4 +1,5 @@
 using Cinemachine;
+using ScripatbleObj;
 using ScriptedCamera;
 using UnityEngine;
 
@@ -11,7 +12,21 @@ namespace PlayerCharacter
         [SerializeField]
         private CinemachineVirtualCamera fpsCamera;
         private bool isturnedOn = false;
-        // Start is called before the first frame update
+
+        [SerializeField]
+        private TaskData currentTask;
+
+        [SerializeField]
+        private PhoneUI phoneUI;
+        private int signal = 0;
+        public int Signal { get => signal; set => signal = value; }
+        public TaskData CurrentTask { get => currentTask; set => currentTask = value; }
+
+        public void UpdateSignal()
+        {
+            phoneUI.UpdateSignal(Signal);
+        }
+
         private void OnEnable()
         {
             phone.SetActive(false);

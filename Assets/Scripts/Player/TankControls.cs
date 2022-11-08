@@ -9,7 +9,7 @@ namespace PlayerCharacter
 
         void Update()
         {
-            //TODO: Code it properly
+            //TODO: Code it properly the position is being changed aka go through walls
             if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
                 horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
