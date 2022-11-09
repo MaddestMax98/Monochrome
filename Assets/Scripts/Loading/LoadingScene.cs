@@ -13,7 +13,9 @@ public static class LoadingScene
         MainMenu,
         Loading,
         OldTheatreDemo,
-        CinemaRoom
+        CinemaRoom,
+        Floor1,
+        SaveRoom
     }
 
     private static Action onLoaderCallback;

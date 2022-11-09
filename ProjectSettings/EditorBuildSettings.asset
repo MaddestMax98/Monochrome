@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CinemaRoom.unity
     guid: acbd82bf0f9edab489ff74128d058c4c
+  - enabled: 1
+    path: Assets/Scenes/Floor1.unity
+    guid: e1561b8197d151c408b89698d72a273d
   m_configObjects: {}
