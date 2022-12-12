@@ -10,40 +10,28 @@ namespace ScriptedCamera
     public class CameraTrigger : MonoBehaviour
     {
         [SerializeField]
-        private CinemachineVirtualCamera camera1;
+        private CinemachineVirtualCamera virtualCamera;
         [SerializeField]
-        private CinemachineVirtualCamera camera2;
-        [SerializeField]
-        [Tooltip("Set camera1 as active camera")]
-        private bool isLevelStart = false;
-
-        private void Start()
-        {
-            if (isLevelStart)
-            {
-                CameraSwitcher.SwitchCamera(camera1);
-                CameraManager.PreviousCamera = camera1;
-            }
-        }
+        private bool playerThirdPersonCamera = false;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
             {
-                if (CameraManager.ActiveCamera == camera1)
-                {
-                    CameraSwitcher.SwitchCamera(camera2);
-                }
-                else
-                {
-                    CameraSwitcher.SwitchCamera(camera1);
-                }
+                ChangeCamera(other);
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void ChangeCamera(Collider other = null)
         {
-            //Debug.Log("Ah merde");
+            if (playerThirdPersonCamera)
+            {
+                CameraSwitcher.SwitchCamera(other.transform.Find("TPS-Camera").GetComponent<CinemachineVirtualCamera>());
+            }
+            else
+            {
+                CameraSwitcher.SwitchCamera(virtualCamera);
+            }
         }
     }
 }

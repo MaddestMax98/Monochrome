@@ -12,6 +12,7 @@ namespace ScriptedCamera
         //Changes the priority of the cameras
         public static void SwitchCamera(CinemachineVirtualCamera camera)
         {
+            if (camera == null) return;
             camera.Priority = 666;
             CameraManager.ActiveCamera = camera;
             foreach (CinemachineVirtualCamera cam in CameraManager.Cameras)
