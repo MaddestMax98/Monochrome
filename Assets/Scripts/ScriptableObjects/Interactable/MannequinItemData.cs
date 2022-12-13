@@ -6,7 +6,9 @@ namespace ScripatbleObj
     [CreateAssetMenu(fileName = "MannequinItemData", menuName = "Scriptable Objects/Game/Objects/Interactable")]
     public class MannequinItemData : BaseObjectData
     {
-        public GameObject obj;
+        public Mesh mesh;
+        public Material material;
+        public bool isPickedUp= false;
         public bool isEquiped = false;
     }
 }

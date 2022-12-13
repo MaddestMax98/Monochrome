@@ -25,7 +25,9 @@ namespace Manager
             }
             else
             {
-                spawnName = PlayerPrefs.GetString("CURRENT_SPAWN_POINT");
+                //spawnName = PlayerPrefs.GetString("CURRENT_SPAWN_POINT");
+                //for debug uncomment this and use specific spawn point
+                spawnName = "SPAWN_SaveRoom";
             }
 
             SceneManager.sceneLoaded += OnSceneLoaded;

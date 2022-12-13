@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectName: Cowboy Hat Red
   Type: 1
-  obj: {fileID: 9043505457616223254, guid: 91b881a369c9d2f49a81e6d65e6e1bc7, type: 3}
+  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 53ae7cb9df77b7843a4d5fb800cc844f, type: 2}
+  isPickedUp: 1
   isEquiped: 0

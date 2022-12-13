@@ -11,17 +11,16 @@ namespace Item
 
         private void Awake()
         {
-            /*
-            if ()
+            if (item.isPickedUp)
             {
                 Destroy(gameObject);
-            }*/
+            }
         }
 
 
         public override void Pickup()
         {
-
+            item.isPickedUp = true;
             Destroy(gameObject);
         }
 

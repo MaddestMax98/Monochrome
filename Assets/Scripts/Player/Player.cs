@@ -15,6 +15,9 @@ namespace PlayerCharacter
         private Transform playerTransform = null;
         private float playerInteractionDistance = 35f;
 
+        [SerializeField]
+        private LayerMask interactionMask;
+
         public int Sanity { get => sanity; set => sanity = value; }
 
 
@@ -33,8 +36,8 @@ namespace PlayerCharacter
         }
 
         private void Interact()
-        {
-            if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance))
+        { //Raycast(Vector3 origin, Vector3 direction, out RaycastHit hitInfo, float maxDistance, int layerMask)
+            if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
             {
                 if (hit.collider.TryGetComponent<Door>(out Door door))
                 {
