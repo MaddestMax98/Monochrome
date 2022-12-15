@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ScripatbleObj
 {
-    [CreateAssetMenu(fileName = "MannequinItemData", menuName = "Scriptable Objects/Game/Objects/Interactable")]
+    [CreateAssetMenu(fileName = "MannequinItemData", menuName = "Scriptable Objects/Game/Objects/MannequinItem")]
     public class MannequinItemData : BaseObjectData
     {
         public Mesh mesh;

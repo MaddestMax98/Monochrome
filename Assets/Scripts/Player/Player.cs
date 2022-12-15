@@ -11,6 +11,7 @@ namespace PlayerCharacter
 
         private int sanity = 10;
 
+        private bool canMove = true;
 
         private Transform playerTransform = null;
         private float playerInteractionDistance = 35f;
@@ -19,7 +20,7 @@ namespace PlayerCharacter
         private LayerMask interactionMask;
 
         public int Sanity { get => sanity; set => sanity = value; }
-
+        public bool CanMove { get => canMove; set => canMove = value; }
 
         private void Awake()
         {
@@ -31,7 +32,10 @@ namespace PlayerCharacter
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Interact();
+                if (canMove)
+                {
+                    Interact();
+                }
             }
         }
 
@@ -50,6 +54,10 @@ namespace PlayerCharacter
                         door.Open(transform.position);
                     }
                 }
+                if (hit.collider.TryGetComponent<LoadNextLevel>(out LoadNextLevel level))
+                {
+                    level.LoadNextScene();
+                }
                 if (hit.collider.TryGetComponent<PickupItem>(out PickupItem item))
                 {
                     item.Pickup();
@@ -58,9 +66,9 @@ namespace PlayerCharacter
                 {
                     phone.CurrentTask = taskMachine.GetTask();//Handle UI
                 }
-                if (hit.collider.TryGetComponent<LoadNextLevel>(out LoadNextLevel loadLevel))
+                if (hit.collider.TryGetComponent<MannequinSystem>(out MannequinSystem system))
                 {
-                    loadLevel.LoadNextScene();
+                    system.EnterMannequinMode(this);
                 }
             }
         }

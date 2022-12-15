@@ -1,6 +1,7 @@
 using Cinemachine;
 using ScripatbleObj;
 using ScriptedCamera;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PlayerCharacter 
@@ -47,6 +48,7 @@ namespace PlayerCharacter
 
         private void TurnOnPhone()
         {
+            GetComponent<Player>().CanMove = false;
             isturnedOn = true;
             phone.SetActive(true);
             Manager.CameraManager.PreviousCamera = Manager.CameraManager.ActiveCamera;
@@ -55,6 +57,7 @@ namespace PlayerCharacter
 
         private void TurnOffPhone()
         {
+            GetComponent<Player>().CanMove = true;
             isturnedOn = false;
             phone.SetActive(false);
             CameraSwitcher.SwitchCamera(Manager.CameraManager.PreviousCamera);
