@@ -29,8 +29,8 @@ namespace PlayerCharacter
             {
                 if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
-                    horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
-                    verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 4;
+                    horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 120;
+                    verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 2;
 
                     Vector3 grav = new Vector3(0, velocity, 0);
                     controller.Move((transform.forward * verticalMove) + grav);

@@ -14,7 +14,7 @@ public class RandomizeBehaviour : StateMachineBehaviour
     [Tooltip("Name of the variable that we trying to change the value of during runtime")]
     private string triggerVariable;
 
-    private bool _isBored;
+    private bool _needSwitching;
     private float _idleTime;
     private float _animationToPlay;
 
@@ -25,7 +25,7 @@ public class RandomizeBehaviour : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_isBored == false)
+        if (_needSwitching == false)
         {
             _idleTime += Time.deltaTime;
 
@@ -33,7 +33,7 @@ public class RandomizeBehaviour : StateMachineBehaviour
             {
                 _animationToPlay = Random.Range(1, _totalAnimations + 1);
                 _animationToPlay = _animationToPlay * 2 - 1;
-                _isBored = true;
+                _needSwitching = true;
 
                 animator.SetFloat(triggerVariable, _animationToPlay - 1);
             }
@@ -48,11 +48,11 @@ public class RandomizeBehaviour : StateMachineBehaviour
 
     private void ResetAnimation()
     {
-        if (_isBored)
+        if (_needSwitching)
         {
             _animationToPlay--;
         }
-        _isBored = false;
+        _needSwitching = false;
         _idleTime = 0;
     }
 }
