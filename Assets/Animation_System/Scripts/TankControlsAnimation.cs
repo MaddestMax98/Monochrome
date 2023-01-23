@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PlayerCharacter
@@ -7,10 +6,6 @@ namespace PlayerCharacter
     {
         private float horizontalMove;
         private float verticalMove;
-
-        private float velocity;
-        private const float GRAVITY = -9.81f;
-        private float gravityMultiplier = 1.0f;
 
         private CharacterController controller;
         private Animator animator;
@@ -24,16 +19,15 @@ namespace PlayerCharacter
 
         void Update()
         {
-            ApplyGravity();
+
             if (GetComponent<Player>().CanMove)
             {
                 if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
                     horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 120;
-                    verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 2;
+                    verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 1.5f;
 
-                    Vector3 grav = new Vector3(0, velocity, 0);
-                    controller.Move((transform.forward * verticalMove) + grav);
+                    controller.Move((transform.forward * verticalMove));
                     transform.Rotate(0, horizontalMove, 0);
                 }
 
@@ -50,18 +44,10 @@ namespace PlayerCharacter
                 else animator.SetBool("isTurningLeft", false);
             }
         }
-
-        private void ApplyGravity()
+        private void OnCollisionStay(Collision collision)
         {
-            if (controller.isGrounded && velocity < 0.0f)
-            {
-                velocity = -1.0f;
-            }
-            else
-            {
-                velocity += GRAVITY * gravityMultiplier * Time.deltaTime;
-            }
-
+            if (collision.gameObject.layer == 11) controller.radius = 0.012f;
+            else controller.radius = 0.5f;
         }
     }
 }

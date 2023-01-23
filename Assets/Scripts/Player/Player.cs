@@ -18,9 +18,23 @@ namespace PlayerCharacter
 
         [SerializeField]
         private LayerMask interactionMask;
+        [SerializeField]
+        private Animator _animator;
 
         public int Sanity { get => sanity; set => sanity = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
+
+        private void OnEnable()
+        {
+            SanityTaker.onSanityTaken += UpdateAnimator;
+            SanityGiver.onSanityGiven += UpdateAnimator;
+        }
+
+        private void OnDisable()
+        {
+            SanityTaker.onSanityTaken -= UpdateAnimator;
+            SanityGiver.onSanityGiven -= UpdateAnimator;
+        }
 
         private void Awake()
         {
@@ -37,6 +51,12 @@ namespace PlayerCharacter
                     Interact();
                 }
             }
+        }
+
+        public void UpdateAnimator()
+        {
+            if (sanity <= 4) _animator.SetBool("hasLowSanity", true);
+            else _animator.SetBool("hasLowSanity", false);
         }
 
         private void Interact()
@@ -80,9 +100,8 @@ namespace PlayerCharacter
             {
                 Gizmos.DrawRay(playerTransform.position, playerTransform.forward);
             }
-         
+
         }
 
     }
 }
-

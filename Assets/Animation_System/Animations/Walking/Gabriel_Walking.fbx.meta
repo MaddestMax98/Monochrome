@@ -22,13 +22,13 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
       does not match position in animation file:\n\t'mixamorig:LeftLeg' : position
-      error = 57.047596 mm\n\t'mixamorig:LeftFoot' : position error = 51.025322 mm\n"
+      error = 55.603172 mm\n\t'mixamorig:LeftFoot' : position error = 51.082821 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -61,13 +61,22 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves:
-      - name: IKLeftFootWeight
+      - name: IKRightFootWeight
         curve:
           serializedVersion: 2
           curve:
           - serializedVersion: 3
             time: 0
             value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.04539679
+            value: 0.9998981
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -131,7 +140,7 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      - name: IKRightFootWeight
+      - name: IKLefttFootWeight
         curve:
           serializedVersion: 2
           curve:
@@ -265,11 +274,11 @@ ModelImporter:
     - boneName: mixamorig:LeftUpLeg
       humanName: LeftUpperLeg
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -60, y: -60, z: -90}
+        max: {x: 60, y: 60, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: mixamorig:RightUpLeg
       humanName: RightUpperLeg
       limit:
@@ -281,11 +290,11 @@ ModelImporter:
     - boneName: mixamorig:LeftLeg
       humanName: LeftLowerLeg
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: mixamorig:RightLeg
       humanName: RightLowerLeg
       limit:
@@ -623,7 +632,7 @@ ModelImporter:
     - name: mixamorig:LeftArm
       parentName: mixamorig:LeftShoulder
       position: {x: -0, y: 0.1463, z: 0}
-      rotation: {x: -0.12497632, y: -0.22364195, z: 0.073772244, w: 0.9638064}
+      rotation: {x: -0.12497633, y: -0.22364196, z: 0.07377225, w: 0.96380645}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftForeArm
       parentName: mixamorig:LeftArm
@@ -708,7 +717,7 @@ ModelImporter:
     - name: mixamorig:RightForeArm
       parentName: mixamorig:RightArm
       position: {x: -0, y: 0.2625, z: 0}
-      rotation: {x: -0.009901341, y: -0.008317243, z: 0.02342006, w: 0.9996421}
+      rotation: {x: -0.009901344, y: -0.008317243, z: 0.023420066, w: 0.9996421}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightHand
       parentName: mixamorig:RightForeArm
@@ -718,7 +727,7 @@ ModelImporter:
     - name: mixamorig:RightHandThumb1
       parentName: mixamorig:RightHand
       position: {x: -0.0318, y: 0.041, z: 0.0225}
-      rotation: {x: -0.13905777, y: -0.02193887, z: 0.39680928, w: 0.9070413}
+      rotation: {x: -0.13905779, y: -0.021938872, z: 0.3968093, w: 0.9070414}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightHandThumb2
       parentName: mixamorig:RightHandThumb1
@@ -758,7 +767,7 @@ ModelImporter:
     - name: mixamorig:RightHandRing1
       parentName: mixamorig:RightHand
       position: {x: 0.0127, y: 0.1185, z: -0.0005}
-      rotation: {x: 0.025399132, y: 0.007066788, z: 0.11553005, w: 0.99295413}
+      rotation: {x: 0.02539912, y: 0.007066788, z: 0.11553001, w: 0.99295413}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightHandRing2
       parentName: mixamorig:RightHandRing1
@@ -782,17 +791,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftLeg
       parentName: mixamorig:LeftUpLeg
-      position: {x: 0.013, y: 0.422, z: -0.055}
-      rotation: {x: -0.11040019, y: 0.02703193, z: 0.005141399, w: 0.99350625}
+      position: {x: 0.013, y: 0.4359, z: -0.055}
+      rotation: {x: 0.11165271, y: -0.10003979, z: 0.005566929, w: -0.9886834}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftFoot
       parentName: mixamorig:LeftLeg
-      position: {x: 0.014, y: 0.384, z: -0.05}
-      rotation: {x: 0.5723743, y: -0.036448598, z: 0.014816367, w: 0.81904805}
+      position: {x: 0.014, y: 0.3857, z: -0.05}
+      rotation: {x: 0.5663871, y: -0.1496343, z: 0.09999095, w: 0.80424935}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftToeBase
       parentName: mixamorig:LeftFoot
-      position: {x: -0, y: 0.1675, z: 0}
+      position: {x: -0, y: 0.1668, z: 0}
       rotation: {x: 0.33780065, y: 0.055710822, z: -0.007552411, w: 0.93953717}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftToe_End
@@ -808,7 +817,7 @@ ModelImporter:
     - name: mixamorig:RightLeg
       parentName: mixamorig:RightUpLeg
       position: {x: -0, y: 0.4359, z: 0}
-      rotation: {x: -0.11040019, y: 0.02703193, z: 0.005141399, w: 0.99350625}
+      rotation: {x: -0.10878398, y: -0.050884943, z: 0.0037536535, w: 0.9927551}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:RightFoot
       parentName: mixamorig:RightLeg
@@ -830,8 +839,8 @@ ModelImporter:
     upperLegTwist: 0.5
     legTwist: 0.5
     armStretch: 0.05
-    legStretch: 0.05
-    feetSpacing: 0
+    legStretch: 0.1
+    feetSpacing: 0.5
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0

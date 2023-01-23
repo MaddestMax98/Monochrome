@@ -38,14 +38,16 @@ public class IKFootPlacement : MonoBehaviour
         RaycastHit hit;
         Ray newRay = new Ray(_animator.GetIKPosition(targetedFoot) + Vector3.up, Vector3.down);
 
-        if (Physics.Raycast(newRay, out hit, _floorDistance + 5f, _layerMask))
+        if (Physics.Raycast(newRay, out hit, _floorDistance + 2f, _layerMask))
         {
             if (hit.transform.tag == "Walkable")
             {
                 Vector3 footPosition = hit.point;
                 footPosition.y += _floorDistance;
                 _animator.SetIKPosition(targetedFoot, footPosition);
-                _animator.SetIKRotation(targetedFoot, Quaternion.LookRotation(transform.forward, hit.normal));
+                Vector3 forward = Vector3.ProjectOnPlane(transform.forward, hit.normal);
+                _animator.SetIKRotation(targetedFoot, Quaternion.LookRotation(forward, hit.normal));
+                //_animator.SetIKRotation(targetedFoot, Quaternion.LookRotation(transform.forward, hit.normal));
             }
         }
     }
