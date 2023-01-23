@@ -2,9 +2,14 @@ using UnityEngine;
 
 namespace Item
 {
-    public abstract class PickupItem: MonoBehaviour
+    public abstract class PickupItem: Interactable
     {
         public abstract void Pickup();
+
+        public override void Interact()
+        {
+            Pickup();
+        }
     }
 }
 

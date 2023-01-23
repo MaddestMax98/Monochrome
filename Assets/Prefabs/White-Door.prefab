@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8945906226971738170}
   - component: {fileID: 8961912298429873858}
   - component: {fileID: 8970289744881359766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: White-Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8970122071131447292}
   - component: {fileID: 8946565039996983632}
   - component: {fileID: 8946565039996983637}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: doorWing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 8946356336485454842}
   - component: {fileID: 8962044704448783596}
   - component: {fileID: 8970220476156273194}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: doorKnob
   m_TagString: Untagged
   m_Icon: {fileID: 0}

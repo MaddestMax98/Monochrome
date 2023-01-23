@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadNextLevel : MonoBehaviour
+public class LoadNextLevel : Interactable
 {
     [SerializeField]
     private LoadingScene.Scene scene;
@@ -28,5 +28,10 @@ public class LoadNextLevel : MonoBehaviour
             }
         }
 
+    }
+
+    public override void Interact()
+    {
+        LoadNextScene();
     }
 }

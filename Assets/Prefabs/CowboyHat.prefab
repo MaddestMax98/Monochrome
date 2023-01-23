@@ -227,4 +227,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: afddd3ea5c8d44a479d8fce089b1b9b1, type: 2}
-  inventory: {fileID: 0}

@@ -1,8 +1,11 @@
+using PlayerCharacter;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UIElements;
 
-public class Door : MonoBehaviour
+public class Door : Interactable
 {
     public bool IsOpen = false;
     [SerializeField]
@@ -26,8 +29,9 @@ public class Door : MonoBehaviour
 
     private Coroutine AnimationCoroutine;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         StartRotation = transform.rotation.eulerAngles;
         // Since "Forward" actually is pointing into the door frame, choose a direction to think about as "forward" 
         Forward = transform.right;
@@ -146,6 +150,19 @@ public class Door : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, endPosition, time);
             yield return null;
             time += Time.deltaTime * Speed;
+        }
+    }
+
+    public override void Interact()
+    {
+        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (IsOpen)
+        {
+            Close();
+        }
+        else
+        {
+            Open(p.transform.position);
         }
     }
 }

@@ -11,7 +11,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class MannequinSystem : MonoBehaviour
+public class MannequinSystem : Interactable
 {
     [SerializeField]
     private MannequinInventoryData mannequinInventoryData;
@@ -37,7 +37,6 @@ public class MannequinSystem : MonoBehaviour
     private RaycastHit hit;
     [SerializeField] private LayerMask rayMask;
 
-    // Start is called before the first frame update
     void Start()
     {
         DisplayItems();
@@ -197,5 +196,11 @@ public class MannequinSystem : MonoBehaviour
         playerReference.CanMove = true;
         playerReference.GetComponentInChildren<MeshRenderer>().enabled = true;
         CameraSwitcher.SwitchCamera(previousCamera);
+    }
+
+    public override void Interact()
+    {
+        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        EnterMannequinMode(p);
     }
 }

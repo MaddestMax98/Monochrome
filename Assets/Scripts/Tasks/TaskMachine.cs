@@ -1,9 +1,8 @@
+using PlayerCharacter;
 using ScripatbleObj;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskMachine : MonoBehaviour
+public class TaskMachine : Interactable
 {
     private int tempDay = 1;
     [SerializeField]
@@ -12,5 +11,11 @@ public class TaskMachine : MonoBehaviour
     public TaskData GetTask()
     {
         return tasks[tempDay-1];
+    }
+
+    public override void Interact()
+    {
+        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        p.Phone.CurrentTask = GetTask();
     }
 }

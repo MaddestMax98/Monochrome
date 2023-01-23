@@ -1,6 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public struct BrokenItemObject
+{
+    public int id;
+    public bool isRepaired;
+
+    public BrokenItemObject(int id, bool isRepaired)
+    {
+        this.id = id;
+        this.isRepaired = isRepaired;
+    }
+}
 
 namespace ScripatbleObj
 {
@@ -10,8 +24,7 @@ namespace ScripatbleObj
         public int day;
         public string MainTaskDescription;
         public bool mainTaskDone = false;
-        public string OptionalTaskDescription;
-        public bool optionalTaskDone = false;
+        public List<BrokenItemObject> brokenItems;
     }
 
 }
