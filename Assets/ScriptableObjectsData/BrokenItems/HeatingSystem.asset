@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67edf1618bd476740b6934a6b031c616, type: 3}
-  m_Name: Day-1
+  m_Script: {fileID: 11500000, guid: c9dc69d7b1d653141b6fe3634a8bf480, type: 3}
+  m_Name: HeatingSystem
   m_EditorClassIdentifier: 
-  day: 1
-  MainTaskDescription: Go do....
-  mainTaskDone: 0
-  brokenItems:
-  - {fileID: 11400000, guid: fd91ce7784e0a5b448a5c547cf860b8b, type: 2}
+  isRepaired: 0
+  brokenType: 2
+  itemsNeededToRepair:
+  - {fileID: 11400000, guid: 105e9f6da5b232f4cb627a2f02d24f36, type: 2}

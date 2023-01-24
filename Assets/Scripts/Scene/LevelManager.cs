@@ -1,4 +1,5 @@
 using Cinemachine;
+using ScripatbleObj;
 using ScriptedCamera;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,14 @@ namespace Manager
             //Debug.Log("OnSceneLoaded: " + scene.name);
             //Debug.Log(mode);
 
+            /*-----------------Setup BrokenItems-----------------*/
+            BrokenItemData[] brokenItems = GetComponent<DaySystem>().GetBrokenItems();
+            for (int i = 0; i < brokenItems.Length; i++)
+            {
+                //Setup item in the scene
+                //GameObject.Find(brokenItems[i].name);
+            }
+            /*-----------------Setup Player-----------------*/
             int index = GetSpawnIndex(spawnName);
             Instantiate(player, spawnPoints[index].transform.localPosition, spawnPoints[index].transform.localRotation);
 

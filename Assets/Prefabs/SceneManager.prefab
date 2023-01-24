@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2562842914003352758}
   - component: {fileID: 2562842914003352757}
+  - component: {fileID: 3977720710591981727}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -47,3 +48,16 @@ MonoBehaviour:
   player: {fileID: 1165991768855170585, guid: c9144ef748148424d8dbcdd14ff40c65, type: 3}
   spawnPoints: []
   isStartGame: 0
+--- !u!114 &3977720710591981727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562842914003352756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2eb123db0f62dd448bba04cca31cbac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  daysList: {fileID: 11400000, guid: 86ee482949605054c8ef43c831fd4609, type: 2}

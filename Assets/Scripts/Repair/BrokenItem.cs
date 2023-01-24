@@ -1,4 +1,5 @@
 using PlayerCharacter;
+using ScripatbleObj;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,8 @@ using UnityEngine;
 public class BrokenItem : Interactable
 {
     [SerializeField]
-    private CascadeEffect.CascadeEffectType effectType;
-    [SerializeField]
-    private string[] ItemsToRepair;
+    private BrokenItemData brokenItem;
+
     bool isRepaired; //needed?
 
 
@@ -23,26 +23,27 @@ public class BrokenItem : Interactable
     public override void Interact()
     {
         PlayerInventory p = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
-        int hasItemCounter = 0;
-        for (int i = 0; i < p.Inventory.Items.Count; i++)
+
+        bool hasItems = true;
+
+        for (int i = 0; i < brokenItem.itemsNeededToRepair.Length; i++)
         {
-            for (int j = 0; j < ItemsToRepair.Length; j++)
+            if (!p.Inventory.Items.Contains(brokenItem.itemsNeededToRepair[i]))
             {
-                if (ItemsToRepair[j] == p.Inventory.Items[i].ObjectName)
-                {
-                    hasItemCounter++;
-                }
+                hasItems = false;
+                break;
             }
         }
 
-        if (hasItemCounter == ItemsToRepair.Length)
+        if (hasItems)
         {
             RepairObject();
         }
+
     }
 
     private void RepairObject()
     {
-
+        Debug.Log("Repairing");
     }
 }

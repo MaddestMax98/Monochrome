@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 82c230e09fe4979478c58d792668b50e, type: 3}
   m_Name: DaysList
-  m_EditorClassIdentifier: Assembly-CSharp:ScripatbleObj:TaskListData
+  m_EditorClassIdentifier: 
   taskList:
   - {fileID: 11400000, guid: a4b99c5f305665948a1276231360598a, type: 2}

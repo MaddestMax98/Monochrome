@@ -1,27 +1,20 @@
 public static class CascadeEffect
 {
-    public enum CascadeEffectType
-    {
-        BrokenWindow,
-        BrokenFuse,
-        BrokenHeatingSystem,
-        BrokenAlarmSystem,
-    }
 
-    static public void Cascade(CascadeEffectType type)
+    static public void Cascade(BrokenItemType type)
     {
         switch (type)
         {
-            case CascadeEffectType.BrokenWindow:
+            case BrokenItemType.Window:
                 BrokenWindow();
                 break;
-            case CascadeEffectType.BrokenFuse:
+            case BrokenItemType.Fuse:
                 BrokenFuse();
                 break;
-            case CascadeEffectType.BrokenHeatingSystem:
+            case BrokenItemType.HeatingSystem:
                 BrokenHeatingSystem();
                 break;
-            case CascadeEffectType.BrokenAlarmSystem:
+            case BrokenItemType.AlarmSystem:
                 BrokenAlarmSystem();
                 break;
         }
