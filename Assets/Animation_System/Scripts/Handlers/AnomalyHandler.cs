@@ -42,14 +42,13 @@ namespace AnomalySystem
         {
             if (day == 1)
             {
-                _currentProbability = 0.25f;
+                _currentProbability = 1f;
 
                 for (int i = 0; i < _anomalies.Count; i++)
                 {
                     if (_anomalies[i].GetData().aType != AnomalyType.NIGHTMARISH)
                     {
                         _selectedAnomalies.Add(_anomalies[i]);
-                        i++;
                     }
                     else _anomalies[i].Disable();
                 }
@@ -60,16 +59,17 @@ namespace AnomalySystem
         {
             if (Random.value > 1 - _currentProbability)
             {
-                int rand = Random.Range(0, _selectedAnomalies.Count);
+                int rand = Random.Range(0, _selectedAnomalies.Count + 1);
                 TriggerAnomaly(rand);
             }
         }
 
         private void TriggerAnomaly(int i) 
         {
+
             if (_selectedAnomalies.Count > 0 && _currentAnomalies < 3 && _currentAnomalies != _selectedAnomalies.Count)
             {
-                if (i > _selectedAnomalies.Count)
+                if (i > _selectedAnomalies.Count - 1)
                     i = 0;
 
                 if (_selectedAnomalies[i].isActive())
@@ -78,7 +78,7 @@ namespace AnomalySystem
                     _currentAnomalies++;
                     return;
                 }
-                //else TriggerAnomaly(++i);
+                else TriggerAnomaly(++i);
             }
            
         }

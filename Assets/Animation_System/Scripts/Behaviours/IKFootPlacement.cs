@@ -47,7 +47,6 @@ public class IKFootPlacement : MonoBehaviour
                 _animator.SetIKPosition(targetedFoot, footPosition);
                 Vector3 forward = Vector3.ProjectOnPlane(transform.forward, hit.normal);
                 _animator.SetIKRotation(targetedFoot, Quaternion.LookRotation(forward, hit.normal));
-                //_animator.SetIKRotation(targetedFoot, Quaternion.LookRotation(transform.forward, hit.normal));
             }
         }
     }
