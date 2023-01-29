@@ -1,7 +1,7 @@
 using Item;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace PlayerCharacter
 {
@@ -20,6 +20,11 @@ namespace PlayerCharacter
         private LayerMask interactionMask;
         [SerializeField]
         private Animator _animator;
+
+        [SerializeField]
+        private PostProcessVolume _volume; 
+        private Vignette _vignette;
+        private ChromaticAberration _chromaticAberration;
 
         public int Sanity { get => sanity; set => sanity = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
@@ -40,6 +45,9 @@ namespace PlayerCharacter
         {
             playerTransform = GetComponent<Transform>();
             phone = GetComponent<Phone>();
+            
+            _volume.profile.TryGetSettings(out _vignette);
+            _volume.profile.TryGetSettings(out _chromaticAberration);
         }
 
         private void Update()
@@ -55,8 +63,19 @@ namespace PlayerCharacter
 
         public void UpdateAnimator()
         {
-            if (sanity <= 4) _animator.SetBool("hasLowSanity", true);
-            else _animator.SetBool("hasLowSanity", false);
+            if (sanity <= 4) 
+            {
+                _animator.SetBool("hasLowSanity", true);
+                _vignette.intensity.value = 0.5f;
+                _chromaticAberration.intensity.value = 0.50f;
+            }
+            else
+            {
+                _animator.SetBool("hasLowSanity", false);
+                _vignette.intensity.value = 0.35f;
+                _chromaticAberration.intensity.value = 0;
+            }
+            
         }
 
         private void Interact()
@@ -102,6 +121,5 @@ namespace PlayerCharacter
             }
 
         }
-
     }
 }
