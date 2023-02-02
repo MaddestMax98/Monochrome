@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c230e09fe4979478c58d792668b50e, type: 3}
-  m_Name: DaysList
+  m_Script: {fileID: 11500000, guid: 67edf1618bd476740b6934a6b031c616, type: 3}
+  m_Name: Day-2
   m_EditorClassIdentifier: 
-  taskList:
-  - {fileID: 11400000, guid: a4b99c5f305665948a1276231360598a, type: 2}
-  - {fileID: 11400000, guid: e31ffec0ea9979b42889852fe1c2ccb2, type: 2}
+  day: 2
+  MainTaskDescription: Go do....
+  mainTaskDone: 0
+  brokenItems:
+  - {fileID: 11400000, guid: 77da245bb69f93f45ad531e2fa9a54bf, type: 2}

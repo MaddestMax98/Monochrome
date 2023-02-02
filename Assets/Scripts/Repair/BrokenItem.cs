@@ -1,7 +1,4 @@
-using PlayerCharacter;
 using ScripatbleObj;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BrokenItem : Interactable
@@ -9,35 +6,50 @@ public class BrokenItem : Interactable
     [SerializeField]
     private BrokenItemData brokenItem;
 
-    bool isRepaired; //needed?
+    public BrokenItemData Data { get => brokenItem; }
 
-
-
-    void SetupObject()
+    /*---------------Setup Object---------------*/
+    public override void Start()
     {
-        //Is it part of the task
-        //Has it been repaired
-        //Should it cascade
+        if (brokenItem.state != BrokenItemState.NotImportant && brokenItem.state != BrokenItemState.IsRepaired)
+        {
+            base.Start();
+        }
+
+
+        if (brokenItem.state == BrokenItemState.Cascade)
+        {
+            GameObject cascade = Instantiate(brokenItem.prefabCascade, this.transform);
+            cascade.transform.localPosition = Vector3.zero;
+            cascade.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            cascade.transform.localScale = Vector3.one;
+
+        }
+
     }
 
     public override void Interact()
     {
-        PlayerInventory p = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
-
-        bool hasItems = true;
-
-        for (int i = 0; i < brokenItem.itemsNeededToRepair.Length; i++)
+        if (brokenItem.state == BrokenItemState.CurrentTask || brokenItem.state == BrokenItemState.Cascade)
         {
-            if (!p.Inventory.Items.Contains(brokenItem.itemsNeededToRepair[i]))
+            PlayerInventory p = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+
+            bool hasItems = true;
+
+            for (int i = 0; i < brokenItem.itemsNeededToRepair.Length; i++)
             {
-                hasItems = false;
-                break;
+                if (!p.Inventory.Items.Contains(brokenItem.itemsNeededToRepair[i]))
+                {
+                    hasItems = false;
+                    break;
+                }
             }
-        }
 
-        if (hasItems)
-        {
-            RepairObject();
+            if (hasItems)
+            {
+                RepairObject();
+            }
+            return;
         }
 
     }
@@ -45,5 +57,10 @@ public class BrokenItem : Interactable
     private void RepairObject()
     {
         Debug.Log("Repairing");
+        if (brokenItem.state == BrokenItemState.Cascade)
+        {
+            Destroy(this.transform.GetChild(0).gameObject);
+        }
+        brokenItem.state = BrokenItemState.IsRepaired;
     }
 }

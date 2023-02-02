@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum BrokenItemType
+public enum BrokenItemState
 {
-    Window,
-    Fuse,
-    HeatingSystem,
-    AlarmSystem
+    NotImportant,
+    CurrentTask,
+    IsRepaired,
+    Cascade
 }

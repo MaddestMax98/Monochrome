@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9dc69d7b1d653141b6fe3634a8bf480, type: 3}
-  m_Name: HeatingSystem
+  m_Name: BrokenAlarm
   m_EditorClassIdentifier: 
-  isRepaired: 0
-  brokenType: 2
+  state: 2
+  prefabCascade: {fileID: 4964036134057846125, guid: 30f79a0f6f232b247a9bea7bbfa9adad, type: 3}
   itemsNeededToRepair:
-  - {fileID: 11400000, guid: 105e9f6da5b232f4cb627a2f02d24f36, type: 2}
+  - {fileID: 11400000, guid: 0d15cab9fe9cad1429621e3b35b2be50, type: 2}

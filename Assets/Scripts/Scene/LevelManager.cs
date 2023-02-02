@@ -38,18 +38,63 @@ namespace Manager
         {
             //Debug.Log("OnSceneLoaded: " + scene.name);
             //Debug.Log(mode);
-
             /*-----------------Setup BrokenItems-----------------*/
-            BrokenItemData[] brokenItems = GetComponent<DaySystem>().GetBrokenItems();
-            for (int i = 0; i < brokenItems.Length; i++)
+            /* Set the item either to not important if its not part of the current day task or if its already been repaired the previous day.
+             * Or set the item to cascade if its not been repaired the previous day
+             * The rest is handled in the brokenitem itself 
+             */
+            BrokenItemData[] previousBrokenItems = GetComponent<DaySystem>().GetPreviousDayBrokenItems();
+            BrokenItemData[] currentBrokenItems = GetComponent<DaySystem>().GetCurrentDayBrokenItems();
+            BrokenItem[] itemsInScene = GameObject.FindObjectsOfType<BrokenItem>(); //Find all items in the scene
+
+            if (previousBrokenItems != null) //This is for the first day
             {
-                //Setup item in the scene
-                //GameObject.Find(brokenItems[i].name);
+                for (int i = 0; i < previousBrokenItems.Length; i++)
+                {
+                    foreach (BrokenItem sceneItem in itemsInScene) //UnOptimal but we have no choice
+                    {
+                        if (sceneItem.Data == previousBrokenItems[i])
+                        {
+                            Debug.Log(sceneItem.gameObject.name);
+                            switch (sceneItem.Data.state)
+                            {
+                                case BrokenItemState.CurrentTask:
+                                    sceneItem.Data.state = BrokenItemState.Cascade;
+                                    break;
+                                case BrokenItemState.IsRepaired: //Do we really need this step?
+                                    sceneItem.Data.state = BrokenItemState.NotImportant;
+                                    break;
+                            }
+                        }
+                    }
+
+                }
             }
+
+
+            for (int i = 0; i < currentBrokenItems.Length; i++)
+            {
+                foreach (BrokenItem sceneItem in itemsInScene)
+                {
+                    if (sceneItem.Data == currentBrokenItems[i])
+                    {
+                        switch (sceneItem.Data.state)
+                        {
+                            case BrokenItemState.NotImportant:
+                                sceneItem.Data.state = BrokenItemState.CurrentTask;
+                                break;
+                        }
+                        
+                    }
+                }
+
+            }
+
             /*-----------------Setup Player-----------------*/
             int index = GetSpawnIndex(spawnName);
             Instantiate(player, spawnPoints[index].transform.localPosition, spawnPoints[index].transform.localRotation);
 
+            /*-----------------Setup Cameras-----------------*/
             CameraManager.CamerasSetup();
 
             CameraSwitcher.SwitchCamera(spawnPoints[index].GetComponent<CameraReference>().Camera);

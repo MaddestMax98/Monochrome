@@ -9,8 +9,9 @@ namespace Item
         [SerializeField]
         private MannequinItemData item;
 
-        private void Awake()
+        public override void Start()
         {
+            base.Start();
             if (item.isPickedUp)
             {
                 Destroy(gameObject);

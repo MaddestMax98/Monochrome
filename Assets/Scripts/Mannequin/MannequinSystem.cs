@@ -37,8 +37,9 @@ public class MannequinSystem : Interactable
     private RaycastHit hit;
     [SerializeField] private LayerMask rayMask;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         DisplayItems();
     }
 
