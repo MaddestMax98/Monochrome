@@ -24,24 +24,28 @@ namespace PlayerCharacter
             {
                 if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
+                    _animator.SetBool("isMoving", true);
+
                     _horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 120;                   
                     _verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 1.5f;
 
                     _controller.Move((transform.forward * _verticalMove));
                     transform.Rotate(0, _horizontalMove, 0);
                 }
+                else
+                {
+                    _animator.SetBool("isMoving", false);
+                }
 
-                if (Input.GetKey(KeyCode.W) && Input.GetButton("Vertical")) _animator.SetBool("isWalkingForward", true);
-                else _animator.SetBool("isWalkingForward", false);
+                if(!Input.GetButton("Horizontal")) _horizontalMove = 0;
+                
+                if(!Input.GetButton("Vertical"))
+                {
+                    _verticalMove = 0;
+                    _animator.SetFloat("Xaxis", _horizontalMove * 120);
+                }else _animator.SetFloat("Xaxis", 0);
 
-                if (Input.GetKey(KeyCode.S) && Input.GetButton("Vertical")) _animator.SetBool("isWalkingBackwards", true);
-                else _animator.SetBool("isWalkingBackwards", false);
-
-                if (Input.GetKey(KeyCode.D) && !Input.GetButton("Vertical")) _animator.SetBool("isTurningRight", true);
-                else _animator.SetBool("isTurningRight", false);
-
-                if (Input.GetKey(KeyCode.A) && !Input.GetButton("Vertical")) _animator.SetBool("isTurningLeft", true);
-                else _animator.SetBool("isTurningLeft", false);
+                _animator.SetFloat("Yaxis", _verticalMove * 125);
             }
         }
         private void OnCollisionStay(Collision collision)
