@@ -2,6 +2,7 @@ using Item;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 namespace PlayerCharacter
 {
@@ -20,7 +21,10 @@ namespace PlayerCharacter
         private LayerMask interactionMask;
         [SerializeField]
         private Animator _animator;
-
+        
+        private GameObject Target;
+        
+        [Header("Post-Processing Settings")]
         [SerializeField]
         private PostProcessVolume _volume; 
         private Vignette _vignette;
@@ -28,6 +32,8 @@ namespace PlayerCharacter
 
         public int Sanity { get => sanity; set => sanity = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
+        public Phone Phone { get => phone; set => phone = value; }
+
 
         private void OnEnable()
         {
@@ -59,6 +65,29 @@ namespace PlayerCharacter
                     Interact();
                 }
             }
+
+            //TODO: Optimize this code. Proposition: event system to call thing once?
+            /*System to outline object when looking at them*/
+            if (!Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit nothit, playerInteractionDistance, interactionMask))
+            {
+                if (Target != null)
+                {
+                    Target.GetComponent<Outline>().OutlineWidth = 0f;
+                }
+            }
+            if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
+            {
+
+                if (hit.collider.GetComponent<Outline>() != null)
+                {
+                    Target = hit.collider.gameObject;
+                }
+
+                if (hit.collider.TryGetComponent<Outline>(out Outline interactable))
+                {
+                    Target.GetComponent<Outline>().OutlineWidth = 5f;
+                }
+            }
         }
 
         public void UpdateAnimator()
@@ -79,35 +108,13 @@ namespace PlayerCharacter
         }
 
         private void Interact()
-        { //Raycast(Vector3 origin, Vector3 direction, out RaycastHit hitInfo, float maxDistance, int layerMask)
+        {
             if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
             {
-                if (hit.collider.TryGetComponent<Door>(out Door door))
+
+                if (hit.collider.TryGetComponent<Interactable>(out Interactable interactable))
                 {
-                    if (door.IsOpen)
-                    {
-                        door.Close();
-                    }
-                    else
-                    {
-                        door.Open(transform.position);
-                    }
-                }
-                if (hit.collider.TryGetComponent<LoadNextLevel>(out LoadNextLevel level))
-                {
-                    level.LoadNextScene();
-                }
-                if (hit.collider.TryGetComponent<PickupItem>(out PickupItem item))
-                {
-                    item.Pickup();
-                }
-                if (hit.collider.TryGetComponent<TaskMachine>(out TaskMachine taskMachine))
-                {
-                    phone.CurrentTask = taskMachine.GetTask();//Handle UI
-                }
-                if (hit.collider.TryGetComponent<MannequinSystem>(out MannequinSystem system))
-                {
-                    system.EnterMannequinMode(this);
+                    interactable.Interact();
                 }
             }
         }
