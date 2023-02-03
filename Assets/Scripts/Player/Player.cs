@@ -115,6 +115,13 @@ namespace PlayerCharacter
                 if (hit.collider.TryGetComponent<Interactable>(out Interactable interactable))
                 {
                     interactable.Interact();
+
+                    if(hit.collider.gameObject.transform.position.y < 0.5f) _animator.SetFloat("InteractionHeight", -1);
+                    else if (hit.collider.gameObject.transform.position.y > 0.5 && hit.collider.gameObject.transform.position.y < 1.5f) _animator.SetFloat("InteractionHeight", 0);
+                    else _animator.SetFloat("InteractionHeight", 1);
+
+                    _animator.SetBool("isInteracting", true);
+                    canMove = false;
                 }
             }
         }
@@ -127,6 +134,12 @@ namespace PlayerCharacter
                 Gizmos.DrawRay(playerTransform.position, playerTransform.forward);
             }
 
+        }
+
+        public void ReturnToNormalMovement()
+        {
+            _animator.SetBool("isInteracting", false);
+            canMove = true;
         }
     }
 }
