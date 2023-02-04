@@ -1,7 +1,8 @@
 using Item;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 namespace PlayerCharacter
 {
@@ -13,27 +14,50 @@ namespace PlayerCharacter
 
         private bool canMove = true;
 
-        private GameObject Target;
-
         private Transform playerTransform = null;
         private float playerInteractionDistance = 35f;
 
         [SerializeField]
         private LayerMask interactionMask;
+        [SerializeField]
+        private Animator _animator;
+        
+        private GameObject Target;
+        
+        [Header("Post-Processing Settings")]
+        [SerializeField]
+        private PostProcessVolume _volume; 
+        private Vignette _vignette;
+        private ChromaticAberration _chromaticAberration;
 
         public int Sanity { get => sanity; set => sanity = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
         public Phone Phone { get => phone; set => phone = value; }
 
+
+        private void OnEnable()
+        {
+            SanityTaker.onSanityTaken += UpdateAnimator;
+            SanityGiver.onSanityGiven += UpdateAnimator;
+        }
+
+        private void OnDisable()
+        {
+            SanityTaker.onSanityTaken -= UpdateAnimator;
+            SanityGiver.onSanityGiven -= UpdateAnimator;
+        }
+
         private void Awake()
         {
             playerTransform = GetComponent<Transform>();
-            Phone = GetComponent<Phone>();
+            phone = GetComponent<Phone>();
+            
+            _volume.profile.TryGetSettings(out _vignette);
+            _volume.profile.TryGetSettings(out _chromaticAberration);
         }
 
         private void Update()
         {
-         
             if (Input.GetMouseButtonDown(0))
             {
                 if (canMove)
@@ -66,6 +90,23 @@ namespace PlayerCharacter
             }
         }
 
+        public void UpdateAnimator()
+        {
+            if (sanity <= 4) 
+            {
+                _animator.SetBool("hasLowSanity", true);
+                _vignette.intensity.value = 0.5f;
+                _chromaticAberration.intensity.value = 0.50f;
+            }
+            else
+            {
+                _animator.SetBool("hasLowSanity", false);
+                _vignette.intensity.value = 0.35f;
+                _chromaticAberration.intensity.value = 0;
+            }
+            
+        }
+
         private void Interact()
         {
             if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
@@ -74,6 +115,13 @@ namespace PlayerCharacter
                 if (hit.collider.TryGetComponent<Interactable>(out Interactable interactable))
                 {
                     interactable.Interact();
+
+                    if(hit.collider.gameObject.transform.position.y < 0.5f) _animator.SetFloat("InteractionHeight", -1);
+                    else if (hit.collider.gameObject.transform.position.y > 0.5 && hit.collider.gameObject.transform.position.y < 1.5f) _animator.SetFloat("InteractionHeight", 0);
+                    else _animator.SetFloat("InteractionHeight", 1);
+
+                    _animator.SetBool("isInteracting", true);
+                    canMove = false;
                 }
             }
         }
@@ -85,9 +133,13 @@ namespace PlayerCharacter
             {
                 Gizmos.DrawRay(playerTransform.position, playerTransform.forward);
             }
-         
+
         }
 
+        public void ReturnToNormalMovement()
+        {
+            _animator.SetBool("isInteracting", false);
+            canMove = true;
+        }
     }
 }
-
