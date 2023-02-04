@@ -50,6 +50,8 @@ namespace PlayerCharacter
         }
         private void OnCollisionStay(Collision collision)
         {
+            Debug.Log(collision.gameObject.layer + " PlayerController: " + _controller.radius);
+
             if (collision.gameObject.layer == 11) _controller.radius = 0.012f;
             else _controller.radius = 0.5f;
         }
