@@ -25,7 +25,7 @@ namespace PlayerCharacter
         private GameObject Target;
         
         [Header("Post-Processing Settings")]
-        [SerializeField]
+
         private PostProcessVolume _volume; 
         private Vignette _vignette;
         private ChromaticAberration _chromaticAberration;
@@ -51,7 +51,9 @@ namespace PlayerCharacter
         {
             playerTransform = GetComponent<Transform>();
             phone = GetComponent<Phone>();
-            
+
+            _volume = GameObject.Find("Post-Processing").GetComponent<PostProcessVolume>();
+
             _volume.profile.TryGetSettings(out _vignette);
             _volume.profile.TryGetSettings(out _chromaticAberration);
         }
