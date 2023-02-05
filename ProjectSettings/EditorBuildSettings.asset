@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/OldTheatreDemo.unity
     guid: 43fee78afb02c0641bfd6cdae91c6ea0
   - enabled: 1
-    path: Assets/Scenes/CinemaRoom.unity
+    path: Assets/Scenes/ModelledScenes/CinemaRoom.unity
     guid: acbd82bf0f9edab489ff74128d058c4c
   - enabled: 1
     path: Assets/Scenes/Floor1.unity
