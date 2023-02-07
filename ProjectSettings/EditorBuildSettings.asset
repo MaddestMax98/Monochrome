@@ -13,14 +13,14 @@ EditorBuildSettings:
     guid: 786ded657ecb9fb4faa1b8dc8b9c20db
   - enabled: 1
     path: Assets/Scenes/SaveRoom.unity
-    guid: 8e2268d6c2f39f74b9ebef9b53744e2c
+    guid: cfc68aca9a24a7b4d94d292c4cb034ac
   - enabled: 1
     path: Assets/Scenes/OldTheatreDemo.unity
-    guid: 43fee78afb02c0641bfd6cdae91c6ea0
+    guid: 206f17d19718b1442a5f13a56fd22e9e
   - enabled: 1
-    path: Assets/Scenes/ModelledScenes/CinemaRoom.unity
+    path: Assets/Scenes/CinemaRoom.unity
     guid: acbd82bf0f9edab489ff74128d058c4c
   - enabled: 1
     path: Assets/Scenes/Floor1.unity
-    guid: e1561b8197d151c408b89698d72a273d
+    guid: 7c9c977b6d130f2408694c9377b124f5
   m_configObjects: {}

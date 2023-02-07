@@ -21,7 +21,6 @@ namespace PlayerCharacter
         private PhoneUI phoneUI;
         private int signal = 0;
         public int Signal { get => signal; set => signal = value; }
-        public TaskData CurrentTask { get => currentTask; set => currentTask = value; }
 
         public void UpdateSignal()
         {

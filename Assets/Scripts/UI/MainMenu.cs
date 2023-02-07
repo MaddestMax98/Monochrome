@@ -12,6 +12,7 @@ namespace UI
         [SerializeField] private GameObject UIMainMenu;
         [SerializeField] private GameObject UINewGame;
         [SerializeField] private GameObject UILoadSaves;
+        [SerializeField] private GameObject UITutorial;
         [SerializeField] private GameObject UISettings;
         [SerializeField] private GameObject UIQuit;
 
@@ -22,7 +23,7 @@ namespace UI
 
         public void NewGame()
         {
-            LoadingScene.Load(LoadingScene.Scene.OldTheatreDemo);
+            LoadingScene.Load(LoadingScene.Scene.SaveRoom);
         }
 
         public void LoadSave()
@@ -40,6 +41,7 @@ namespace UI
             UIMainMenu.SetActive(true);
             UINewGame.SetActive(false);
             UILoadSaves.SetActive(false);
+            UITutorial.SetActive(false);
             UISettings.SetActive(false);
             UIQuit.SetActive(false);
         }
@@ -54,6 +56,12 @@ namespace UI
         {
             UIMainMenu.SetActive(false);
             UILoadSaves.SetActive(true);
+        }
+
+        public void ShowTutorial()
+        {
+            UIMainMenu.SetActive(false);
+            UITutorial.SetActive(true);
         }
 
         public void ShowSettings()

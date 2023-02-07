@@ -11,6 +11,28 @@ public class DaySystem : MonoBehaviour
     [SerializeField]
     private TaskListData daysList;
 
+    public TaskData GetDayTask()
+    {
+        return daysList.taskList[currentDay - 1];
+    }
+
+    public bool IsMainTasksDone()
+    {
+        bool isDone = true;
+
+        //If one of the main tasks is not done we break through the loop and return false
+        for (int i = 0; i < daysList.taskList.Count; i++)
+        {
+            if (daysList.taskList[currentDay - 1].brokenItems[i].isMainTask && daysList.taskList[currentDay - 1].brokenItems[i].state != BrokenItemState.IsRepaired)
+            {
+                isDone = false;
+                break;
+            }
+        }
+
+        return isDone;
+    }
+
     public BrokenItemData[] GetCurrentDayBrokenItems()
     {
         return daysList.taskList[currentDay-1].brokenItems.ToArray(); //Arrays start at zero!

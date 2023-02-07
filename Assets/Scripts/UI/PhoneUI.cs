@@ -24,7 +24,6 @@ public class PhoneUI : MonoBehaviour
     {
         TaskUI.SetActive(false);
         InventoryUI.SetActive(false);
-        Debug.Log("A");
     }
 
     public void UpdateSignal(int strength)
@@ -34,14 +33,12 @@ public class PhoneUI : MonoBehaviour
 
     public void DisplayTask()
     {
-        Debug.Log("B");
         TaskUI.SetActive(true);
         InventoryUI.SetActive(false);
     }
 
     public void DisplayInventory()
     {
-        Debug.Log("C");
         InventoryUI.SetActive(true);
         TaskUI.SetActive(false);
         DisplayItems();

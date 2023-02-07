@@ -56,7 +56,6 @@ public class BrokenItem : Interactable
 
     private void RepairObject()
     {
-        Debug.Log("Repairing");
         if (brokenItem.state == BrokenItemState.Cascade)
         {
             Destroy(this.transform.GetChild(0).gameObject);

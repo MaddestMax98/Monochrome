@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dc69d7b1d653141b6fe3634a8bf480, type: 3}
   m_Name: HeatingSystem
   m_EditorClassIdentifier: 
-  state: 0
+  state: 2
   prefabCascade: {fileID: 4964036134057846125, guid: 30f79a0f6f232b247a9bea7bbfa9adad, type: 3}
   itemsNeededToRepair:
   - {fileID: 11400000, guid: 105e9f6da5b232f4cb627a2f02d24f36, type: 2}

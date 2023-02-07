@@ -185,7 +185,7 @@ public class MannequinSystem : Interactable
     {
         playerReference = player;
         playerReference.CanMove = false;
-        playerReference.GetComponentInChildren<MeshRenderer>().enabled = false;
+        playerReference.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         mannequinEnabled = true;
         previousCamera = CameraManager.ActiveCamera;
         CameraSwitcher.SwitchCamera(mannequinCamera);
@@ -195,7 +195,7 @@ public class MannequinSystem : Interactable
     {
         mannequinEnabled = false;
         playerReference.CanMove = true;
-        playerReference.GetComponentInChildren<MeshRenderer>().enabled = true;
+        playerReference.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         CameraSwitcher.SwitchCamera(previousCamera);
     }
 

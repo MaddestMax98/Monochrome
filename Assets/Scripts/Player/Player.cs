@@ -14,7 +14,6 @@ namespace PlayerCharacter
 
         private bool canMove = true;
 
-        private Transform playerTransform = null;
         private float playerInteractionDistance = 35f;
 
         [SerializeField]
@@ -23,6 +22,8 @@ namespace PlayerCharacter
         private Animator _animator;
         
         private GameObject Target;
+
+        private Vector3 rayCastHeight = new Vector3(0, 1.5f, 0);
         
         [Header("Post-Processing Settings")]
 
@@ -49,7 +50,6 @@ namespace PlayerCharacter
 
         private void Awake()
         {
-            playerTransform = GetComponent<Transform>();
             phone = GetComponent<Phone>();
 
             _volume = GameObject.Find("Post-Processing").GetComponent<PostProcessVolume>();
@@ -67,19 +67,17 @@ namespace PlayerCharacter
                     Interact();
                 }
             }
-
             //TODO: Optimize this code. Proposition: event system to call thing once?
             /*System to outline object when looking at them*/
-            if (!Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit nothit, playerInteractionDistance, interactionMask))
+            if (!Physics.Raycast(this.transform.position + rayCastHeight, this.transform.forward, out RaycastHit nothit, playerInteractionDistance, interactionMask))
             {
                 if (Target != null)
                 {
                     Target.GetComponent<Outline>().OutlineWidth = 0f;
                 }
             }
-            if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
+            if (Physics.Raycast(this.transform.position + rayCastHeight, this.transform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
             {
-
                 if (hit.collider.GetComponent<Outline>() != null)
                 {
                     Target = hit.collider.gameObject;
@@ -111,9 +109,8 @@ namespace PlayerCharacter
 
         private void Interact()
         {
-            if (Physics.Raycast(playerTransform.position, playerTransform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
+            if (Physics.Raycast(this.transform.position + rayCastHeight, this.transform.forward, out RaycastHit hit, playerInteractionDistance, interactionMask))
             {
-
                 if (hit.collider.TryGetComponent<Interactable>(out Interactable interactable))
                 {
                     interactable.Interact();
@@ -131,11 +128,7 @@ namespace PlayerCharacter
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            if (playerTransform != null)
-            {
-                Gizmos.DrawRay(playerTransform.position, playerTransform.forward);
-            }
-
+            Gizmos.DrawRay(this.transform.position + rayCastHeight, this.transform.forward);
         }
 
         public void ReturnToNormalMovement()

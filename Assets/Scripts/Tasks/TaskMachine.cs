@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class TaskMachine : Interactable
 {
-    private int tempDay = 1;
     [SerializeField]
-    private TaskData[] tasks;
+    StartDay saveRoomDoor;
 
-    public TaskData GetTask()
+    private void Awake()
     {
-        return tasks[tempDay-1];
+        if (PlayerPrefs.GetInt("HAS_INTERACTED_TASKMACHINE") != 0)
+        {
+            saveRoomDoor.EnableSaveRoomDoor();
+        }
     }
 
     public override void Interact()
     {
-        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        p.Phone.CurrentTask = GetTask();
+        PlayerPrefs.SetInt("HAS_INTERACTED_TASKMACHINE", 1);
+        saveRoomDoor.EnableSaveRoomDoor();
     }
 }

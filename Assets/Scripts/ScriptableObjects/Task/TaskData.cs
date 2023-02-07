@@ -10,7 +10,6 @@ namespace ScripatbleObj
     {
         public int day;
         public string MainTaskDescription;
-        public bool mainTaskDone = false;
         public List<BrokenItemData> brokenItems;
     }
 

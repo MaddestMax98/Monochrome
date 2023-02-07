@@ -22,7 +22,9 @@ namespace Manager
             //TODO: Set isStartGame to true after they started the game in the save file
             if (isStartGame)
             {
-                spawnName = "SPAWN_EntranceBuilding";
+                //spawnName = "SPAWN_EntranceBuilding";
+                //For the demo
+                spawnName = "SPAWN_SaveRoom";
             }
             else
             {
@@ -55,7 +57,7 @@ namespace Manager
                     {
                         if (sceneItem.Data == previousBrokenItems[i])
                         {
-                            Debug.Log(sceneItem.gameObject.name);
+                            //Debug.Log(sceneItem.gameObject.name);
                             switch (sceneItem.Data.state)
                             {
                                 case BrokenItemState.CurrentTask:
@@ -93,7 +95,6 @@ namespace Manager
             /*-----------------Setup Player-----------------*/
             int index = GetSpawnIndex(spawnName);
             Instantiate(player, spawnPoints[index].transform.localPosition, spawnPoints[index].transform.localRotation);
-
             /*-----------------Setup Cameras-----------------*/
             CameraManager.CamerasSetup();
 

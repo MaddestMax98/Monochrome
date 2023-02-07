@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8225516282815546443}
   - component: {fileID: 8225516282815546442}
   - component: {fileID: 8225516282815546437}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: BrokenHeater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e4a212a1e221f4b8d4d2ba970b5d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectType: 2
-  ItemsToRepair:
-  - Screwdriver
+  brokenItem: {fileID: 0}
