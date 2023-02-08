@@ -1,8 +1,8 @@
-using AnomalySystem.ScriptableObjects;
 using PlayerCharacter;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Anomaly_Test01 : Anomaly
+public class Anomaly_Kinematic : Anomaly
 {
     private Transform _orignalTransform;
     private Rigidbody _rigidbody;
@@ -10,30 +10,31 @@ public class Anomaly_Test01 : Anomaly
     private void Start()
     {
         _orignalTransform = GetComponent<Transform>();
-        _rigidbody = GetComponent<Rigidbody>(); 
+        _rigidbody = GetComponent<Rigidbody>();           
     }
     public override void Manifest(Player player)
+    {
+        AlterObject();
+        base.Manifest(player);   
+    }
+
+    public override void Fix(Player player)
+    {
+        base.Fix(player);
+
+        gameObject.transform.position = _orignalTransform.position;
+        gameObject.transform.rotation = _orignalTransform.rotation;
+    }
+
+    public override void AlterObject()
     {
         float randX = Random.Range(-1, 1) * 200f;
         float randY = Random.Range(0.2f, 1) * 200f;
         float randZ = Random.Range(-1, 1) * 200f;
 
-        if (randX + randY == 0)
+        if (randX + randZ == 0)
             randX = 200f;
 
-        if (_isPlayerWitness)
-            player.Sanity -= 2;
-        else
-            player.Sanity -= 1;
-
-        Disable();
-
         _rigidbody.AddForce(new Vector3(randX, randY, randZ));
-    }
-
-    public override void Fix()
-    {
-        gameObject.transform.position = _orignalTransform.position;
-        gameObject.transform.rotation = _orignalTransform.rotation;
     }
 }

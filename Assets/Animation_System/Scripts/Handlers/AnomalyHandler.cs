@@ -8,8 +8,6 @@ namespace AnomalySystem
     {
         //TODO - Make a referee to the current day
         public int day = 1;
-
-        [SerializeField]
         private Player _player;
 
         public List<Anomaly> _anomalies;
@@ -22,19 +20,20 @@ namespace AnomalySystem
         [Tooltip("Sets time in between triggers")]
         private int delayTime;
 
-        private BoxCollider _roomTrigger;
-        private float _currentProbability = 1f;
-        private bool _isPlayerInRoom;
+        private float _currentProbability = 0.25f;
 
         private int _currentAnomalies = 0;
+        [SerializeField]
+        [Tooltip("Sets maximum amount of anomalies that can be triggered on this room.")]
+        private int _maxAnomalies;
 
         private void Awake()
         {
-            _roomTrigger = gameObject.GetComponent<BoxCollider>();
             _currentAnomalies = 0;
         }
         private void Start() 
-        { 
+        {
+            _player = GameObject.Find("Player(Clone)").gameObject.GetComponent<Player>();
             AdjustToDay();
             InvokeRepeating("TriggerRandomAnomaly", triggerTime, delayTime);
         }
@@ -42,7 +41,7 @@ namespace AnomalySystem
         {
             if (day == 1)
             {
-                _currentProbability = 1f;
+                _currentProbability = 0.25f;
 
                 for (int i = 0; i < _anomalies.Count; i++)
                 {
@@ -67,12 +66,12 @@ namespace AnomalySystem
         private void TriggerAnomaly(int i) 
         {
 
-            if (_selectedAnomalies.Count > 0 && _currentAnomalies < 3 && _currentAnomalies != _selectedAnomalies.Count)
+            if (_selectedAnomalies.Count > 0 && _currentAnomalies < _maxAnomalies && _currentAnomalies != _selectedAnomalies.Count)
             {
                 if (i > _selectedAnomalies.Count - 1)
                     i = 0;
 
-                if (_selectedAnomalies[i].isActive())
+                if (_selectedAnomalies[i].isActive() == false)
                 {
                     _selectedAnomalies[i].Manifest(_player);
                     _currentAnomalies++;
