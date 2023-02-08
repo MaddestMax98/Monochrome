@@ -8,5 +8,11 @@ namespace ScripatbleObj
     {
         [SerializeField]
         public List<MannequinItemData> Items;
+
+
+        public void ResetInventory()
+        {
+            Items.Clear();
+        }
     }
 }

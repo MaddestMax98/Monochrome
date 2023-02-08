@@ -47,6 +47,11 @@ public class PhoneUI : MonoBehaviour
     //TODO: Optimize code so that object are only deleted when nessecary
     private void DisplayItems()
     {
+        if (inventoryData.Items.Count < 1)
+        {
+            return;
+        }
+
         //-1 0 +1
         if (previousItem.transform.childCount > 0)
         {

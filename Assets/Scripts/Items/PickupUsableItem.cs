@@ -10,8 +10,19 @@ namespace Item
         private UsableItemData itemData;
         [SerializeField]
         private PlayerInventoryData playerInventoryData;
+
+        public override void Start()
+        {
+            base.Start();
+            if (itemData.isPickedUp)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         public override void Pickup()
         {
+            itemData.isPickedUp = true;
             playerInventoryData.Add(itemData);
             Destroy(gameObject);
         }

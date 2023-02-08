@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10aed3902ebb24f42ab04177ce4dc9c5, type: 3}
   m_Name: MannequinInventory
   m_EditorClassIdentifier: 
-  Items:
-  - {fileID: 11400000, guid: afddd3ea5c8d44a479d8fce089b1b9b1, type: 2}
+  Items: []

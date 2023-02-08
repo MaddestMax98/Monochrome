@@ -2550,6 +2550,7 @@ GameObject:
   - component: {fileID: 819168180}
   - component: {fileID: 819168179}
   - component: {fileID: 819168182}
+  - component: {fileID: 819168183}
   m_Layer: 5
   m_Name: Canvas-Menu
   m_TagString: Untagged
@@ -2663,6 +2664,25 @@ MonoBehaviour:
   UITutorial: {fileID: 162880574}
   UISettings: {fileID: 980236083}
   UIQuit: {fileID: 1169875970}
+--- !u!114 &819168183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819168177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7f9e8282962fe4c9566e7a541ca835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventoryData: {fileID: 11400000, guid: d6beeae0d896fe64999dd7805e3c1984, type: 2}
+  mannequinInventoryData: {fileID: 11400000, guid: bca4aebc97be262448d7091826005dcf, type: 2}
+  brokenHeater: {fileID: 11400000, guid: fd91ce7784e0a5b448a5c547cf860b8b, type: 2}
+  brokenAlarm: {fileID: 11400000, guid: 77da245bb69f93f45ad531e2fa9a54bf, type: 2}
+  mannequinHat: {fileID: 11400000, guid: afddd3ea5c8d44a479d8fce089b1b9b1, type: 2}
+  wrench: {fileID: 11400000, guid: b8153ea4dd8a3c5448b54537688db974, type: 2}
+  hammer: {fileID: 11400000, guid: 0d15cab9fe9cad1429621e3b35b2be50, type: 2}
 --- !u!1 &821879245
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,9 +7649,9 @@ MonoBehaviour:
     D - Rotate
     Right
 
-    Left Click - Interact
+    E- Show/Hide Phone
 
-    E- Show Phone
+    Left Mouse Click - Interact
 
 '
   m_isRightToLeft: 0

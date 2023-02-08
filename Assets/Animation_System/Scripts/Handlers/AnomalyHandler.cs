@@ -33,7 +33,7 @@ namespace AnomalySystem
         }
         private void Start() 
         {
-            _player = GameObject.Find("Player(Clone)").gameObject.GetComponent<Player>();
+            _player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player>();
             AdjustToDay();
             InvokeRepeating("TriggerRandomAnomaly", triggerTime, delayTime);
         }

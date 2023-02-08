@@ -61,5 +61,6 @@ public class BrokenItem : Interactable
             Destroy(this.transform.GetChild(0).gameObject);
         }
         brokenItem.state = BrokenItemState.IsRepaired;
+        Debug.Log("Repaired");
     }
 }

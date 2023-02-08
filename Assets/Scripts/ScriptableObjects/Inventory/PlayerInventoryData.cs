@@ -22,6 +22,7 @@ namespace ScripatbleObj
 
         public void ResetInventory()
         {
+            Debug.Log("Reseting player inventory");
             Items.Clear();
         }
     }

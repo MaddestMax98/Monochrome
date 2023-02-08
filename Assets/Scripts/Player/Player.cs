@@ -14,7 +14,7 @@ namespace PlayerCharacter
 
         private bool canMove = true;
 
-        private float playerInteractionDistance = 35f;
+        private float playerInteractionDistance = 1f;
 
         [SerializeField]
         private LayerMask interactionMask;

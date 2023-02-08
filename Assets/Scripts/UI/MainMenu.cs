@@ -23,6 +23,7 @@ namespace UI
 
         public void NewGame()
         {
+            GetComponent<SetupGame>().SetupDemo();
             LoadingScene.Load(LoadingScene.Scene.SaveRoom);
         }
 
