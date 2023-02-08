@@ -18,6 +18,7 @@ public class SetupGame : MonoBehaviour
 
     public void SetupDemo()
     {
+#if UNITY_EDITOR
         EditorUtility.SetDirty(playerInventoryData);
         EditorUtility.SetDirty(mannequinInventoryData);
         EditorUtility.SetDirty(brokenHeater);
@@ -25,7 +26,7 @@ public class SetupGame : MonoBehaviour
         EditorUtility.SetDirty(mannequinHat);
         EditorUtility.SetDirty(wrench);
         EditorUtility.SetDirty(hammer);
-
+#endif
 
         playerInventoryData.ResetInventory();
         mannequinInventoryData.ResetInventory();
