@@ -19,9 +19,11 @@ public class DaySystem : MonoBehaviour
     public bool IsMainTasksDone()
     {
         bool isDone = true;
-
+        Debug.Log(daysList.taskList[1].brokenItems.Count);
         //If one of the main tasks is not done we break through the loop and return false
-        for (int i = 0; i < daysList.taskList.Count; i++)
+
+
+        for (int i = 0; i < daysList.taskList[currentDay-1].brokenItems.Count; i++)
         {
             if (daysList.taskList[currentDay - 1].brokenItems[i].isMainTask && daysList.taskList[currentDay - 1].brokenItems[i].state != BrokenItemState.IsRepaired)
             {

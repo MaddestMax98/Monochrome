@@ -1,4 +1,5 @@
 using ScripatbleObj;
+using UnityEditor;
 using UnityEngine;
 
 public class BrokenItem : Interactable
@@ -11,6 +12,7 @@ public class BrokenItem : Interactable
     /*---------------Setup Object---------------*/
     public override void Start()
     {
+
         if (brokenItem.state != BrokenItemState.NotImportant && brokenItem.state != BrokenItemState.IsRepaired)
         {
             base.Start();

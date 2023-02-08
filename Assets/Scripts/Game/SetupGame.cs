@@ -1,4 +1,5 @@
 using ScripatbleObj;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -17,14 +18,23 @@ public class SetupGame : MonoBehaviour
 
     public void SetupDemo()
     {
+        EditorUtility.SetDirty(playerInventoryData);
+        EditorUtility.SetDirty(mannequinInventoryData);
+        EditorUtility.SetDirty(brokenHeater);
+        EditorUtility.SetDirty(brokenAlarm);
+        EditorUtility.SetDirty(mannequinHat);
+        EditorUtility.SetDirty(wrench);
+        EditorUtility.SetDirty(hammer);
+
+
         playerInventoryData.ResetInventory();
         mannequinInventoryData.ResetInventory();
 
         brokenHeater.isMainTask = false;
-        brokenHeater.state = BrokenItemState.Cascade;
+        brokenHeater.state = BrokenItemState.CurrentTask;
 
         brokenAlarm.isMainTask = true;
-        brokenHeater.state = BrokenItemState.NotImportant;
+        brokenAlarm.state = BrokenItemState.NotImportant;
 
         mannequinHat.isPickedUp = false;
         mannequinHat.isEquiped = false;

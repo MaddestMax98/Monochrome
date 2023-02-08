@@ -1,6 +1,7 @@
 using UnityEngine;
 using ScripatbleObj;
 using Manager;
+using UnityEditor;
 
 namespace Item
 {
@@ -13,6 +14,7 @@ namespace Item
 
         public override void Start()
         {
+
             base.Start();
             if (itemData.isPickedUp)
             {
