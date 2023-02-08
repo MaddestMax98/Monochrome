@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HeatingSystem
   m_EditorClassIdentifier: 
   isMainTask: 0
-  state: 1
+  state: 3
   prefabCascade: {fileID: 4964036134057846125, guid: 30f79a0f6f232b247a9bea7bbfa9adad, type: 3}
   itemsNeededToRepair:
   - {fileID: 11400000, guid: b8153ea4dd8a3c5448b54537688db974, type: 2}
