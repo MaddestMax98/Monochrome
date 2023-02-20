@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Anomaly_Auditive : Anomaly
 {
+    private void Awake()
+    {
+        _originalPos = GetComponent<Transform>();
+    }
     public override void AlterObject()
     {
         //Just plays sounds so nothing really happens here :S

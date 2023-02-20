@@ -1,7 +1,8 @@
 using PlayerCharacter;
-using ScriptableObjects;
 using System.Collections.Generic;
+using AnomalySystem.ScriptableObjects;
 using UnityEngine;
+using UnityEditor;
 
 namespace AnomalySystem
 {
@@ -36,7 +37,13 @@ namespace AnomalySystem
         [Header("Scene Persistance Settings")]
         [SerializeField]
         private AnomalyHandlerData _handlerData;
+        private string _roomName;
 
+        private void Awake()
+        {
+            _currentAnomalies = 0;
+            _roomName = gameObject.scene.name + "_";
+        }
         private void Start() 
         {
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player>();
@@ -45,6 +52,8 @@ namespace AnomalySystem
         }
         private void AdjustToDay() 
         {
+            SetUpStoredData();
+
             if (day == 1)
             {
                 _currentProbability = 0.25f;
@@ -59,25 +68,6 @@ namespace AnomalySystem
                 }
             }
 
-            int temp = 0;
-
-            while(_currentAnomalies < _handlerData.currentAnomalies)
-            {
-                _anomalies[temp].transform.position = _handlerData.anomalies[temp].originalPos.position;
-                _anomalies[temp].transform.rotation = _handlerData.anomalies[temp].originalPos.rotation;
-                _anomalies[temp].transform.localScale = _handlerData.anomalies[temp].originalPos.localScale;
-
-                _anomalies[temp].setOriginalPos(_handlerData.anomalies[temp].originalPos.position,
-                                                _handlerData.anomalies[temp].originalPos.rotation,
-                                                _handlerData.anomalies[temp].originalPos.localScale);
-
-                if (_handlerData.anomalies[temp].isActive) {
-                    _anomalies[temp].Enable();
-                    _currentAnomalies++;
-                }
-
-                temp++;
-            }
         }
 
         private void TriggerRandomAnomaly()
@@ -106,6 +96,93 @@ namespace AnomalySystem
                 else TriggerAnomaly(++i);
             }
            
+        }
+
+        private void SetUpStoredData()
+        {
+           
+            if (_handlerData.currentAnomalies == 0)
+            {
+                foreach (var anomaly in _anomalies)
+                {
+                    anomaly.setOriginalPos(anomaly.gameObject.transform.position,
+                                           anomaly.gameObject.transform.rotation,
+                                           anomaly.gameObject.transform.localScale);
+                }
+            }
+            else
+            {
+                int temp = 0;
+
+                while (_currentAnomalies < _handlerData.currentAnomalies)
+                {
+                    _anomalies[temp].transform.position = _handlerData.anomalies[temp].currentPos;
+                    _anomalies[temp].transform.rotation = _handlerData.anomalies[temp].currentRot;
+                    _anomalies[temp].transform.localScale = _handlerData.anomalies[temp].currentScale;
+
+                    _anomalies[temp].setOriginalPos(_handlerData.anomalies[temp].originalPos,
+                                                    _handlerData.anomalies[temp].originalRot,
+                                                    _handlerData.anomalies[temp].originalScale);
+
+                    if (_handlerData.anomalies[temp].isActive)
+                    {
+                        _anomalies[temp].Enable();
+                        _currentAnomalies++;
+                    }
+
+                    temp++;
+                }
+            }
+        }
+
+        public void UpdateAnomalyHandler()
+        {
+            _handlerData.currentAnomalies = _currentAnomalies;
+
+            if (_handlerData.anomalies.Count > 0)
+            {
+                for (int i = 0; i < _anomalies.Count; i++)
+                {
+                    _handlerData.anomalies[i].originalPos = _anomalies[i].GetOriginalPos().position;
+                    _handlerData.anomalies[i].originalRot = _anomalies[i].GetOriginalPos().rotation;
+                    _handlerData.anomalies[i].originalScale = _anomalies[i].GetOriginalPos().localScale;
+                    _handlerData.anomalies[i].isActive = _anomalies[i].isActive();
+
+                    _handlerData.anomalies[i].currentPos = _anomalies[i].gameObject.transform.position;
+                    _handlerData.anomalies[i].currentRot = _anomalies[i].gameObject.transform.rotation;
+                    _handlerData.anomalies[i].currentScale = _anomalies[i].gameObject.transform.localScale;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _anomalies.Count; i++)
+                {
+                    var newData = ScriptableObject.CreateInstance<AnomalyStoringData>();
+
+                    newData.originalPos = _anomalies[i].GetOriginalPos().position;
+                    newData.currentPos = _anomalies[i].gameObject.transform.position;
+
+                    newData.originalRot = _anomalies[i].GetOriginalPos().rotation;
+                    newData.currentRot = _anomalies[i].gameObject.transform.rotation;
+
+                    newData.originalScale = _anomalies[i].GetOriginalPos().localScale;
+                    newData.currentScale = _anomalies[i].gameObject.transform.localScale;
+
+                    newData.isActive = _anomalies[i].isActive();
+                    
+                    _handlerData.anomalies.Add(newData);
+
+                    EditorUtility.SetDirty(newData);
+                    AssetDatabase.SaveAssetIfDirty(newData);
+
+                    AssetDatabase.CreateAsset(newData, "Assets/Scripts/Data/AnomalyStoragedData/AnomalyStoragedData" + _roomName + i + ".asset");
+                    AssetDatabase.SaveAssets();
+                }
+            }
+
+            EditorUtility.SetDirty(_handlerData);
+            AssetDatabase.SaveAssetIfDirty(_handlerData);
+
         }
 
     }

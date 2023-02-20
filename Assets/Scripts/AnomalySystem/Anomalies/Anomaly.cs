@@ -34,11 +34,12 @@ public abstract class Anomaly : MonoBehaviour
     public void Enable() { _isActive = true; }
     public void Disable() { _isActive = false; }
     public bool isActive() { return _isActive; }
-    public void setOriginalPos(Vector3 pos, Quaternion rot, Vector3 scale) 
-    {   _originalPos.position = pos; 
-        _originalPos.rotation = rot;
+    public void setOriginalPos(Vector3 position, Quaternion rotation, Vector3 scale) {
+        _originalPos.position = position;
+        _originalPos.rotation = rotation;
         _originalPos.localScale = scale;
     }
+    public Transform GetOriginalPos() { return _originalPos; }
     public abstract void AlterObject();
 }
   

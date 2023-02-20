@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ScriptableObjects {
-
+namespace AnomalySystem.ScriptableObjects {
+    [CreateAssetMenu(fileName = "AnomalyHandlerData", menuName = "Scriptable Objects/Game/AnomalySystem/AnomalyHandlerData")]
     public class AnomalyHandlerData : ScriptableObject
     {
-        public List<AnomalyData> anomalies;
+        public List<AnomalyStoringData> anomalies;
         public int currentAnomalies;
     }
 }

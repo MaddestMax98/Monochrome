@@ -136,5 +136,6 @@ namespace PlayerCharacter
             _animator.SetBool("isInteracting", false);
             canMove = true;
         }
+
     }
 }

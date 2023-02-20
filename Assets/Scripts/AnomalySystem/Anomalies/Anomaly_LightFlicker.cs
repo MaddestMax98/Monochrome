@@ -6,8 +6,9 @@ public class Anomaly_LightFlicker : Anomaly
     private bool _isFlickering = false;
     private Light _light;
 
-    private void Start()
+    private void Awake()
     {
+        _originalPos = GetComponent<Transform>();
         _light = GetComponent<Light>();
     }
     private void Update()

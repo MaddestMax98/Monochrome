@@ -5,7 +5,7 @@ public class Anomaly_Gravitational : Anomaly
 { 
     private Rigidbody _rigidbody;
 
-    private void Start()
+    private void Awake()
     {
         _originalPos = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody>();

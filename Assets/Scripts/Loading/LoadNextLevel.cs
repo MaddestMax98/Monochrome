@@ -1,10 +1,11 @@
 using PlayerCharacter;
-using System.Collections;
-using System.Collections.Generic;
+using AnomalySystem;
 using UnityEngine;
 
 public class LoadNextLevel : Interactable
 {
+    private AnomalyHandler _aSceneHandler;
+
     [SerializeField]
     private LoadingScene.Scene scene;
     [SerializeField]
@@ -12,8 +13,17 @@ public class LoadNextLevel : Interactable
 
     [SerializeField]
     private bool isTrigger = false;
+    private void Awake()
+    {
+        if(GameObject.FindGameObjectWithTag("AnomalyHandler").gameObject.TryGetComponent<AnomalyHandler>(out AnomalyHandler temp))
+        {
+            _aSceneHandler = temp;
+        }
+    }
     public void LoadNextScene()
     {
+        if(_aSceneHandler != null) _aSceneHandler.UpdateAnomalyHandler();
+
         PlayerPrefs.SetString("CURRENT_SPAWN_POINT", spawnName);
         LoadingScene.Load(scene);
     }
