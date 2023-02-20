@@ -1,7 +1,10 @@
 using Item;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Profiling;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 
 namespace PlayerCharacter
@@ -24,11 +27,13 @@ namespace PlayerCharacter
         private GameObject Target;
 
         private Vector3 rayCastHeight = new Vector3(0, 1.5f, 0);
-        
-        [Header("Post-Processing Settings")]
 
-        private PostProcessVolume _volume; 
+        [Header("Post-Processing Settings")]
+        [SerializeField]
+        private VolumeProfile _volumeProfile;
+        [SerializeField]
         private Vignette _vignette;
+        [SerializeField]
         private ChromaticAberration _chromaticAberration;
 
         public int Sanity { get => sanity; set => sanity = value; }
@@ -51,15 +56,33 @@ namespace PlayerCharacter
         private void Awake()
         {
             phone = GetComponent<Phone>();
+           
 
-            _volume = GameObject.Find("Post-Processing").GetComponent<PostProcessVolume>();
+            // get the vignette effect
+            for (int i = 0; i < _volumeProfile.components.Count; i++)
+            {
+                if (_volumeProfile.components[i].name == "Vignette")
+                {
+                    _vignette = (Vignette)_volumeProfile.components[i];
+                }
 
-            _volume.profile.TryGetSettings(out _vignette);
-            _volume.profile.TryGetSettings(out _chromaticAberration);
+                if (_volumeProfile.components[i].name == "ChromaticAberration")
+                {
+                    _chromaticAberration = (ChromaticAberration)_volumeProfile.components[i];
+                }
+            }
+
         }
 
         private void Update()
         {
+            UpdateAnimator();
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Sanity = -10;
+                UpdateAnimator();
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 if (canMove)
@@ -95,8 +118,8 @@ namespace PlayerCharacter
             if (sanity <= 4) 
             {
                 _animator.SetBool("hasLowSanity", true);
-                _vignette.intensity.value = 0.5f;
-                _chromaticAberration.intensity.value = 0.50f;
+                _vignette.intensity.value = 0.50f;
+                _chromaticAberration.intensity.value = 1f;
             }
             else
             {
