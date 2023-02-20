@@ -1,4 +1,5 @@
 using PlayerCharacter;
+using ScriptableObjects;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,13 +7,16 @@ namespace AnomalySystem
 {
     public class AnomalyHandler : MonoBehaviour
     {
-        //TODO - Make a referee to the current day
+        //TODO - Make a reference to the current day
         public int day = 1;
         private Player _player;
 
-        public List<Anomaly> _anomalies;
-        public List<Anomaly> _selectedAnomalies;
+        [SerializeField]
+        private List<Anomaly> _anomalies;
+        [SerializeField]
+        private List<Anomaly> _selectedAnomalies;
 
+        [Header("Timer and trigger settings")]
         [SerializeField]
         [Tooltip("Sets inital time which anomalies can be triggered")]
         private int triggerTime;
@@ -20,17 +24,19 @@ namespace AnomalySystem
         [Tooltip("Sets time in between triggers")]
         private int delayTime;
 
+        [Header("Difficulty and balance settings")]
+        [SerializeField]
         private float _currentProbability = 0.25f;
-
-        private int _currentAnomalies = 0;
         [SerializeField]
         [Tooltip("Sets maximum amount of anomalies that can be triggered on this room.")]
         private int _maxAnomalies;
 
-        private void Awake()
-        {
-            _currentAnomalies = 0;
-        }
+        private int _currentAnomalies = 0;
+
+        [Header("Scene Persistance Settings")]
+        [SerializeField]
+        private AnomalyHandlerData _handlerData;
+
         private void Start() 
         {
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player>();
@@ -51,6 +57,26 @@ namespace AnomalySystem
                     }
                     else _anomalies[i].Disable();
                 }
+            }
+
+            int temp = 0;
+
+            while(_currentAnomalies < _handlerData.currentAnomalies)
+            {
+                _anomalies[temp].transform.position = _handlerData.anomalies[temp].originalPos.position;
+                _anomalies[temp].transform.rotation = _handlerData.anomalies[temp].originalPos.rotation;
+                _anomalies[temp].transform.localScale = _handlerData.anomalies[temp].originalPos.localScale;
+
+                _anomalies[temp].setOriginalPos(_handlerData.anomalies[temp].originalPos.position,
+                                                _handlerData.anomalies[temp].originalPos.rotation,
+                                                _handlerData.anomalies[temp].originalPos.localScale);
+
+                if (_handlerData.anomalies[temp].isActive) {
+                    _anomalies[temp].Enable();
+                    _currentAnomalies++;
+                }
+
+                temp++;
             }
         }
 

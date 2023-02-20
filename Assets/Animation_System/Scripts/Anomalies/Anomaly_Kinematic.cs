@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Anomaly_Kinematic : Anomaly
 {
-    private Transform _orignalTransform;
     private Rigidbody _rigidbody;
 
     private void Start()
     {
-        _orignalTransform = GetComponent<Transform>();
+        _originalPos = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody>();           
     }
     public override void Manifest(Player player)
@@ -22,8 +21,8 @@ public class Anomaly_Kinematic : Anomaly
     {
         base.Fix(player);
 
-        gameObject.transform.position = _orignalTransform.position;
-        gameObject.transform.rotation = _orignalTransform.rotation;
+        gameObject.transform.position = _originalPos.position;
+        gameObject.transform.rotation = _originalPos.rotation;
     }
 
     public override void AlterObject()
