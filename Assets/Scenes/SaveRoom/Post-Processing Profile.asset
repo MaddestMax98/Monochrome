@@ -74,7 +74,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.02549918
   m_MaxSamples:
     m_OverrideState: 1
     m_Value: 24
@@ -121,7 +121,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.35382485
   smoothness:
     m_OverrideState: 1
     m_Value: 0.2

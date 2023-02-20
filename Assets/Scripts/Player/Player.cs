@@ -31,14 +31,15 @@ namespace PlayerCharacter
         [Header("Post-Processing Settings")]
         [SerializeField]
         private VolumeProfile _volumeProfile;
-        [SerializeField]
+
         private Vignette _vignette;
-        [SerializeField]
         private ChromaticAberration _chromaticAberration;
 
         public int Sanity { get => sanity; set => sanity = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
         public Phone Phone { get => phone; set => phone = value; }
+
+        private bool _hasLowSanity;
 
 
         private void OnEnable()
@@ -58,20 +59,21 @@ namespace PlayerCharacter
             phone = GetComponent<Phone>();
            
 
-            // get the vignette effect
-            for (int i = 0; i < _volumeProfile.components.Count; i++)
+            if(_volumeProfile != null)
             {
-                if (_volumeProfile.components[i].name == "Vignette")
+                for (int i = 0; i < _volumeProfile.components.Count; i++)
                 {
-                    _vignette = (Vignette)_volumeProfile.components[i];
-                }
+                    if (_volumeProfile.components[i].name == "Vignette")
+                    {
+                        _vignette = (Vignette)_volumeProfile.components[i];
+                    }
 
-                if (_volumeProfile.components[i].name == "ChromaticAberration")
-                {
-                    _chromaticAberration = (ChromaticAberration)_volumeProfile.components[i];
+                    if (_volumeProfile.components[i].name == "ChromaticAberration")
+                    {
+                        _chromaticAberration = (ChromaticAberration)_volumeProfile.components[i];
+                    }
                 }
             }
-
         }
 
         private void Update()
@@ -80,7 +82,10 @@ namespace PlayerCharacter
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-                Sanity = -10;
+                if(_hasLowSanity)
+                    Sanity = 10;
+                else Sanity = 0;
+                
                 UpdateAnimator();
             }
             if (Input.GetMouseButtonDown(0))
@@ -90,6 +95,18 @@ namespace PlayerCharacter
                     Interact();
                 }
             }
+
+            if (_hasLowSanity)
+            {
+                if (_vignette) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0.5f, 0.02f);
+                if (_chromaticAberration) _chromaticAberration.intensity.value = Mathf.Lerp(_chromaticAberration.intensity.value, 1f, 0.02f);
+            }
+            else
+            {
+                if (_vignette) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0.35f, 0.02f);
+                if (_chromaticAberration) _chromaticAberration.intensity.value = Mathf.Lerp(_chromaticAberration.intensity.value, 0f, 0.02f);
+            }
+
             //TODO: Optimize this code. Proposition: event system to call thing once?
             /*System to outline object when looking at them*/
             if (!Physics.Raycast(this.transform.position + rayCastHeight, this.transform.forward, out RaycastHit nothit, playerInteractionDistance, interactionMask))
@@ -117,15 +134,13 @@ namespace PlayerCharacter
         {
             if (sanity <= 4) 
             {
-                _animator.SetBool("hasLowSanity", true);
-                _vignette.intensity.value = 0.50f;
-                _chromaticAberration.intensity.value = 1f;
+                _hasLowSanity = true;
+                _animator.SetBool("hasLowSanity", true); 
             }
             else
             {
+                _hasLowSanity = false;
                 _animator.SetBool("hasLowSanity", false);
-                _vignette.intensity.value = 0.35f;
-                _chromaticAberration.intensity.value = 0;
             }
             
         }
