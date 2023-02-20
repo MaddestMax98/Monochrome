@@ -4,49 +4,56 @@ namespace PlayerCharacter
 {
     public class TankControls : MonoBehaviour
     {
-        private float horizontalMove;
-        private float verticalMove;
+        private float _horizontalMove;
+        private float _verticalMove;
 
-        private float velocity;
-        private const float GRAVITY = -9.81f;
-        private float gravityMultiplier = 1.0f;
+        private CharacterController _controller;
+        private Animator _animator;
 
-        private CharacterController controller;
 
         private void Awake()
         {
-            controller = GetComponent<CharacterController>();
+            _controller = GetComponent<CharacterController>();
+            _animator = GetComponent<Animator>();
         }
 
         void Update()
         {
-            ApplyGravity();
+
             if (GetComponent<Player>().CanMove)
             {
                 if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
-                    horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
-                    verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 4;
+                    _animator.SetBool("isMoving", true);
 
-                    Vector3 grav = new Vector3(0, velocity, 0);
-                    controller.Move((transform.forward * verticalMove) + grav);
-                    transform.Rotate(0, horizontalMove, 0);
+                    _horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 120;                   
+                    _verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * 1.5f;
+
+                    _controller.Move((transform.forward * _verticalMove));
+                    transform.Rotate(0, _horizontalMove, 0);
                 }
-            }
+                else
+                {
+                    _animator.SetBool("isMoving", false);
+                }
 
+                if(!Input.GetButton("Horizontal")) _horizontalMove = 0;
+                
+                if(!Input.GetButton("Vertical"))
+                {
+                    _verticalMove = 0;
+                    _animator.SetFloat("Xaxis", _horizontalMove * 120);
+                }else _animator.SetFloat("Xaxis", 0);
+
+                _animator.SetFloat("Yaxis", _verticalMove * 125);
+            }
         }
-
-        private void ApplyGravity()
+        private void OnCollisionStay(Collision collision)
         {
-            if (controller.isGrounded && velocity < 0.0f)
-            {
-                velocity = -1.0f;
-            }
-            else
-            {
-                velocity += GRAVITY * gravityMultiplier * Time.deltaTime;
-            }
+            //Debug.Log(collision.gameObject.layer + " PlayerController: " + _controller.radius);
 
+            if (collision.gameObject.layer == 11) _controller.radius = 0.012f;
+            else _controller.radius = 0.5f;
         }
     }
 }
