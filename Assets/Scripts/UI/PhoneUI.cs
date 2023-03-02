@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using ScripatbleObj;
+using UnityEngine.UI;
 
 public class PhoneUI : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI signal;
-    [SerializeField]
     private PlayerInventoryData inventoryData;
     private int currentItemIndex = 0;
 
+    [SerializeField] private Sprite[] signalState;
+    
+    [SerializeField] private GameObject WifiSignal;
     [SerializeField] private GameObject TaskUI;
     [SerializeField] private GameObject InventoryUI;
+    [SerializeField] private GameObject AppIcons;
+    [SerializeField] private GameObject Messages;
+    [SerializeField] private GameObject Map;
+    [SerializeField] private GameObject BackButton;
 
     [SerializeField] private Transform previousItem;
     [SerializeField] private Transform mainItem;
@@ -22,25 +25,54 @@ public class PhoneUI : MonoBehaviour
 
     private void OnEnable()
     {
+        AppIcons.SetActive(true);
         TaskUI.SetActive(false);
         InventoryUI.SetActive(false);
+        BackButton.SetActive(false);
     }
 
     public void UpdateSignal(int strength)
     {
-        signal.text = strength.ToString();
+        WifiSignal.GetComponent<Image>().sprite = signalState[strength];
+    }
+
+    public void GoToHomeScreen()
+    {
+        InventoryUI.SetActive(false);
+        TaskUI.SetActive(false);
+        AppIcons.SetActive(true);
+        BackButton.SetActive(false);
+        Map.SetActive(false);
+        Messages.SetActive(false);
+    }
+
+    public void DisplayMessages()
+    {
+        AppIcons.SetActive(false);
+        Messages.SetActive(true);
+        BackButton.SetActive(true);
+    }
+
+    public void DisplayMap()
+    {
+        AppIcons.SetActive(false);
+        BackButton.SetActive(true);
+        Map.SetActive(true);
+
     }
 
     public void DisplayTask()
     {
+        AppIcons.SetActive(false);
         TaskUI.SetActive(true);
-        InventoryUI.SetActive(false);
+        BackButton.SetActive(true);
     }
 
     public void DisplayInventory()
     {
+        AppIcons.SetActive(false);
         InventoryUI.SetActive(true);
-        TaskUI.SetActive(false);
+        BackButton.SetActive(true);
         DisplayItems();
     }
 
