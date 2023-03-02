@@ -27,7 +27,6 @@ public class SetupGame : MonoBehaviour
         EditorUtility.SetDirty(wrench);
         EditorUtility.SetDirty(hammer);
 #endif
-
         playerInventoryData.ResetInventory();
         mannequinInventoryData.ResetInventory();
 
