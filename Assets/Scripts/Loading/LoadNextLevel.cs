@@ -17,7 +17,11 @@ public class LoadNextLevel : Interactable
     {
         if(GameObject.FindGameObjectWithTag("AnomalyHandler").gameObject.TryGetComponent<AnomalyHandler>(out AnomalyHandler temp))
         {
-            _aSceneHandler = temp;
+            if (temp != null)
+            {
+                _aSceneHandler = temp;
+            }
+            
         }
     }
     public void LoadNextScene()
