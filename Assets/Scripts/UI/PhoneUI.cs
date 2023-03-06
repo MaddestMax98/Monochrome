@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using ScripatbleObj;
 using UnityEngine.UI;
+using PlayerCharacter;
 
 public class PhoneUI : MonoBehaviour
 {
@@ -10,31 +11,36 @@ public class PhoneUI : MonoBehaviour
     private int currentItemIndex = 0;
 
     [SerializeField] private Sprite[] signalState;
-    
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject Contacts;
+    [SerializeField] private GameObject Messages;
     [SerializeField] private GameObject WifiSignal;
     [SerializeField] private GameObject TaskUI;
     [SerializeField] private GameObject InventoryUI;
     [SerializeField] private GameObject AppIcons;
-    [SerializeField] private GameObject Messages;
     [SerializeField] private GameObject Map;
     [SerializeField] private GameObject BackButton;
+    [SerializeField] private ScrollRect ScrollRect;
+
+    [Header ("Different text conversations")]
+    [SerializeField] private GameObject wife;
+    [SerializeField] private GameObject work;
+    [SerializeField] private GameObject psychologist;
 
     [SerializeField] private Transform previousItem;
     [SerializeField] private Transform mainItem;
-    [SerializeField] private Transform nextItem;
+    [SerializeField] private Transform nextItem; 
 
     private void OnEnable()
     {
-        AppIcons.SetActive(true);
-        TaskUI.SetActive(false);
-        InventoryUI.SetActive(false);
-        BackButton.SetActive(false);
+        GoToHomeScreen();
     }
 
     public void UpdateSignal(int strength)
     {
         WifiSignal.GetComponent<Image>().sprite = signalState[strength];
-        Messages.GetComponent<MessageSystem>().UpdateSignal(strength);
+        player.GetComponent<MessageSystem>().UpdateSignal(strength);
     }
 
     public void GoToHomeScreen()
@@ -44,14 +50,53 @@ public class PhoneUI : MonoBehaviour
         AppIcons.SetActive(true);
         BackButton.SetActive(false);
         Map.SetActive(false);
+        Contacts.SetActive(false);
         Messages.SetActive(false);
     }
 
-    public void DisplayMessages()
+    public void DisplayContacts()
     {
         AppIcons.SetActive(false);
+        Contacts.SetActive(true);
+        BackButton.SetActive(true);
+    }
+
+
+    public void DisplayMessages(int conversation)
+    {
+        Contacts.SetActive(false);
         Messages.SetActive(true);
         BackButton.SetActive(true);
+
+        switch (conversation)
+        {
+            case 0:
+                wife.SetActive(true);
+                work.SetActive(false);
+                psychologist.SetActive(false);
+                player.GetComponent<MessageSystem>().UpdateUser(CurrentUser.WIFE);
+                ScrollRect.content = wife.GetComponent<RectTransform>();
+                
+                break;
+            case 1:
+                wife.SetActive(false);
+                work.SetActive(true);
+                psychologist.SetActive(false);
+                player.GetComponent<MessageSystem>().UpdateUser(CurrentUser.WORK);
+                ScrollRect.content = work.GetComponent<RectTransform>();
+                break;
+            case 2:
+                wife.SetActive(false);
+                work.SetActive(false);
+                psychologist.SetActive(true);
+                player.GetComponent<MessageSystem>().UpdateUser(CurrentUser.PSYCHOLOGIST);
+                ScrollRect.content = psychologist.GetComponent<RectTransform>();
+                break;
+            default:
+                Contacts.SetActive(true);
+                Messages.SetActive(false);
+                break;
+        }
     }
 
     public void DisplayMap()

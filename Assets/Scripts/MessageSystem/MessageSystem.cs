@@ -3,8 +3,7 @@ using PlayerCharacter;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-enum CurrentUser { WIFE, WORK, PSYCHOLOGIST };
+using System.Collections.Generic;
 
 public class MessageSystem : MonoBehaviour
 {
@@ -14,35 +13,59 @@ public class MessageSystem : MonoBehaviour
     private SignalDetection _signalDetection;
 
     [SerializeField]
+    private MessageData _playerMessages;
+    [SerializeField]
     private MessageData _wifeMessages;
     [SerializeField]
-    private MessageData _playerMessages;
+    private MessageData _workMessages;
+    [SerializeField]
+    private MessageData _psychMessages;
     [SerializeField]
     private ImageData _photos;
 
     private CurrentUser _currentUser;
 
     [SerializeField] private GameObject dialogueContainer;
-    [SerializeField] private GameObject _dialogueHolder;
+    [SerializeField] private List<GameObject> _dialogueHolder;
 
     private bool _canRespond;
 
     // Keeps track of the transform of the previous addition
     private RectTransform lastRectTrans = null;
+    private List<StatusChanger> _playerTexts = new List<StatusChanger>();
 
     void Awake()
     {
         _wifeMessages.current = 0;
         _photos.current = 0;
         _playerMessages.current = 0;
+        _workMessages.current = 0;
+        _psychMessages.current = 0;
     }
     private void Start()
     {
-        _player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+        _player = GetComponent<Player>();
         _signalDetection = GameObject.Find("Signal").GetComponent<SignalDetection>(); //TODO - Define signal game object name
     }
     private void Update()
     {
+        //Debug Purposes
+        //TODO - Make Pretty
+
+        if (Input.GetKeyUp(KeyCode.Keypad1))
+        { 
+            _currentUser = CurrentUser.WIFE;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Keypad2))
+        {
+            _currentUser = CurrentUser.WORK;
+
+        }
+        if (Input.GetKeyUp(KeyCode.Keypad3))
+        {
+            _currentUser = CurrentUser.PSYCHOLOGIST;
+        }
         if (Input.GetKeyUp(KeyCode.F1))
         {
             AddDialogueBox();
@@ -52,7 +75,8 @@ public class MessageSystem : MonoBehaviour
     //Changes depending on the sender
     void CreateDialogue(GameObject prefab, MessageData sender = null, ImageData image = null)
     {
-        GameObject newBox = Instantiate(prefab, _dialogueHolder.transform, false) as GameObject;
+        int x = (int)_currentUser;
+        GameObject newBox = Instantiate(prefab, _dialogueHolder[x].transform, false) as GameObject;
         
         if(sender != null)
             newBox.GetComponentInChildren<TextMeshProUGUI>().text = sender.texts[sender.current];
@@ -68,40 +92,40 @@ public class MessageSystem : MonoBehaviour
         if (lastRectTrans != null)
         {
             Vector2 newPos;
-            if (lastRectTrans.rect.height == newRectTrans.rect.height)
-            {
-                 newPos = new Vector2(lastRectTrans.localPosition.x,
-                                         lastRectTrans.localPosition.y - newRectTrans.rect.height);
-            }
-            else if (lastRectTrans.rect.height > newRectTrans.rect.height)
-            {
-                newPos = new Vector2(lastRectTrans.localPosition.x,
-                                         lastRectTrans.localPosition.y - newRectTrans.rect.height - 0.1f);
-            }
-            else
-            {
-                newPos = new Vector2(lastRectTrans.localPosition.x,
-                                         lastRectTrans.localPosition.y - newRectTrans.rect.height + 0.1f);
-            }
-
+       
+            newPos = new Vector2(lastRectTrans.localPosition.x,
+                                 lastRectTrans.localPosition.y - newRectTrans.rect.height + 1f);
+      
             newRectTrans.localPosition = newPos;
 
         }
 
         lastRectTrans = newRectTrans;
+
+        if (prefab == messagePrefab[2])
+            _playerTexts.Add(newBox.GetComponent<StatusChanger>());
     }
 
     public void UpdateSignal(int strength)
     {
+        
+        if(_playerTexts != null)
+        {
+            int x = (int)_currentUser;
 
-        for (int i = 0; i < _dialogueHolder.transform.childCount; i++) {
+            for (int i = 0; i < _playerTexts.Count; i++)
+            {
 
-            if(_dialogueHolder.transform.GetChild(i).TryGetComponent<StatusChanger>(out StatusChanger value))
-                value.ChangeStatus(strength);
+                if (_playerTexts[i].GetStatus() < strength)
+                    _playerTexts[i].ChangeStatus(strength);
+            }
         }
+       
     }
     private void AddDialogueBox()
     {
+        //TODO - Message Audio SOUND
+
         switch (_currentUser)
         {
             case CurrentUser.WIFE:
@@ -117,7 +141,7 @@ public class MessageSystem : MonoBehaviour
                    
                     _canRespond = true;
                     _wifeMessages.current++;
-                   
+                    UpdateSignal(4);
                 }
                 else if (_playerMessages.current < _playerMessages.texts.Length && _canRespond == true)
                 {
@@ -127,12 +151,28 @@ public class MessageSystem : MonoBehaviour
                     _player.Sanity += 2;
                 }
                 break;
-                //case CurrentUser.WORK:
-                //case CurrentUser.PSYCHOLOGIST:
+            case CurrentUser.WORK:
+                if (_workMessages.current < _workMessages.texts.Length)
+                {
+                    CreateDialogue(messagePrefab[0], _workMessages);
+                    _workMessages.current++;
+                    UpdateSignal(4);
+                }
+                break;
+            case CurrentUser.PSYCHOLOGIST:
+                if (_psychMessages.current < _psychMessages.texts.Length)
+                {
+                    CreateDialogue(messagePrefab[0], _psychMessages);
+                    _psychMessages.current++;
+                    UpdateSignal(4);
+                }
+                break;
         }
 
         UpdateSignal(_signalDetection.getStrength());
 
     }
+
+    public void UpdateUser(CurrentUser user) => _currentUser = user;
 }
 

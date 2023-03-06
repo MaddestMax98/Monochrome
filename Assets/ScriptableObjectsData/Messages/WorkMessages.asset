@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27ad800ac1cbabd429b5ac42eaa63cc4, type: 3}
-  m_Name: PlayerMessages
+  m_Name: WorkMessages
   m_EditorClassIdentifier: 
   texts:
-  - You alright?
-  - LMAO
+  - Good Morning Gabriel!
+  - ' I am sorry to inform you that the weather is making communication quite limited.'
+  - I would love to talk to you personaly...
+  - ' but for now the task machine is will do just fine'
   current: 0

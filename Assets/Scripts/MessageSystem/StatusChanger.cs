@@ -6,15 +6,19 @@ public class StatusChanger : MonoBehaviour
     [SerializeField] private GameObject _recieved;
     [SerializeField] private GameObject _sent;
 
+    int current = 0;
+
     public void ChangeStatus(int signalStrength)
     {
+        current = signalStrength;
+
         switch (signalStrength) {
-            case 3: 
+            case 4:
                 _read.SetActive(true);
                 _recieved.SetActive(false);
                 _sent.SetActive(false);
                 break;
-            case 2:
+            case 2: case 3:
                 _read.SetActive(false);
                 _recieved.SetActive(true);
                 _sent.SetActive(false);
@@ -26,5 +30,10 @@ public class StatusChanger : MonoBehaviour
                 break;
         }
 
+    }
+
+    public int GetStatus()
+    {
+        return current;
     }
 }
