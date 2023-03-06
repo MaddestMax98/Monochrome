@@ -340,7 +340,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7798352247683211831}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 4526792708274314926}
   - component: {fileID: 5639947664256600387}
   - component: {fileID: 3152666991885691455}
+  - component: {fileID: -9205488554716009608}
   m_Layer: 10
   m_Name: SentMessage
   m_TagString: Untagged
@@ -488,3 +489,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-9205488554716009608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052025551538685947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed13f34e173891040aeaed55693f7d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _read: {fileID: 983469417973788001}
+  _recieved: {fileID: 95330455713381390}
+  _sent: {fileID: 7798352247683211831}

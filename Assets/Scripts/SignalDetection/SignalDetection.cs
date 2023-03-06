@@ -16,4 +16,9 @@ public class SignalDetection : MonoBehaviour
             other.GetComponent<Phone>().UpdateSignal();
         }
     }
+
+    public int getStrength()
+    {
+        return signalStrength;
+    }
 }

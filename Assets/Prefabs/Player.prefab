@@ -2462,12 +2462,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messagePrefab:
   - {fileID: 4074528905973894780, guid: 5fea2c04621b2994994b24d03f91e97f, type: 3}
-  - {fileID: 9052025551538685947, guid: f1d8beca7920daf4ebab054501ca5eee, type: 3}
+  - {fileID: 4074528905973894780, guid: cb0bb131495050641bfc18580dcd5743, type: 3}
   - {fileID: 9052025551538685947, guid: f1d8beca7920daf4ebab054501ca5eee, type: 3}
   _wifeMessages: {fileID: 11400000, guid: 5d4785434a2b22041989a10a29a47a69, type: 2}
   _playerMessages: {fileID: 11400000, guid: 3e016e9594fc77f4eabba36e7ff5c1fb, type: 2}
+  _photos: {fileID: 11400000, guid: 73f3832522b9cb94cad3adfbd27407e5, type: 2}
   dialogueContainer: {fileID: 8843519593838550649}
-  dialogueHolder: {fileID: 4390222260143853259}
+  _dialogueHolder: {fileID: 4390222260143853259}
 --- !u!223 &8609007926018426692
 Canvas:
   m_ObjectHideFlags: 0
@@ -3002,18 +3003,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4390222260143853259}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4420500994920728030}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.1466509}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00010728836, y: -0.05799559}
-  m_SizeDelta: {x: -0.00021454692, y: 0.11599119}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4523961962877817060
 GameObject:
@@ -4655,8 +4656,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6891012180615730729}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.6733753, y: 1.1116666, z: 5.7528877}
+  m_LocalRotation: {x: -0.003657083, y: 0.9936626, z: -0.10709821, w: -0.0339306}
+  m_LocalPosition: {x: 1.5433753, y: 1.8949997, z: 8.394553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6258,12 +6259,12 @@ MonoBehaviour:
   m_Content: {fileID: 856258043888273103}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 2
-  m_Elasticity: 0.1
+  m_MovementType: 1
+  m_Elasticity: 0.05
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 2
-  m_Viewport: {fileID: 4420500994920728030}
+  m_ScrollSensitivity: 0.135
+  m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 0

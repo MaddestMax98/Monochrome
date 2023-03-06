@@ -34,6 +34,7 @@ public class PhoneUI : MonoBehaviour
     public void UpdateSignal(int strength)
     {
         WifiSignal.GetComponent<Image>().sprite = signalState[strength];
+        Messages.GetComponent<MessageSystem>().UpdateSignal(strength);
     }
 
     public void GoToHomeScreen()
