@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AnomalySystem.ScriptableObjects;
 using UnityEngine;
 using UnityEditor;
+using ScripatbleObj;
 
 namespace AnomalySystem
 {
@@ -41,6 +42,11 @@ namespace AnomalySystem
 
         private void Awake()
         {
+            //This fixes the scene persistence
+            List<AnomalyHandlerData> data = GameObject.Find("SceneManager").GetComponent<AnomalyInventory>().Inventory.data;
+            _handlerData = data.Find(anomalyHandlerData => anomalyHandlerData.name == _handlerData.name);
+
+
             _currentAnomalies = 0;
             _roomName = gameObject.scene.name + "_";
         }
@@ -116,12 +122,7 @@ namespace AnomalySystem
 
                 while (_currentAnomalies < _handlerData.currentAnomalies)
                 {
-                    //Get from anomaly array and set objects part
-
-
                     //Check from anomaly inventory and then setup
-
-
                     _anomalies[temp].transform.position = _handlerData.anomalies[temp].currentPos;
                     _anomalies[temp].transform.rotation = _handlerData.anomalies[temp].currentRot;
                     _anomalies[temp].transform.localScale = _handlerData.anomalies[temp].currentScale;
@@ -129,9 +130,6 @@ namespace AnomalySystem
                     _anomalies[temp].setOriginalPos(_handlerData.anomalies[temp].originalPos,
                                                     _handlerData.anomalies[temp].originalRot,
                                                     _handlerData.anomalies[temp].originalScale);
-
-
-
 
                     if (_handlerData.anomalies[temp].isActive)
                     {

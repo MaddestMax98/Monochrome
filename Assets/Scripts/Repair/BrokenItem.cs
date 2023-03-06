@@ -11,6 +11,7 @@ public class BrokenItem : Interactable
 
     private void Awake()
     {
+        //This fixes the scene persistence
         List<BrokenItemData> data = GameObject.Find("SceneManager").GetComponent<BrokenItemInventory>().Inventory.data;
         brokenItem = data.Find(brokenItemData => brokenItemData.name == brokenItem.name);
     }

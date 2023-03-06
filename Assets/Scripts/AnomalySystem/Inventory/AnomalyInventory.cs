@@ -10,6 +10,7 @@ public class AnomalyInventory : MonoBehaviour
 
     private static AnomalyInventory instance;
     public static AnomalyInventory Instance { get => instance; set => instance = value; }
+    public AnomalyHandlerInventory Inventory { get => inventory; set => inventory = value; }
 
     private void Awake()
     {

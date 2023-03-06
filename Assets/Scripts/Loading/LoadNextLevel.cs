@@ -15,6 +15,7 @@ public class LoadNextLevel : Interactable
     private bool isTrigger = false;
     private void Awake()
     {
+        //Errorr null ref
         if(GameObject.FindGameObjectWithTag("AnomalyHandler").gameObject.TryGetComponent<AnomalyHandler>(out AnomalyHandler temp))
         {
             if (temp != null)
