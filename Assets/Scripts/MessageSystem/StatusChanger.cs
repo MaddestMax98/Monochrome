@@ -7,6 +7,7 @@ public class StatusChanger : MonoBehaviour
     [SerializeField] private GameObject _sent;
 
     int current = 0;
+    bool hasResponded = false;
 
     public void ChangeStatus(int signalStrength)
     {
@@ -35,5 +36,15 @@ public class StatusChanger : MonoBehaviour
     public int GetStatus()
     {
         return current;
+    }
+
+    public bool HasResponded()
+    {
+        return hasResponded;
+    }
+
+    public void Answer()
+    {
+        hasResponded = true;
     }
 }

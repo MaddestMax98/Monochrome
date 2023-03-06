@@ -70,6 +70,16 @@ public class MessageSystem : MonoBehaviour
         {
             AddDialogueBox();
         }
+
+        if (_canRespond == true && _playerMessages.current < _playerMessages.texts.Length)
+        {
+            CreateDialogue(messagePrefab[2], _playerMessages);
+            _canRespond = false;
+            _playerMessages.current++;
+            _player.Sanity += 2;
+
+            UpdateSignal(_signalDetection.getStrength());
+        }
     }
 
     //Changes depending on the sender
@@ -79,7 +89,13 @@ public class MessageSystem : MonoBehaviour
         GameObject newBox = Instantiate(prefab, _dialogueHolder[x].transform, false) as GameObject;
         
         if(sender != null)
-            newBox.GetComponentInChildren<TextMeshProUGUI>().text = sender.texts[sender.current];
+        {
+            var TMP = newBox.GetComponentInChildren<TextMeshProUGUI>();
+            TMP.text = sender.texts[sender.current];
+            
+            if(prefab == messagePrefab[2])
+                TMP.alpha = 0f;
+        }
         else
         {
             var theImage = newBox.transform.Find("Image").GetComponent<Image>();
@@ -129,26 +145,31 @@ public class MessageSystem : MonoBehaviour
         switch (_currentUser)
         {
             case CurrentUser.WIFE:
-                if (_wifeMessages.current < _wifeMessages.texts.Length && _canRespond == false)
+                if (_wifeMessages.current < _wifeMessages.texts.Length)
                 {
-                    if (_photos.current < _photos.images.Length)
+                    bool canText = true;
+
+                    if(_playerTexts.Count > 0)
                     {
-                        CreateDialogue(messagePrefab[1], null, _photos);
-                        _photos.current++;
+                        if (_playerTexts[_playerTexts.Count - 1].HasResponded() == false)
+                            canText = false;
                     }
 
-                    CreateDialogue(messagePrefab[0], _wifeMessages);
+                    if (canText)
+                    {
+                        if (_photos.current < _photos.images.Length)
+                        {
+                            CreateDialogue(messagePrefab[1], null, _photos);
+                            _photos.current++;
+                        }
+
+                        CreateDialogue(messagePrefab[0], _wifeMessages);
+
+                        _canRespond = true;
+                        _wifeMessages.current++;
+                        UpdateSignal(4);
+                    }
                    
-                    _canRespond = true;
-                    _wifeMessages.current++;
-                    UpdateSignal(4);
-                }
-                else if (_playerMessages.current < _playerMessages.texts.Length && _canRespond == true)
-                {
-                    CreateDialogue(messagePrefab[2], _playerMessages);
-                    _canRespond = false;
-                    _playerMessages.current++;
-                    _player.Sanity += 2;
                 }
                 break;
             case CurrentUser.WORK:
@@ -172,7 +193,6 @@ public class MessageSystem : MonoBehaviour
         UpdateSignal(_signalDetection.getStrength());
 
     }
-
     public void UpdateUser(CurrentUser user) => _currentUser = user;
 }
 
