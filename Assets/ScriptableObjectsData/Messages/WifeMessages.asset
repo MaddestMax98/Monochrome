@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: WifeMessages
   m_EditorClassIdentifier: 
   texts:
-  - Heyo, this is test number one, whats up?
-  - Ratatatatatata
-  current: 0
+  - Theo is already asking for you
+  - Gabe, we can't afford gifts right now
+  - Please, just focus on the present. Okey hun?
+  - Love you too
+  - 'Blizzard? '
+  - Its an old building Gabe, please be careful
+  - I know Gabe, its just... i don't know
+  - Stay safe Gabriel
+  - Test Current 1
+  - Test Current 2
+  current: 3
