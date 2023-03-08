@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class MessageSystem : MonoBehaviour
 {
-    public GameObject[] messagePrefab;
+    public GameObject[] messagePrefab; // [Normal Message (0), Picture (1), Respond (2)]
     
     private Player _player;
     private SignalDetection _signalDetection;
@@ -25,7 +25,7 @@ public class MessageSystem : MonoBehaviour
 
     private CurrentUser _currentUser;
 
-    [SerializeField] private GameObject dialogueContainer;
+    [SerializeField] private GameObject _datePrefab;
     [SerializeField] private List<GameObject> _dialogueHolder;
 
     private bool _canRespond;
@@ -46,26 +46,17 @@ public class MessageSystem : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _signalDetection = GameObject.Find("Signal").GetComponent<SignalDetection>(); //TODO - Define signal game object name
+
+        // Set up previous wife texts:
+        SetInitialDialogues();
+       
+
     }
     private void Update()
     {
         //Debug Purposes
         //TODO - Make Pretty
 
-        if (Input.GetKeyUp(KeyCode.Keypad1))
-        { 
-            _currentUser = CurrentUser.WIFE;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Keypad2))
-        {
-            _currentUser = CurrentUser.WORK;
-
-        }
-        if (Input.GetKeyUp(KeyCode.Keypad3))
-        {
-            _currentUser = CurrentUser.PSYCHOLOGIST;
-        }
         if (Input.GetKeyUp(KeyCode.F1))
         {
             AddDialogueBox();
@@ -75,7 +66,6 @@ public class MessageSystem : MonoBehaviour
         {
             CreateDialogue(messagePrefab[2], _playerMessages);
             _canRespond = false;
-            _playerMessages.current++;
             _player.Sanity += 2;
 
             UpdateSignal(_signalDetection.getStrength());
@@ -83,7 +73,7 @@ public class MessageSystem : MonoBehaviour
     }
 
     //Changes depending on the sender
-    void CreateDialogue(GameObject prefab, MessageData sender = null, ImageData image = null)
+    void CreateDialogue(GameObject prefab, MessageData sender = null, ImageData image = null, bool isSelfRespnded = false)
     {
         int x = (int)_currentUser;
         GameObject newBox = Instantiate(prefab, _dialogueHolder[x].transform, false) as GameObject;
@@ -92,9 +82,12 @@ public class MessageSystem : MonoBehaviour
         {
             var TMP = newBox.GetComponentInChildren<TextMeshProUGUI>();
             TMP.text = sender.texts[sender.current];
+            sender.current++;
             
-            if(prefab == messagePrefab[2])
+            if(prefab == messagePrefab[2] && !isSelfRespnded)
                 TMP.alpha = 0f;
+            else
+                newBox.GetComponent<Button>().onClick.Invoke();
         }
         else
         {
@@ -104,22 +97,17 @@ public class MessageSystem : MonoBehaviour
 
         RectTransform newRectTrans = newBox.GetComponent<RectTransform>();
 
-        // If this isn't the first dialog box being added
-        if (lastRectTrans != null)
-        {
-            Vector2 newPos;
-       
-            newPos = new Vector2(lastRectTrans.localPosition.x,
-                                 lastRectTrans.localPosition.y - newRectTrans.rect.height + 1f);
-      
-            newRectTrans.localPosition = newPos;
-
-        }
-
-        lastRectTrans = newRectTrans;
-
         if (prefab == messagePrefab[2])
             _playerTexts.Add(newBox.GetComponent<StatusChanger>());
+    }
+
+    private void PrintDate(GameObject prefab, string date)
+    {
+        int x = (int)_currentUser;
+
+        GameObject newBox = Instantiate(prefab, _dialogueHolder[x].transform, false) as GameObject;
+        RectTransform newRectTrans = newBox.GetComponent<RectTransform>();
+        newBox.GetComponent<UpdateDate>().UpdateCurrentDate(date);
     }
 
     public void UpdateSignal(int strength)
@@ -160,13 +148,11 @@ public class MessageSystem : MonoBehaviour
                         if (_photos.current < _photos.images.Length)
                         {
                             CreateDialogue(messagePrefab[1], null, _photos);
-                            _photos.current++;
                         }
 
                         CreateDialogue(messagePrefab[0], _wifeMessages);
 
                         _canRespond = true;
-                        _wifeMessages.current++;
                         UpdateSignal(4);
                     }
                    
@@ -176,7 +162,6 @@ public class MessageSystem : MonoBehaviour
                 if (_workMessages.current < _workMessages.texts.Length)
                 {
                     CreateDialogue(messagePrefab[0], _workMessages);
-                    _workMessages.current++;
                     UpdateSignal(4);
                 }
                 break;
@@ -184,7 +169,6 @@ public class MessageSystem : MonoBehaviour
                 if (_psychMessages.current < _psychMessages.texts.Length)
                 {
                     CreateDialogue(messagePrefab[0], _psychMessages);
-                    _psychMessages.current++;
                     UpdateSignal(4);
                 }
                 break;
@@ -192,6 +176,74 @@ public class MessageSystem : MonoBehaviour
 
         UpdateSignal(_signalDetection.getStrength());
 
+    }
+
+    private void PrintWifeInitDialogue()
+    {
+        _currentUser = CurrentUser.WIFE;
+
+        PrintDate(_datePrefab, "10/09");
+
+        while (_wifeMessages.current < 4)
+        {
+            CreateDialogue(messagePrefab[0], _wifeMessages);
+
+            if (_wifeMessages.current != 4)
+                CreateDialogue(messagePrefab[2], _playerMessages, null, true);
+
+            UpdateSignal(4);
+        }
+
+        PrintDate(_datePrefab, "11/09");
+
+        while (_playerMessages.current < 6)
+        {
+            CreateDialogue(messagePrefab[2], _playerMessages, null, true);
+            CreateDialogue(messagePrefab[2], _playerMessages, null, true);
+            CreateDialogue(messagePrefab[0], _wifeMessages);
+            CreateDialogue(messagePrefab[0], _wifeMessages);
+
+            UpdateSignal(4);
+        }
+
+        PrintDate(_datePrefab, "12/09");
+    }
+
+    private void PrintWorkInitDialogue()
+    {
+        _currentUser = CurrentUser.WORK;
+
+        PrintDate(_datePrefab, "12/09");
+        
+        while(_workMessages.current < _workMessages.texts.Length)
+        {
+            CreateDialogue(messagePrefab[0], _workMessages);
+        }
+       
+        UpdateSignal(4);
+    }
+
+    private void PrintPsychInitDialogue()
+    {
+        _currentUser = CurrentUser.PSYCHOLOGIST;
+
+        PrintDate(_datePrefab, "01/09");
+
+        while (_psychMessages.current < _psychMessages.texts.Length)
+        {
+            CreateDialogue(messagePrefab[0], _psychMessages);
+        }
+
+        UpdateSignal(4);
+    }
+
+    private void SetInitialDialogues()
+    {
+        PrintWifeInitDialogue();
+        PrintWorkInitDialogue();
+        PrintPsychInitDialogue();
+
+        _currentUser = CurrentUser.WIFE;
     }
     public void UpdateUser(CurrentUser user) => _currentUser = user;
 }

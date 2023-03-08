@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: PlayerMessages
   m_EditorClassIdentifier: 
   texts:
-  - You alright?
-  - LMAO
-  current: 0
+  - Awh, I'll get him something when i get back
+  - We will. After i am done with this job
+  - Yes Tori, i will. Love you
+  - 'Hey babe, there is a heavy blizzard coming up '
+  - 'I don''t know if i will have enough signal to text you '
+  - 'It will be fine, building looks solid '
+  - 'Its just a month Tori, we can do this '
+  - Answer 01
+  - Answer 02
+  current: 3
