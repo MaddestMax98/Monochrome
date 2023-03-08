@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AnomalySystem.ScriptableObjects;
 using UnityEngine;
 using UnityEditor;
+using ScripatbleObj;
 
 namespace AnomalySystem
 {
@@ -41,6 +42,11 @@ namespace AnomalySystem
 
         private void Awake()
         {
+            //This fixes the scene persistence
+            List<AnomalyHandlerData> data = GameObject.Find("SceneManager").GetComponent<AnomalyInventory>().Inventory.data;
+            _handlerData = data.Find(anomalyHandlerData => anomalyHandlerData.name == _handlerData.name);
+
+
             _currentAnomalies = 0;
             _roomName = gameObject.scene.name + "_";
         }
@@ -116,6 +122,7 @@ namespace AnomalySystem
 
                 while (_currentAnomalies < _handlerData.currentAnomalies)
                 {
+                    //Check from anomaly inventory and then setup
                     _anomalies[temp].transform.position = _handlerData.anomalies[temp].currentPos;
                     _anomalies[temp].transform.rotation = _handlerData.anomalies[temp].currentRot;
                     _anomalies[temp].transform.localScale = _handlerData.anomalies[temp].currentScale;
@@ -157,6 +164,7 @@ namespace AnomalySystem
             {
                 for (int i = 0; i < _anomalies.Count; i++)
                 {
+                    //Saving in the anomaly scriptble object
                     var newData = ScriptableObject.CreateInstance<AnomalyStoringData>();
 
                     newData.originalPos = _anomalies[i].GetOriginalPos().position;
@@ -169,20 +177,22 @@ namespace AnomalySystem
                     newData.currentScale = _anomalies[i].gameObject.transform.localScale;
 
                     newData.isActive = _anomalies[i].isActive();
-                    
+
                     _handlerData.anomalies.Add(newData);
 
+#if UNITY_EDITOR
                     EditorUtility.SetDirty(newData);
                     AssetDatabase.SaveAssetIfDirty(newData);
 
                     AssetDatabase.CreateAsset(newData, "Assets/Scripts/Data/AnomalyStoragedData/AnomalyStoragedData" + _roomName + i + ".asset");
                     AssetDatabase.SaveAssets();
+#endif
                 }
             }
-
+#if UNITY_EDITOR
             EditorUtility.SetDirty(_handlerData);
             AssetDatabase.SaveAssetIfDirty(_handlerData);
-
+#endif
         }
 
     }

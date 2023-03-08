@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2562842914003352758}
   - component: {fileID: 2562842914003352757}
   - component: {fileID: 3977720710591981727}
+  - component: {fileID: 8684597558789858876}
+  - component: {fileID: 4668796733426138204}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -61,3 +63,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daysList: {fileID: 11400000, guid: 86ee482949605054c8ef43c831fd4609, type: 2}
+--- !u!114 &8684597558789858876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562842914003352756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7464755b885b30b40a40439be25e0882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 4597daa02a92ab6489ffe56fafec16ab, type: 2}
+--- !u!114 &4668796733426138204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562842914003352756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308b5633b81c46d48adca518ff34c12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: df478667717b2984fa55b20c4b16833d, type: 2}
