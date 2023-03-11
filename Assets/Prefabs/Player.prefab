@@ -237,6 +237,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 417847004055098294}
   - {fileID: 3073246239834140791}
   m_Father: {fileID: 2173504727283040110}
   m_RootOrder: 1
@@ -328,7 +329,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayMessages
         m_Mode: 3
@@ -791,6 +792,82 @@ Transform:
   m_Father: {fileID: 7956604358822383459}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1238322259651200064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417847004055098294}
+  - component: {fileID: 960247470213477394}
+  - component: {fileID: 7551948389492957248}
+  m_Layer: 10
+  m_Name: Highlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &417847004055098294
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238322259651200064}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3261477869009042890}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.47, y: -0.007}
+  m_SizeDelta: {x: 0.05, y: 0.05}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &960247470213477394
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238322259651200064}
+  m_CullTransparentMesh: 1
+--- !u!114 &7551948389492957248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238322259651200064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cef36b5751293b247a918f10b86fea61, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1270908374195381851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1278,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 863361836769377194}
   - {fileID: 3026000332381760533}
   m_Father: {fileID: 2173504727283040110}
   m_RootOrder: 2
@@ -1292,7 +1370,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayMessages
         m_Mode: 3
@@ -1638,6 +1716,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3062566409056824076}
   - {fileID: 122173672501432132}
   m_Father: {fileID: 2173504727283040110}
   m_RootOrder: 3
@@ -1729,7 +1808,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayMessages
         m_Mode: 3
@@ -2002,7 +2081,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: GoToHomeScreen
         m_Mode: 1
@@ -2461,7 +2540,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayMap
         m_Mode: 1
@@ -2594,7 +2673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayContacts
         m_Mode: 1
@@ -2973,7 +3052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3024691339649595938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3105,7 +3184,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5131667135893400167}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3518,7 +3597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: PreviousItem
         m_Mode: 1
@@ -3685,7 +3764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.3198458}
+  m_AnchoredPosition: {x: 0, y: 0.32000017}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3038973744364863141
@@ -4243,7 +4322,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7637630527043386086}
-  - component: {fileID: 2975920272202782366}
   m_Layer: 10
   m_Name: Phone
   m_TagString: Untagged
@@ -4268,40 +4346,6 @@ Transform:
   m_Father: {fileID: 6891012179800828971}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
---- !u!114 &2975920272202782366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481845647129973011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6341cbfe9a55a884abc4d2e70b987139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: d6beeae0d896fe64999dd7805e3c1984, type: 2}
-  signalState:
-  - {fileID: 21300000, guid: c799c733b5e8f194a97ccd350ff6e54a, type: 3}
-  - {fileID: 21300000, guid: ce8a7a6da1a469843ac5783237171d4a, type: 3}
-  - {fileID: 21300000, guid: a276023833091674094324e32d6686f5, type: 3}
-  - {fileID: 21300000, guid: ccaf0ba2b27bd044ca934d271611f9a2, type: 3}
-  player: {fileID: 6891012179800829015}
-  Contacts: {fileID: 6565773316999979951}
-  Messages: {fileID: 3024691339649595939}
-  WifiSignal: {fileID: 3024691339560235049}
-  TaskUI: {fileID: 4558142125131231277}
-  InventoryUI: {fileID: 24496105440874432}
-  AppIcons: {fileID: 1717664195447142485}
-  Map: {fileID: 3024691339334485194}
-  BackButton: {fileID: 3024691337662480277}
-  ScrollRect: {fileID: 2006327828744455125}
-  wife: {fileID: 4390222260143853259}
-  work: {fileID: 2872752859552139424}
-  psychologist: {fileID: 7075592525642966748}
-  previousItem: {fileID: 1119658662404992545}
-  mainItem: {fileID: 8587787723604638355}
-  nextItem: {fileID: 5154782684067635102}
 --- !u!1 &5504223538024430675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,7 +4736,7 @@ GameObject:
   - component: {fileID: 8885890505893949993}
   - component: {fileID: 1355417472636576087}
   m_Layer: 10
-  m_Name: Button-Task
+  m_Name: Tasks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4800,7 +4844,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayTask
         m_Mode: 1
@@ -4871,7 +4915,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
@@ -4905,12 +4949,14 @@ GameObject:
   - component: {fileID: 6891012179800828968}
   - component: {fileID: 878868249605515102}
   - component: {fileID: 6891012179800828975}
+  - component: {fileID: 7961776111780169660}
   - component: {fileID: 6891012179800828973}
   - component: {fileID: 4614097462953553549}
   - component: {fileID: 2018880754535076864}
   - component: {fileID: 3501733890771346631}
   - component: {fileID: 1788487909502856050}
   - component: {fileID: 1670236134642493407}
+  - component: {fileID: 6682901777610499098}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -5007,6 +5053,40 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9664
   _animator: {fileID: 878868249605515102}
+--- !u!114 &7961776111780169660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891012179800829015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6341cbfe9a55a884abc4d2e70b987139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: d6beeae0d896fe64999dd7805e3c1984, type: 2}
+  signalState:
+  - {fileID: 21300000, guid: c799c733b5e8f194a97ccd350ff6e54a, type: 3}
+  - {fileID: 21300000, guid: ce8a7a6da1a469843ac5783237171d4a, type: 3}
+  - {fileID: 21300000, guid: a276023833091674094324e32d6686f5, type: 3}
+  - {fileID: 21300000, guid: ccaf0ba2b27bd044ca934d271611f9a2, type: 3}
+  player: {fileID: 6891012179800829015}
+  Contacts: {fileID: 6565773316999979951}
+  Messages: {fileID: 3024691339649595939}
+  WifiSignal: {fileID: 3024691339560235049}
+  TaskUI: {fileID: 4558142125131231277}
+  InventoryUI: {fileID: 24496105440874432}
+  AppIcons: {fileID: 1717664195447142485}
+  Map: {fileID: 3024691339334485194}
+  BackButton: {fileID: 3024691337662480277}
+  ScrollRect: {fileID: 2006327828744455125}
+  wife: {fileID: 4390222260143853259}
+  work: {fileID: 2872752859552139424}
+  psychologist: {fileID: 7075592525642966748}
+  previousItem: {fileID: 1119658662404992545}
+  mainItem: {fileID: 8587787723604638355}
+  nextItem: {fileID: 5154782684067635102}
 --- !u!114 &6891012179800828973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5022,7 +5102,7 @@ MonoBehaviour:
   phone: {fileID: 5481845647129973011}
   fpsCamera: {fileID: 6891012180055125226}
   currentTask: {fileID: 0}
-  phoneUI: {fileID: 2975920272202782366}
+  phoneUI: {fileID: 7961776111780169660}
 --- !u!114 &4614097462953553549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5107,6 +5187,102 @@ MonoBehaviour:
   - {fileID: 4390222260143853259}
   - {fileID: 2872752859552139424}
   - {fileID: 7075592525642966748}
+--- !u!82 &6682901777610499098
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891012179800829015}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 46cadc68970c88c4aa5055d0ae213788, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6891012179897903968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,8 +5657,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6891012180615730729}
-  m_LocalRotation: {x: -0.10398533, y: -0.5409094, z: -0.06761349, w: 0.831885}
-  m_LocalPosition: {x: 3.737542, y: 1.8249999, z: 2.022888}
+  m_LocalRotation: {x: -0.003657083, y: 0.9936626, z: -0.10709821, w: -0.0339306}
+  m_LocalPosition: {x: 1.5433753, y: 1.8949997, z: 8.394553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6030,6 +6206,82 @@ Transform:
   m_Father: {fileID: 5060173617978832690}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7389671447379746350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863361836769377194}
+  - component: {fileID: 2656192347970748805}
+  - component: {fileID: 6519774766300749141}
+  m_Layer: 10
+  m_Name: Highlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &863361836769377194
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389671447379746350}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4997880835470772863}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.473, y: 0}
+  m_SizeDelta: {x: 0.05, y: 0.05}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2656192347970748805
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389671447379746350}
+  m_CullTransparentMesh: 1
+--- !u!114 &6519774766300749141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389671447379746350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cef36b5751293b247a918f10b86fea61, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7492465064551808339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6235,7 +6487,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3261477869009042890}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6548,7 +6800,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4997880835470772863}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6802,7 +7054,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: NextItem
         m_Mode: 1
@@ -7126,7 +7378,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2975920272202782366}
+      - m_Target: {fileID: 7961776111780169660}
         m_TargetAssemblyTypeName: PhoneUI, Assembly-CSharp
         m_MethodName: DisplayInventory
         m_Mode: 1
@@ -7340,6 +7592,82 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!1 &8788546157724978759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3062566409056824076}
+  - component: {fileID: 60294306716148593}
+  - component: {fileID: 1458515571686785519}
+  m_Layer: 10
+  m_Name: Highlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3062566409056824076
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788546157724978759}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5131667135893400167}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.474, y: 0}
+  m_SizeDelta: {x: 0.05, y: 0.05}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &60294306716148593
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788546157724978759}
+  m_CullTransparentMesh: 1
+--- !u!114 &1458515571686785519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788546157724978759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cef36b5751293b247a918f10b86fea61, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8816436445140369929
 GameObject:
   m_ObjectHideFlags: 0

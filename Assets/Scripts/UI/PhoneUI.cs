@@ -1,14 +1,16 @@
 using UnityEngine;
-using TMPro;
 using ScripatbleObj;
 using UnityEngine.UI;
-using PlayerCharacter;
+using UnityEditor.Animations;
 
 public class PhoneUI : MonoBehaviour
 {
     [SerializeField]
     private PlayerInventoryData inventoryData;
     private int currentItemIndex = 0;
+
+    //Index 0 = Wife, 1 = work, 2 = psychologist
+    private bool[] HighlightStatus = new bool[3] { false, false, false }; 
 
     [SerializeField] private Sprite[] signalState;
 
@@ -37,6 +39,10 @@ public class PhoneUI : MonoBehaviour
         GoToHomeScreen();
     }
 
+    private void Awake()
+    {
+        MessageSystem.onPlayerNotified += HighlightContact;
+    }
     public void UpdateSignal(int strength)
     {
         WifiSignal.GetComponent<Image>().sprite = signalState[strength];
@@ -59,6 +65,15 @@ public class PhoneUI : MonoBehaviour
         AppIcons.SetActive(false);
         Contacts.SetActive(true);
         BackButton.SetActive(true);
+
+        for(int i = 1; i < Contacts.transform.childCount; i++)
+        {
+            if (HighlightStatus[i - 1] == true)
+                Contacts.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+            else
+                Contacts.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                
+        }
     }
 
 
@@ -75,14 +90,15 @@ public class PhoneUI : MonoBehaviour
                 work.SetActive(false);
                 psychologist.SetActive(false);
                 player.GetComponent<MessageSystem>().UpdateUser(CurrentUser.WIFE);
+                HighlightStatus[0] = false;
                 ScrollRect.content = wife.GetComponent<RectTransform>();
-                
                 break;
             case 1:
                 wife.SetActive(false);
                 work.SetActive(true);
                 psychologist.SetActive(false);
                 player.GetComponent<MessageSystem>().UpdateUser(CurrentUser.WORK);
+                HighlightStatus[1] = false;
                 ScrollRect.content = work.GetComponent<RectTransform>();
                 break;
             case 2:
@@ -90,6 +106,7 @@ public class PhoneUI : MonoBehaviour
                 work.SetActive(false);
                 psychologist.SetActive(true);
                 player.GetComponent<MessageSystem>().UpdateUser(CurrentUser.PSYCHOLOGIST);
+                HighlightStatus[2] = false;
                 ScrollRect.content = psychologist.GetComponent<RectTransform>();
                 break;
             default:
@@ -120,6 +137,21 @@ public class PhoneUI : MonoBehaviour
         InventoryUI.SetActive(true);
         BackButton.SetActive(true);
         DisplayItems();
+    }
+
+    public void HighlightContact(CurrentUser user)
+    { 
+        switch (user) {
+            case CurrentUser.WIFE:
+                HighlightStatus[0] = true;
+                break;
+            case CurrentUser.WORK:
+                HighlightStatus[1] = true;
+                break;      
+            case CurrentUser.PSYCHOLOGIST:
+                HighlightStatus[2] = true;
+                break;
+        }
     }
 
     //TODO: Optimize code so that object are only deleted when nessecary

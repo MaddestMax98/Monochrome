@@ -31,8 +31,13 @@ public class MessageSystem : MonoBehaviour
     private bool _canRespond;
 
     // Keeps track of the transform of the previous addition
-    private RectTransform lastRectTrans = null;
+    private RectTransform _lastRectTrans = null;
     private List<StatusChanger> _playerTexts = new List<StatusChanger>();
+
+    //For notifications
+    private AudioSource _notificationSound;
+    public delegate void NotifyPlayer(CurrentUser user);
+    public static NotifyPlayer onPlayerNotified;
 
     void Awake()
     {
@@ -45,6 +50,7 @@ public class MessageSystem : MonoBehaviour
     private void Start()
     {
         _player = GetComponent<Player>();
+        _notificationSound = GetComponent<AudioSource>();
         _signalDetection = GameObject.Find("Signal").GetComponent<SignalDetection>(); //TODO - Define signal game object name
 
         // Set up previous wife texts:
@@ -178,6 +184,13 @@ public class MessageSystem : MonoBehaviour
 
     }
 
+    private void NotifyUser()
+    {
+        _notificationSound.Play();
+
+        if(onPlayerNotified != null)
+            onPlayerNotified?.Invoke(_currentUser);
+    }
     private void PrintWifeInitDialogue()
     {
         _currentUser = CurrentUser.WIFE;
@@ -240,6 +253,8 @@ public class MessageSystem : MonoBehaviour
     private void SetInitialDialogues()
     {
         PrintWifeInitDialogue();
+        _currentUser = CurrentUser.WORK;
+        NotifyUser();
         PrintWorkInitDialogue();
         PrintPsychInitDialogue();
 
