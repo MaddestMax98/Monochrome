@@ -10,6 +10,8 @@ namespace PlayerCharacter
     {
         [SerializeField]
         private GameObject phone;
+        private GameObject _phoneTutorial;
+
         [SerializeField]
         private CinemachineVirtualCamera fpsCamera;
         private bool isturnedOn = false;
@@ -32,12 +34,20 @@ namespace PlayerCharacter
             phone.SetActive(false);
         }
 
+        private void Awake()
+        {
+            _phoneTutorial = GameObject.Find("TutorialUI").transform.GetChild(0).GetChild(0).gameObject;
+        }
+
         // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.E) && !isturnedOn)
             {
                 TurnOnPhone();
+                
+                if(_phoneTutorial.activeSelf)
+                    _phoneTutorial.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
             {

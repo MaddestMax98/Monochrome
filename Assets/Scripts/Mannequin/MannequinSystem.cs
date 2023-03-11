@@ -37,19 +37,33 @@ public class MannequinSystem : Interactable
     private RaycastHit hit;
     [SerializeField] private LayerMask rayMask;
 
+    //Tutorial
+    [SerializeField]
+    [Header("Item location")]
+    private GameObject _tutorial;
+    private bool isActive = false;
+
     public override void Start()
     {
         base.Start();
         DisplayItems();
+            
     }
 
     private void Update()
     {
         if (mannequinEnabled)
         {
+            if (!isActive)
+            {
+                _tutorial.SetActive(true);
+                isActive = true;
+            }
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ExitMannequinMode();
+                _tutorial.SetActive(false);
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
