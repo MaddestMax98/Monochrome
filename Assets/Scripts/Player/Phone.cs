@@ -11,6 +11,7 @@ namespace PlayerCharacter
         [SerializeField]
         private GameObject phone;
         private GameObject _phoneTutorial;
+        private bool isUsable = true;
 
         [SerializeField]
         private CinemachineVirtualCamera fpsCamera;
@@ -23,6 +24,7 @@ namespace PlayerCharacter
         private PhoneUI phoneUI;
         private int signal = 0;
         public int Signal { get => signal; set => signal = value; }
+        public bool IsUsable { get => isUsable; set => isUsable = value; }
 
         public void UpdateSignal()
         {
@@ -42,17 +44,21 @@ namespace PlayerCharacter
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isturnedOn)
+            if (IsUsable)
             {
-                TurnOnPhone();
-                
-                if(_phoneTutorial.activeSelf)
-                    _phoneTutorial.SetActive(false);
+                if (Input.GetKeyDown(KeyCode.E) && !isturnedOn)
+                {
+                    TurnOnPhone();
+
+                    if (_phoneTutorial.activeSelf)
+                        _phoneTutorial.SetActive(false);
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
+                {
+                    TurnOffPhone();
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
-            {
-                TurnOffPhone();
-            }
+
         }
 
         private void TurnOnPhone()

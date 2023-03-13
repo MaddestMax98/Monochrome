@@ -199,6 +199,7 @@ public class MannequinSystem : Interactable
     {
         playerReference = player;
         playerReference.CanMove = false;
+        playerReference.GetComponent<Phone>().IsUsable = false;
         playerReference.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         mannequinEnabled = true;
         previousCamera = CameraManager.ActiveCamera;
@@ -209,6 +210,7 @@ public class MannequinSystem : Interactable
     {
         mannequinEnabled = false;
         playerReference.CanMove = true;
+        playerReference.GetComponent<Phone>().IsUsable = true;
         playerReference.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         CameraSwitcher.SwitchCamera(previousCamera);
     }

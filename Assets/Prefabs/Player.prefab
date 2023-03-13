@@ -4996,7 +4996,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 5481845647129973011}
-  _phoneTutorial: {fileID: 0}
   fpsCamera: {fileID: 6891012180055125226}
   currentTask: {fileID: 0}
   phoneUI: {fileID: 7961776111780169660}
