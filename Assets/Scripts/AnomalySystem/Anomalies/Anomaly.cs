@@ -1,6 +1,5 @@
 using AnomalySystem.ScriptableObjects;
 using PlayerCharacter;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Anomaly : MonoBehaviour
@@ -12,23 +11,30 @@ public abstract class Anomaly : MonoBehaviour
     private bool _isActive = false;
     private LayerMask _playerLayer = (1 << 10);
 
+    public delegate void OnSanityTaken();
+    public static OnSanityTaken onSanityTaken;
+
+    public delegate void OnSanityGiven();
+    public static OnSanityGiven onSanityGiven;
+
     public virtual void Manifest(Player player)
     {
-        if (Physics.CheckSphere(transform.position, 4.5f, _playerLayer.value))
-        {
-            player.Sanity -= 2;
-            Debug.Log("Too Close");
-        }
-        else
-        {
-            Debug.Log("Too Far");
-            player.Sanity -= 1;
-        }
-            
+
+        if (Physics.CheckSphere(transform.position, 4.5f, _playerLayer.value)) player.Sanity -= 2;
+        else player.Sanity -= 1;
+        
+        if (onSanityTaken != null)
+            onSanityTaken?.Invoke();
 
         Enable();
     }
-    public virtual void Fix(Player player) { player.Sanity += 1; }
+    public virtual void Fix(Player player) 
+    {
+        player.Sanity += 1;
+       
+        if (onSanityGiven != null)
+            onSanityGiven?.Invoke();
+    }
     public AnomalyData GetData() { return _data; }
     public void SetData(AnomalyData data) { _data = data; }
     public void Enable() { _isActive = true; }

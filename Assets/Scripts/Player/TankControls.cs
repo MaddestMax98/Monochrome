@@ -55,6 +55,10 @@ namespace PlayerCharacter
 
                 _animator.SetFloat("Yaxis", _verticalMove * 125);
             }
+            else
+            {
+                _steps.Stop();
+            }
         }
         private void OnCollisionStay(Collision collision)
         {

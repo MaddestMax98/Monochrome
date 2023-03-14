@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 
 public class MessageSystem : MonoBehaviour
 {
@@ -30,14 +31,26 @@ public class MessageSystem : MonoBehaviour
 
     private bool _canRespond;
 
-    // Keeps track of the transform of the previous addition
-    private RectTransform _lastRectTrans = null;
     private List<StatusChanger> _playerTexts = new List<StatusChanger>();
 
     //For notifications
+    private int _initialPlayerTextIndex = 0;
+    private bool _isWaitingForAnswer = false;
     private AudioSource _notificationSound;
     public delegate void NotifyPlayer(CurrentUser user);
     public static NotifyPlayer onPlayerNotified;
+
+    private void OnEnable()
+    {
+        Anomaly.onSanityTaken += StartNewConversation;
+        StatusChanger.onPlayerAnswer += RespondToPlayer; 
+    }
+
+    private void OnDisable()
+    {
+        Anomaly.onSanityTaken -= StartNewConversation;
+        StatusChanger.onPlayerAnswer -= RespondToPlayer;
+    }
 
     void Awake()
     {
@@ -51,35 +64,53 @@ public class MessageSystem : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _notificationSound = GetComponent<AudioSource>();
-        _signalDetection = GameObject.Find("Signal").GetComponent<SignalDetection>(); //TODO - Define signal game object name
 
-        // Set up previous wife texts:
+        GameObject mySignal = GameObject.Find("Signal");
+        if (mySignal != null)
+            _signalDetection = mySignal.GetComponent<SignalDetection>(); //TODO - Define signal game object name
+
+        // Set up previous texts:
         SetInitialDialogues();
-       
+      
+        _initialPlayerTextIndex = _playerMessages.current;
 
+        StartNewConversation();
     }
+
+    private void RespondToPlayer()
+    {
+        _currentUser = CurrentUser.WIFE;
+        _isWaitingForAnswer = false;
+
+        _player.Sanity += 2;
+
+        UpdateSignal(4);
+        AddDialogueBox(1, false, false);
+        //_player.UpdateAnimator();
+        // TODO - Fix when post processing is added.
+    }
+
+    private void StartNewConversation()
+    {
+        if(_player.Sanity <= 4)
+        {
+            _currentUser = CurrentUser.WIFE;
+            AddDialogueBox(1, true, true);
+        }
+    }
+
     private void Update()
     {
-        //Debug Purposes
-        //TODO - Make Pretty
-
-        if (Input.GetKeyUp(KeyCode.F1))
-        {
-            AddDialogueBox();
-        }
-
         if (_canRespond == true && _playerMessages.current < _playerMessages.texts.Length)
         {
             CreateDialogue(messagePrefab[2], _playerMessages);
-            _canRespond = false;
-            _player.Sanity += 2;
-
             UpdateSignal(_signalDetection.getStrength());
+            _canRespond = false;
         }
     }
 
     //Changes depending on the sender
-    void CreateDialogue(GameObject prefab, MessageData sender = null, ImageData image = null, bool isSelfRespnded = false)
+    void CreateDialogue(GameObject prefab, MessageData sender = null, ImageData image = null, bool isSelfResponded = false)
     {
         int x = (int)_currentUser;
         GameObject newBox = Instantiate(prefab, _dialogueHolder[x].transform, false) as GameObject;
@@ -89,19 +120,25 @@ public class MessageSystem : MonoBehaviour
             var TMP = newBox.GetComponentInChildren<TextMeshProUGUI>();
             TMP.text = sender.texts[sender.current];
             sender.current++;
-            
-            if(prefab == messagePrefab[2] && !isSelfRespnded)
+
+            if (prefab == messagePrefab[2] && !isSelfResponded)
+            {
                 TMP.alpha = 0f;
+                _isWaitingForAnswer = true;
+            }
             else
-                newBox.GetComponent<Button>().onClick.Invoke();
+            {
+                Button button = newBox.GetComponent<Button>();
+                button.onClick.Invoke();
+                button.interactable = false;
+            }
+               
         }
         else
         {
             var theImage = newBox.transform.Find("Image").GetComponent<Image>();
             theImage.sprite = _photos.images[image.current];
         }
-
-        RectTransform newRectTrans = newBox.GetComponent<RectTransform>();
 
         if (prefab == messagePrefab[2])
             _playerTexts.Add(newBox.GetComponent<StatusChanger>());
@@ -112,7 +149,6 @@ public class MessageSystem : MonoBehaviour
         int x = (int)_currentUser;
 
         GameObject newBox = Instantiate(prefab, _dialogueHolder[x].transform, false) as GameObject;
-        RectTransform newRectTrans = newBox.GetComponent<RectTransform>();
         newBox.GetComponent<UpdateDate>().UpdateCurrentDate(date);
     }
 
@@ -132,55 +168,43 @@ public class MessageSystem : MonoBehaviour
         }
        
     }
-    private void AddDialogueBox()
+    private void AddDialogueBox(int i, bool hasImage, bool needsAnswer)
     {
-        //TODO - Message Audio SOUND
+        int temp = 0;
 
-        switch (_currentUser)
+        while (temp < i)
         {
-            case CurrentUser.WIFE:
-                if (_wifeMessages.current < _wifeMessages.texts.Length)
-                {
-                    bool canText = true;
-
-                    if(_playerTexts.Count > 0)
+            switch (_currentUser)
+            {
+                case CurrentUser.WIFE:
+                    if (_wifeMessages.current < _wifeMessages.texts.Length && _isWaitingForAnswer == false)
                     {
-                        if (_playerTexts[_playerTexts.Count - 1].HasResponded() == false)
-                            canText = false;
+                        CreateNewWifeDialog(hasImage, needsAnswer);
                     }
-
-                    if (canText)
+                    break;
+                case CurrentUser.WORK:
+                    if (_workMessages.current < _workMessages.texts.Length)
                     {
-                        if (_photos.current < _photos.images.Length)
-                        {
-                            CreateDialogue(messagePrefab[1], null, _photos);
-                        }
-
-                        CreateDialogue(messagePrefab[0], _wifeMessages);
-
-                        _canRespond = true;
+                        CreateDialogue(messagePrefab[0], _workMessages);
+                        NotifyUser();
                         UpdateSignal(4);
                     }
-                   
-                }
-                break;
-            case CurrentUser.WORK:
-                if (_workMessages.current < _workMessages.texts.Length)
-                {
-                    CreateDialogue(messagePrefab[0], _workMessages);
-                    UpdateSignal(4);
-                }
-                break;
-            case CurrentUser.PSYCHOLOGIST:
-                if (_psychMessages.current < _psychMessages.texts.Length)
-                {
-                    CreateDialogue(messagePrefab[0], _psychMessages);
-                    UpdateSignal(4);
-                }
-                break;
-        }
+                    break;
+                case CurrentUser.PSYCHOLOGIST:
+                    if (_psychMessages.current < _psychMessages.texts.Length)
+                    {
+                        CreateDialogue(messagePrefab[0], _psychMessages);
+                        NotifyUser();
+                        UpdateSignal(4);
+                    }
+                    break;
+            }
 
-        UpdateSignal(_signalDetection.getStrength());
+            UpdateSignal(_signalDetection.getStrength());
+
+            temp++;
+        }
+        
 
     }
 
@@ -190,6 +214,26 @@ public class MessageSystem : MonoBehaviour
 
         if(onPlayerNotified != null)
             onPlayerNotified?.Invoke(_currentUser);
+    }
+
+    private void CreateNewWifeDialog(bool hasImage, bool needsResponse)
+    {
+        if (_photos.current < _photos.images.Length && hasImage)
+        {
+            CreateDialogue(messagePrefab[1], null, _photos);
+            NotifyUser();
+        }
+
+        CreateDialogue(messagePrefab[0], _wifeMessages);
+        NotifyUser();
+
+        UpdateSignal(4);
+
+        if (needsResponse)
+        {
+            _isWaitingForAnswer = true;
+            _canRespond = true;
+        }
     }
     private void PrintWifeInitDialogue()
     {

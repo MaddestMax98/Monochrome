@@ -10,7 +10,8 @@ public class PhoneUI : MonoBehaviour
     private int currentItemIndex = 0;
 
     //Index 0 = Wife, 1 = work, 2 = psychologist
-    private bool[] HighlightStatus = new bool[3] { false, false, false }; 
+    private bool[] HighlightStatus = new bool[3] { false, false, false };
+    private bool hasNewMessages = false;
 
     [SerializeField] private Sprite[] signalState;
 
@@ -34,11 +35,6 @@ public class PhoneUI : MonoBehaviour
     [SerializeField] private Transform mainItem;
     [SerializeField] private Transform nextItem; 
 
-    private void OnEnable()
-    {
-        GoToHomeScreen();
-    }
-
     private void Awake()
     {
         MessageSystem.onPlayerNotified += HighlightContact;
@@ -58,6 +54,10 @@ public class PhoneUI : MonoBehaviour
         Map.SetActive(false);
         Contacts.SetActive(false);
         Messages.SetActive(false);
+
+        if (hasNewMessages)
+            AppIcons.transform.GetChild(2).GetChild(0).gameObject.SetActive(true);
+
     }
 
     public void DisplayContacts()
@@ -65,14 +65,17 @@ public class PhoneUI : MonoBehaviour
         AppIcons.SetActive(false);
         Contacts.SetActive(true);
         BackButton.SetActive(true);
+        
+        AppIcons.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
+        hasNewMessages = false;
 
-        for(int i = 1; i < Contacts.transform.childCount; i++)
+        for (int i = 0; i < Contacts.transform.childCount; i++)
         {
-            if (HighlightStatus[i - 1] == true)
-                Contacts.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+            if (HighlightStatus[i] == true)
+                Contacts.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.SetActive(true); // Contacts >> Conversations >> Wife,Work,Psych
             else
-                Contacts.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
-                
+                Contacts.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.SetActive(false); // Contacts >> Conversations >> Wife,Work,Psych
+
         }
     }
 
@@ -152,6 +155,8 @@ public class PhoneUI : MonoBehaviour
                 HighlightStatus[2] = true;
                 break;
         }
+
+        hasNewMessages = true;
     }
 
     //TODO: Optimize code so that object are only deleted when nessecary

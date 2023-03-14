@@ -1,10 +1,15 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatusChanger : MonoBehaviour
 {
     [SerializeField] public GameObject _read;
     [SerializeField] private GameObject _recieved;
     [SerializeField] private GameObject _sent;
+
+    public delegate void PlayerAnswered();
+    public static PlayerAnswered onPlayerAnswer;
 
     int current = 0;
     bool hasResponded = false;
@@ -45,6 +50,14 @@ public class StatusChanger : MonoBehaviour
 
     public void Answer()
     {
-        hasResponded = true;
+        if (current >= 3)
+        {
+            hasResponded = true;
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().alpha = 1.0f;
+            gameObject.GetComponent<Button>().interactable = false;
+
+            if (onPlayerAnswer != null)
+                onPlayerAnswer?.Invoke();
+        }
     }
 }

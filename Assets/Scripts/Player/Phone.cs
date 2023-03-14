@@ -1,7 +1,6 @@
 using Cinemachine;
 using ScripatbleObj;
 using ScriptedCamera;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PlayerCharacter 
@@ -36,7 +35,9 @@ namespace PlayerCharacter
 
         private void Awake()
         {
-            _phoneTutorial = GameObject.Find("TutorialUI").transform.GetChild(0).GetChild(0).gameObject;
+            GameObject tutorialUI = GameObject.Find("TutorialUI");
+            if (tutorialUI != null)
+                _phoneTutorial = tutorialUI.transform.GetChild(0).GetChild(0).gameObject;
         }
 
         // Update is called once per frame

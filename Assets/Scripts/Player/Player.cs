@@ -10,7 +10,7 @@ namespace PlayerCharacter
     {
         private Phone phone;
 
-        private int sanity = 10;
+        private int sanity = 4;
 
         private bool canMove = true;
 
@@ -38,14 +38,14 @@ namespace PlayerCharacter
 
         private void OnEnable()
         {
-            SanityTaker.onSanityTaken += UpdateAnimator;
-            SanityGiver.onSanityGiven += UpdateAnimator;
+            Anomaly.onSanityTaken += UpdateAnimator;
+            Anomaly.onSanityGiven += UpdateAnimator;
         }
 
         private void OnDisable()
         {
-            SanityTaker.onSanityTaken -= UpdateAnimator;
-            SanityGiver.onSanityGiven -= UpdateAnimator;
+            Anomaly.onSanityTaken -= UpdateAnimator;
+            Anomaly.onSanityGiven -= UpdateAnimator;
         }
 
         private void Awake()
