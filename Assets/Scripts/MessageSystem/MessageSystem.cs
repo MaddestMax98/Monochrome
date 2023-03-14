@@ -86,8 +86,7 @@ public class MessageSystem : MonoBehaviour
 
         UpdateSignal(4);
         AddDialogueBox(1, false, false);
-        //_player.UpdateAnimator();
-        // TODO - Fix when post processing is added.
+        _player.UpdateAnimator();
     }
 
     private void StartNewConversation()

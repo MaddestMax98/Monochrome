@@ -13,7 +13,7 @@ namespace PlayerCharacter
     {
         private Phone phone;
 
-        private int sanity = 4;
+        private int sanity = 6;
 
         private bool canMove = true;
 
@@ -39,7 +39,7 @@ namespace PlayerCharacter
         public bool CanMove { get => canMove; set => canMove = value; }
         public Phone Phone { get => phone; set => phone = value; }
 
-        private bool _hasLowSanity;
+        private bool _hasLowSanity = false;
 
 
         private void OnEnable()
@@ -57,7 +57,6 @@ namespace PlayerCharacter
         private void Awake()
         {
             phone = GetComponent<Phone>();
-           
 
             if(_volumeProfile != null)
             {
@@ -76,18 +75,14 @@ namespace PlayerCharacter
             }
         }
 
-        private void Update()
+        private void Start()
         {
             UpdateAnimator();
+        }
 
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                if(_hasLowSanity)
-                    Sanity = 10;
-                else Sanity = 0;
-                
-                UpdateAnimator();
-            }
+        private void Update()
+        {
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (canMove)
