@@ -6,12 +6,24 @@ using UnityEngine.Rendering;
 
 public class PostProcessingSetUp: MonoBehaviour
 {
+    private static PostProcessingSetUp instance;
+    public static PostProcessingSetUp Instance { get => instance; set => instance = value; }
+
     [SerializeField]
     private BooleanType _isActive;
 
     private Volume _volume;
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         _volume = GetComponent<Volume>();
         UpdatePostProcess();
     }

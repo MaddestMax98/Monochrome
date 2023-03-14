@@ -46,9 +46,12 @@ namespace PlayerCharacter
             if (Input.GetKeyDown(KeyCode.E) && !isturnedOn)
             {
                 TurnOnPhone();
-                
-                if(_phoneTutorial.activeSelf)
-                    _phoneTutorial.SetActive(false);
+                if (_phoneTutorial != null)
+                {
+                    if (_phoneTutorial.activeSelf)
+                        _phoneTutorial.SetActive(false);
+                }
+
             }
             else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
             {
