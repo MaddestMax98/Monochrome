@@ -3,14 +3,9 @@ guid: c1873dbcd571bce458e3b59b93bdb30a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Door_Porthole
-    second: {fileID: 2800000, guid: e150c2cc7abf1604499bb76d50f66849, type: 3}
+  externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
