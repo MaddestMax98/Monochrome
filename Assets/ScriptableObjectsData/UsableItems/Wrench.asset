@@ -16,5 +16,5 @@ MonoBehaviour:
   Type: 0
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: 882fc9390038fa044b2bc3d4f7f33b4a, type: 2}
-  isPickedUp: 1
+  isPickedUp: 0
   isUsed: 0

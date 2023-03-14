@@ -1,7 +1,10 @@
 using Item;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Profiling;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 
 namespace PlayerCharacter
@@ -24,16 +27,19 @@ namespace PlayerCharacter
         private GameObject Target;
 
         private Vector3 rayCastHeight = new Vector3(0, 1.5f, 0);
-        
-        [Header("Post-Processing Settings")]
 
-        private PostProcessVolume _volume; 
+        [Header("Post-Processing Settings")]
+        [SerializeField]
+        private VolumeProfile _volumeProfile;
+
         private Vignette _vignette;
         private ChromaticAberration _chromaticAberration;
 
         public int Sanity { get => sanity; set => sanity = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
         public Phone Phone { get => phone; set => phone = value; }
+
+        private bool _hasLowSanity;
 
 
         private void OnEnable()
@@ -51,15 +57,37 @@ namespace PlayerCharacter
         private void Awake()
         {
             phone = GetComponent<Phone>();
+           
 
-            _volume = GameObject.Find("Post-Processing").GetComponent<PostProcessVolume>();
+            if(_volumeProfile != null)
+            {
+                for (int i = 0; i < _volumeProfile.components.Count; i++)
+                {
+                    if (_volumeProfile.components[i].name == "Vignette")
+                    {
+                        _vignette = (Vignette)_volumeProfile.components[i];
+                    }
 
-            _volume.profile.TryGetSettings(out _vignette);
-            _volume.profile.TryGetSettings(out _chromaticAberration);
+                    if (_volumeProfile.components[i].name == "ChromaticAberration")
+                    {
+                        _chromaticAberration = (ChromaticAberration)_volumeProfile.components[i];
+                    }
+                }
+            }
         }
 
         private void Update()
         {
+            UpdateAnimator();
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if(_hasLowSanity)
+                    Sanity = 10;
+                else Sanity = 0;
+                
+                UpdateAnimator();
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 if (canMove)
@@ -67,6 +95,18 @@ namespace PlayerCharacter
                     Interact();
                 }
             }
+
+            if (_hasLowSanity)
+            {
+                if (_vignette) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0.5f, 0.02f);
+                if (_chromaticAberration) _chromaticAberration.intensity.value = Mathf.Lerp(_chromaticAberration.intensity.value, 1f, 0.02f);
+            }
+            else
+            {
+                if (_vignette) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0.35f, 0.02f);
+                if (_chromaticAberration) _chromaticAberration.intensity.value = Mathf.Lerp(_chromaticAberration.intensity.value, 0f, 0.02f);
+            }
+
             //TODO: Optimize this code. Proposition: event system to call thing once?
             /*System to outline object when looking at them*/
             if (!Physics.Raycast(this.transform.position + rayCastHeight, this.transform.forward, out RaycastHit nothit, playerInteractionDistance, interactionMask))
@@ -94,15 +134,13 @@ namespace PlayerCharacter
         {
             if (sanity <= 4) 
             {
-                _animator.SetBool("hasLowSanity", true);
-                _vignette.intensity.value = 0.5f;
-                _chromaticAberration.intensity.value = 0.50f;
+                _hasLowSanity = true;
+                _animator.SetBool("hasLowSanity", true); 
             }
             else
             {
+                _hasLowSanity = false;
                 _animator.SetBool("hasLowSanity", false);
-                _vignette.intensity.value = 0.35f;
-                _chromaticAberration.intensity.value = 0;
             }
             
         }
