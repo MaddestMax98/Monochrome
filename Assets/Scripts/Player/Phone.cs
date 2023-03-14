@@ -7,6 +7,8 @@ namespace PlayerCharacter
 {
     public class Phone : MonoBehaviour
     {
+        public bool canUse;
+
         [SerializeField]
         private GameObject phone;
         private GameObject _phoneTutorial;
@@ -43,20 +45,24 @@ namespace PlayerCharacter
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isturnedOn)
+            if(canUse)
             {
-                TurnOnPhone();
-                if (_phoneTutorial != null)
+                if (Input.GetKeyDown(KeyCode.E) && !isturnedOn)
                 {
-                    if (_phoneTutorial.activeSelf)
-                        _phoneTutorial.SetActive(false);
-                }
+                    TurnOnPhone();
+                    if (_phoneTutorial != null)
+                    {
+                        if (_phoneTutorial.activeSelf)
+                            _phoneTutorial.SetActive(false);
+                    }
 
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
+                {
+                    TurnOffPhone();
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
-            {
-                TurnOffPhone();
-            }
+
         }
 
         private void TurnOnPhone()
