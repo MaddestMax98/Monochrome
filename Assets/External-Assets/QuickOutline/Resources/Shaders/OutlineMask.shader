@@ -13,6 +13,7 @@ Shader "Custom/Outline Mask" {
 
   SubShader {
     Tags {
+      "RenderPipeline" = "HDRenderPipeline"
       "Queue" = "Transparent+100"
       "RenderType" = "Transparent"
     }

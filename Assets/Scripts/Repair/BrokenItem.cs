@@ -1,4 +1,5 @@
 using ScripatbleObj;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,6 +7,14 @@ public class BrokenItem : Interactable
 {
     [SerializeField]
     private BrokenItemData brokenItem;
+
+
+    private void Awake()
+    {
+        //This fixes the scene persistence
+        List<BrokenItemData> data = GameObject.Find("SceneManager").GetComponent<BrokenItemInventory>().Inventory.data;
+        brokenItem = data.Find(brokenItemData => brokenItemData.name == brokenItem.name);
+    }
 
     public BrokenItemData Data { get => brokenItem; }
 
