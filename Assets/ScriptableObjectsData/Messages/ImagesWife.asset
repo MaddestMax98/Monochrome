@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ImagesWife
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
-  - {fileID: 21300000, guid: 92b204cca46037444ab18ba6701f86f7, type: 3}
+  - {fileID: 21300000, guid: eb61b619d3f060740adf264fec88596b, type: 3}
+  - {fileID: 21300000, guid: 27f080c81d55b0c448fbffd9b4d1a9a2, type: 3}
   current: 0

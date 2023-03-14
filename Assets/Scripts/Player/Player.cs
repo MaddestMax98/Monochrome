@@ -13,7 +13,7 @@ namespace PlayerCharacter
     {
         private Phone phone;
 
-        private int sanity = 6;
+        private int sanity = 5;
 
         private bool canMove = true;
 
