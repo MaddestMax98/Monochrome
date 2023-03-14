@@ -5304,6 +5304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367c99a65b5321441a9f11bbbd8f014f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 1
   phone: {fileID: 5481845647129973011}
   fpsCamera: {fileID: 6891012180055125226}
   currentTask: {fileID: 0}

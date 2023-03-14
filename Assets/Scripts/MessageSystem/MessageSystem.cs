@@ -69,6 +69,7 @@ public class MessageSystem : MonoBehaviour
         if (mySignal != null)
             _signalDetection = mySignal.GetComponent<SignalDetection>(); //TODO - Define signal game object name
 
+        //TODO - Add if statement if the messages have already been sent
         // Set up previous texts:
         SetInitialDialogues();
       

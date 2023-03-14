@@ -7,7 +7,7 @@ namespace PlayerCharacter
 {
     public class Phone : MonoBehaviour
     {
-        public bool canUse;
+        public bool canUse = true;
 
         [SerializeField]
         private GameObject phone;
@@ -52,6 +52,7 @@ namespace PlayerCharacter
                     TurnOnPhone();
                     if (_phoneTutorial != null)
                     {
+                        // TODO - Just do once at the beginning of the game.
                         if (_phoneTutorial.activeSelf)
                             _phoneTutorial.SetActive(false);
                     }
