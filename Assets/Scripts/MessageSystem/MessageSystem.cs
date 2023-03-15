@@ -83,7 +83,7 @@ public class MessageSystem : MonoBehaviour
         _currentUser = CurrentUser.WIFE;
         _isWaitingForAnswer = false;
 
-        _player.Sanity += 2;
+        _player.SetSanity(2);
 
         UpdateSignal(4);
         AddDialogueBox(1, false, false);

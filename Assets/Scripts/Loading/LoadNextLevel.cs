@@ -16,13 +16,11 @@ public class LoadNextLevel : Interactable
     private void Awake()
     {
         //Errorr null ref
-        if(GameObject.FindGameObjectWithTag("AnomalyHandler").gameObject.TryGetComponent<AnomalyHandler>(out AnomalyHandler temp))
+        AnomalyHandler temp = GameObject.FindGameObjectWithTag("AnomalyHandler").GetComponent<AnomalyHandler>();
+
+        if (temp != null)
         {
-            if (temp != null)
-            {
-                _aSceneHandler = temp;
-            }
-            
+            _aSceneHandler = temp;
         }
     }
     public void LoadNextScene()

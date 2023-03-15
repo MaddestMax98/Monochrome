@@ -4648,7 +4648,7 @@ GameObject:
   - component: {fileID: 8656215503678821432}
   - component: {fileID: 4956674929315430684}
   m_Layer: 10
-  m_Name: Text (TMP)
+  m_Name: Text_Tasks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4702,8 +4702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "##Main Task: \n1.- Repair Alarm system in the cinema room.\n\n##From last
-    day: \n1.- Repair Broken Heater in the entrance room!"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4737,8 +4736,8 @@ MonoBehaviour:
   m_fontSizeMin: 0.02
   m_fontSizeMax: 0.05
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5292,6 +5291,7 @@ MonoBehaviour:
   previousItem: {fileID: 1119658662404992545}
   mainItem: {fileID: 8587787723604638355}
   nextItem: {fileID: 5154782684067635102}
+  taskText: {fileID: 4956674929315430684}
 --- !u!114 &6891012179800828973
 MonoBehaviour:
   m_ObjectHideFlags: 0

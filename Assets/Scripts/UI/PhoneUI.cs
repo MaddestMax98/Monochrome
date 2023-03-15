@@ -2,6 +2,9 @@ using UnityEngine;
 using ScripatbleObj;
 using UnityEngine.UI;
 using UnityEditor.Animations;
+using PlayerCharacter;
+using System.Collections.Generic;
+using TMPro;
 
 public class PhoneUI : MonoBehaviour
 {
@@ -33,7 +36,9 @@ public class PhoneUI : MonoBehaviour
 
     [SerializeField] private Transform previousItem;
     [SerializeField] private Transform mainItem;
-    [SerializeField] private Transform nextItem; 
+    [SerializeField] private Transform nextItem;
+
+    [SerializeField] private TextMeshProUGUI taskText;
 
     private void Awake()
     {
@@ -130,8 +135,55 @@ public class PhoneUI : MonoBehaviour
     public void DisplayTask()
     {
         AppIcons.SetActive(false);
+
+        SetupTaskTest();
+
         TaskUI.SetActive(true);
         BackButton.SetActive(true);
+    }
+
+    private void SetupTaskTest()
+    {
+        if (GetComponent<Phone>().CurrentTask != null)
+        {
+            string taskList = "";
+            List<BrokenItemData> tasks = GetComponent<Phone>().CurrentTask.brokenItems;
+
+            tasks.Sort((x, y) => x.isMainTask.CompareTo(y.isMainTask));
+
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                string task = "Repair ";
+                task += tasks[i].name + " in " + tasks[i].place + " ";
+
+                if (tasks[i].isMainTask)
+                {
+                    task += "(Main Task):";
+                }
+                else
+                {
+                    task += "(Optional):";
+                }
+                task += " ";
+                if (tasks[i].state == BrokenItemState.IsRepaired)
+                {
+                    task += "Done";
+                }
+                else
+                {
+                    task += "To do";
+                }
+
+                task += ".\n";
+
+                taskList += task;
+            }
+            taskText.text = taskList;
+        }
+        else
+        {
+            taskText.text = "Go to the Task Machine to get your tasks!";
+        }
     }
 
     public void DisplayInventory()

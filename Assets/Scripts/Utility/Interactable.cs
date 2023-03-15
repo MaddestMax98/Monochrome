@@ -14,6 +14,7 @@ public abstract class Interactable : MonoBehaviour
     //And then on object start we apply the effect
     public virtual void Start()
     {
+        /*
         if (this.GetComponent<Outline>() == null)
         {
             this.AddComponent<Outline>();
@@ -21,5 +22,6 @@ public abstract class Interactable : MonoBehaviour
             this.GetComponent<Outline>().OutlineWidth = 0;
             this.GetComponent<Outline>().OutlineColor = Color.red;
         }
+        */
     }
 }

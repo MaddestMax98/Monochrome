@@ -5,6 +5,8 @@ using UnityEngine;
 public class TaskMachine : Interactable
 {
     [SerializeField]
+    private DaySystem daySystem;
+    [SerializeField]
     StartDay saveRoomDoor;
 
     private AudioSource _sfx;
@@ -22,6 +24,7 @@ public class TaskMachine : Interactable
     public override void Interact()
     {
         PlayerPrefs.SetInt("HAS_INTERACTED_TASKMACHINE", 1);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Phone>().CurrentTask = daySystem.GetDayTask();
         saveRoomDoor.EnableSaveRoomDoor();
         _sfx.Play();
     }

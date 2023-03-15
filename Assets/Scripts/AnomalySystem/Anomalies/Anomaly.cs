@@ -20,8 +20,8 @@ public abstract class Anomaly : MonoBehaviour
     public virtual void Manifest(Player player)
     {
 
-        if (Physics.CheckSphere(transform.position, 4.5f, _playerLayer.value)) player.Sanity -= 2;
-        else player.Sanity -= 1;
+        if (Physics.CheckSphere(transform.position, 4.5f, _playerLayer.value)) player.SetSanity(-2);
+        else player.SetSanity(1);
         
         if (onSanityTaken != null)
             onSanityTaken?.Invoke();
@@ -30,7 +30,7 @@ public abstract class Anomaly : MonoBehaviour
     }
     public virtual void Fix(Player player) 
     {
-        player.Sanity += 1;
+        player.SetSanity(1);
        
         if (onSanityGiven != null)
             onSanityGiven?.Invoke();

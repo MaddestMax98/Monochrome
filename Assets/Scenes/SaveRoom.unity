@@ -5796,6 +5796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24870e0e7a245f4eafe4d46d01370a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  daySystem: {fileID: 1592829958}
   saveRoomDoor: {fileID: 8165472889145282985}
 --- !u!82 &1040831191
 AudioSource:
@@ -8457,6 +8458,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.043859884, y: 0.051526748, z: 0.0026959896}
   m_Center: {x: 0, y: 0.025970344, z: 0}
+--- !u!114 &1592829958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3977720710591981727, guid: 4524c334369f44c40af900e46079ea54, type: 3}
+  m_PrefabInstance: {fileID: 753269972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2eb123db0f62dd448bba04cca31cbac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1600919259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e30d4a8850ae02e448989e30555e6e7e, type: 3}

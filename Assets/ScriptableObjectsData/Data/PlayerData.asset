@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67edf1618bd476740b6934a6b031c616, type: 3}
-  m_Name: Day-2
+  m_Script: {fileID: 11500000, guid: f30567506ada29047b9f73982238b25f, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  day: 2
-  MainTaskDescription: Go do....
-  brokenItems:
-  - {fileID: 11400000, guid: 77da245bb69f93f45ad531e2fa9a54bf, type: 2}
+  sanity: 5

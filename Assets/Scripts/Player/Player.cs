@@ -1,11 +1,7 @@
-using Item;
-using System.Collections;
-using UnityEditor;
+using ScripatbleObj;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.UI;
 
 namespace PlayerCharacter
 {
@@ -56,6 +52,8 @@ namespace PlayerCharacter
 
         private void Awake()
         {
+            sanity = GameObject.Find("SceneManager").GetComponent<PlayerInfo>().PlayerData.sanity;
+
             phone = GetComponent<Phone>();
 
             if(_volumeProfile != null)
@@ -82,6 +80,10 @@ namespace PlayerCharacter
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                SetSanity(1);
+            }
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -168,6 +170,12 @@ namespace PlayerCharacter
         {
             _animator.SetBool("isInteracting", false);
             canMove = true;
+        }
+
+        public void SetSanity(int amount)
+        {
+            sanity += amount;
+            GameObject.Find("SceneManager").GetComponent<PlayerInfo>().PlayerData.sanity = sanity;
         }
 
     }

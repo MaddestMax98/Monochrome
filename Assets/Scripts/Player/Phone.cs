@@ -24,6 +24,7 @@ namespace PlayerCharacter
         private PhoneUI phoneUI;
         private int signal = 0;
         public int Signal { get => signal; set => signal = value; }
+        public TaskData CurrentTask { get => currentTask; set => currentTask = value; }
 
         public void UpdateSignal()
         {
@@ -37,6 +38,11 @@ namespace PlayerCharacter
 
         private void Awake()
         {
+            if (PlayerPrefs.GetInt("HAS_INTERACTED_TASKMACHINE") == 1)
+            {
+                CurrentTask = GameObject.Find("SceneManager").GetComponent<DaySystem>().GetDayTask();
+            }
+
             GameObject tutorialUI = GameObject.Find("TutorialUI");
             if (tutorialUI != null)
                 _phoneTutorial = tutorialUI.transform.GetChild(0).GetChild(0).gameObject;

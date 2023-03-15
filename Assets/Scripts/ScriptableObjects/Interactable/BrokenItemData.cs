@@ -6,6 +6,7 @@ namespace ScripatbleObj
     public class BrokenItemData : ScriptableObject
     {
         public bool isMainTask = false;
+        public string place = "";
         public BrokenItemState state = BrokenItemState.NotImportant;
         public GameObject prefabCascade;
         public UsableItemData[] itemsNeededToRepair;

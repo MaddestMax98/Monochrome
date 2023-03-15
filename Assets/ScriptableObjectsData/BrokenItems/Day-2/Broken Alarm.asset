@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9dc69d7b1d653141b6fe3634a8bf480, type: 3}
-  m_Name: BrokenAlarm
+  m_Name: Broken Alarm
   m_EditorClassIdentifier: 
   isMainTask: 1
+  place: Cinema Room
   state: 0
   prefabCascade: {fileID: 4964036134057846125, guid: 30f79a0f6f232b247a9bea7bbfa9adad, type: 3}
   itemsNeededToRepair:

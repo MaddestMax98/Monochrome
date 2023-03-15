@@ -44,7 +44,11 @@ namespace AnomalySystem
         {
             //This fixes the scene persistence
             List<AnomalyHandlerData> data = GameObject.Find("SceneManager").GetComponent<AnomalyInventory>().Inventory.data;
-            _handlerData = data.Find(anomalyHandlerData => anomalyHandlerData.name == _handlerData.name);
+            if (_handlerData != null)
+            {
+                _handlerData = data.Find(anomalyHandlerData => anomalyHandlerData.name == _handlerData.name);
+            }
+            
 
 
             _currentAnomalies = 0;
