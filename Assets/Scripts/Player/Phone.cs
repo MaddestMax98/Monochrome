@@ -8,6 +8,8 @@ namespace PlayerCharacter
     public class Phone : MonoBehaviour
     {
         public bool canUse = true;
+        [SerializeField]
+        private AudioSource phoneUnlockEffect;
 
         [SerializeField]
         private GameObject phone;
@@ -63,6 +65,8 @@ namespace PlayerCharacter
                             _phoneTutorial.SetActive(false);
                     }
 
+                    phoneUnlockEffect.pitch = 25f;
+                    phoneUnlockEffect.Play();
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && isturnedOn)
                 {
