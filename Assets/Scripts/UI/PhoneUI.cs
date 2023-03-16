@@ -245,6 +245,7 @@ public class PhoneUI : MonoBehaviour
                 tempIndex = 0;
             }
             GameObject item = new GameObject(inventoryData.Items[tempIndex].ObjectName);
+            item.transform.localScale = new Vector3(100, 100, 100);
             item.layer = LayerMask.NameToLayer("UI Camera");
             item.AddComponent<MeshRenderer>();
             item.AddComponent<MeshFilter>();

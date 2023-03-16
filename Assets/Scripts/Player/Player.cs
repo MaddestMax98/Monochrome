@@ -80,11 +80,6 @@ namespace PlayerCharacter
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                SetSanity(1);
-            }
-
             if (Input.GetMouseButtonDown(0))
             {
                 if (canMove)
