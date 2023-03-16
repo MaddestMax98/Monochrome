@@ -3,14 +3,9 @@ guid: bfe9d1265f0e4904a948babd70982a7f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Door_Bar 1
-    second: {fileID: 2800000, guid: b3a067cf01679db4eb13697ca46b80a0, type: 3}
+  externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
