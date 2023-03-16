@@ -15,6 +15,6 @@ MonoBehaviour:
   ObjectName: Wrench
   Type: 0
   mesh: {fileID: -8163526336849700479, guid: db23b51fb5801e14bb120b98be1e1f48, type: 3}
-  material: {fileID: 2100000, guid: 53ae7cb9df77b7843a4d5fb800cc844f, type: 2}
+  material: {fileID: 2100000, guid: 46fd0117ec1c88b4eaaaa273862a6100, type: 2}
   isPickedUp: 1
   isUsed: 0
