@@ -11,6 +11,7 @@ namespace ScripatbleObj
         public int day;
         public string MainTaskDescription;
         public List<BrokenItemData> brokenItems;
+        public List<CleanItemData> cleanItems;
     }
 
 }

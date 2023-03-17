@@ -48,4 +48,9 @@ public class DaySystem : MonoBehaviour
         }
         return null;
     }
+
+    public CleanItemData[] GetCurrentDayCleanItems()
+    {
+        return daysList.taskList[currentDay - 1].cleanItems.ToArray(); //Arrays start at zero!
+    }
 }

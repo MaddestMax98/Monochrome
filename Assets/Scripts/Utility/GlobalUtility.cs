@@ -6,5 +6,12 @@ public enum BrokenItemState
     Cascade
 }
 
+public enum CleanItemState
+{
+    NotImportant,
+    ToBeCleaned,
+    Cleaned
+}
+
 //For the phone system, determines what conversation chat to open.
 public enum CurrentUser { WIFE, WORK, PSYCHOLOGIST };

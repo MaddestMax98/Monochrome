@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ed4939a89a88124190ad6bb83ecb459, type: 3}
-  m_Name: PlayerInventoryData
+  m_Script: {fileID: 11500000, guid: 79b4aa702992d434eb7486082cc8c7f6, type: 3}
+  m_Name: DirtyRags
   m_EditorClassIdentifier: 
-  Items: []
+  isMainTask: 0
+  state: 1
+  place: Save Room

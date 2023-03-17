@@ -2,6 +2,7 @@ using Cinemachine;
 using ScripatbleObj;
 using ScriptedCamera;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -90,6 +91,31 @@ namespace Manager
                     }
                 }
 
+            }
+            /*-----------------Setup Clean items-----------------*/
+            CleanItemData[] cleanItems = GetComponent<DaySystem>().GetCurrentDayCleanItems();
+            CleanItem[] cleanItemsInScene = GameObject.FindObjectsOfType<CleanItem>();
+
+            if (cleanItems != null)
+            {
+                for (int i = 0; i < cleanItems.Length; i++)
+                {
+                    foreach (CleanItem cleanItem in cleanItemsInScene)
+                    {
+                        if (cleanItem.ItemData == cleanItems[i])
+                        {
+                            switch (cleanItem.ItemData.state)
+                            {
+                                case CleanItemState.NotImportant:
+                                    cleanItem.ItemData.state = CleanItemState.ToBeCleaned;
+                                    break;
+                                case CleanItemState.Cleaned:
+                                    cleanItem.ItemData.state = CleanItemState.NotImportant;
+                                    break;
+                            }
+                        }
+                    }
+                }
             }
 
             /*-----------------Setup Player-----------------*/

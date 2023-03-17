@@ -7,6 +7,7 @@ namespace ScripatbleObj
     [CreateAssetMenu(fileName = "UsableItemData", menuName = "Scriptable Objects/Game/Objects/UsableItem")]
     public class UsableItemData : BaseObjectData
     {
+        [Header("Usable Item Data")]
         public Mesh mesh;
         public Material material;
         public bool isPickedUp = false;

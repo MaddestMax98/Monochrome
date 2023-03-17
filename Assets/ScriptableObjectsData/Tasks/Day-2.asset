@@ -16,3 +16,6 @@ MonoBehaviour:
   MainTaskDescription: Go do....
   brokenItems:
   - {fileID: 11400000, guid: 77da245bb69f93f45ad531e2fa9a54bf, type: 2}
+  cleanItems:
+  - {fileID: 11400000, guid: 2f84dfa3f14e29e4e993f3dd436f9d75, type: 2}
+  - {fileID: 11400000, guid: e94c4a6eb3caec14ea528ad322d7f39a, type: 2}

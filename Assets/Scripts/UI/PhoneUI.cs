@@ -1,7 +1,6 @@
 using UnityEngine;
 using ScripatbleObj;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 using PlayerCharacter;
 using System.Collections.Generic;
 using TMPro;
@@ -214,23 +213,25 @@ public class PhoneUI : MonoBehaviour
     //TODO: Optimize code so that object are only deleted when nessecary
     private void DisplayItems()
     {
-        if (inventoryData.Items.Count < 1)
-        {
-            return;
-        }
+
 
         //-1 0 +1
-        if (previousItem.transform.childCount > 0)
+        if (previousItem.childCount > 0)
         {
             Destroy(previousItem.transform.GetChild(0).gameObject);
         }
-        if (mainItem.transform.childCount > 0)
+        if (mainItem.childCount > 0)
         {
             Destroy(mainItem.transform.GetChild(0).gameObject);
         }
-        if (nextItem.transform.childCount > 0)
+        if (nextItem.childCount > 0)
         {
             Destroy(nextItem.transform.GetChild(0).gameObject);
+        }
+
+        if (inventoryData.Items.Count < 1)
+        {
+            return;
         }
 
         for (int i = -1; i < 2; i++)
@@ -277,6 +278,7 @@ public class PhoneUI : MonoBehaviour
 
     public void NextItem()
     {
+        Debug.Log("Next");
         currentItemIndex++;
         if (currentItemIndex >= inventoryData.Items.Count)
         {
