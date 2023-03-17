@@ -290,6 +290,7 @@ public class PhoneUI : MonoBehaviour
 
     public void PreviousItem()
     {
+        Debug.Log("Previous");
         currentItemIndex--;
         if (currentItemIndex < 0)
         {

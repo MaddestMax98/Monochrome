@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8536468734564230642}
   - component: {fileID: 710483373726174419}
+  - component: {fileID: 4676592594563305470}
+  - component: {fileID: 2062791572572258754}
   m_Layer: 10
   m_Name: Inventory
   m_TagString: Untagged
@@ -137,6 +139,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!223 &4676592594563305470
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24496105440874432}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 1
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: -1
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
+--- !u!114 &2062791572572258754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24496105440874432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &67327649347752908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3859,7 +3899,7 @@ GameObject:
   - component: {fileID: 6262724938513813158}
   - component: {fileID: 7169521991959432658}
   - component: {fileID: 4927806564693991110}
-  - component: {fileID: 6327797477636999211}
+  - component: {fileID: 690263783706190052}
   m_Layer: 10
   m_Name: UI-3D Object Previous
   m_TagString: Untagged
@@ -3922,7 +3962,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &6327797477636999211
+--- !u!114 &690263783706190052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3962,7 +4002,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 4927806564693991110}
+  m_TargetGraphic: {fileID: 6998635593354463601}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -6518,8 +6558,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6891012180615730729}
-  m_LocalRotation: {x: -0.003657083, y: 0.9936626, z: -0.10709821, w: -0.0339306}
-  m_LocalPosition: {x: 1.5433753, y: 1.8949997, z: 8.394553}
+  m_LocalRotation: {x: 0.062956154, y: -0, z: -0, w: 0.9980163}
+  m_LocalPosition: {x: 0, y: 1.6699998, z: -1.9999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7245,6 +7285,8 @@ GameObject:
   - component: {fileID: 7342439720225997001}
   - component: {fileID: 3697853392502235684}
   - component: {fileID: 131361875019605234}
+  - component: {fileID: 1896264343774937516}
+  - component: {fileID: 2913024144341806599}
   m_Layer: 10
   m_Name: BG
   m_TagString: Untagged
@@ -7313,6 +7355,44 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!223 &1896264343774937516
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7630129594561319457}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
+--- !u!114 &2913024144341806599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7630129594561319457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &7637138287556669638
 GameObject:
   m_ObjectHideFlags: 0
