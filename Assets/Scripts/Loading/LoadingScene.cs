@@ -12,10 +12,14 @@ public static class LoadingScene
     {
         MainMenu,
         Loading,
-        OldTheatreDemo,
-        CinemaRoom,
-        Floor1,
-        SaveRoom
+        SaveRoom,
+        Hallway,
+        Lobby,
+        DressingRoom,
+        Maintance,
+        ProjectorRoom,
+        Bathroom,
+        TheatreRoom
     }
 
     private static Action onLoaderCallback;

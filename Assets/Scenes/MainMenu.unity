@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.1853, g: 324.85815, b: 429.9668, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7f9e8282962fe4c9566e7a541ca835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventoryData: {fileID: 11400000, guid: d6beeae0d896fe64999dd7805e3c1984, type: 2}
+  playerInventoryData: {fileID: 11400000, guid: 8b2a53730dfff354fb758baa17f68baa, type: 2}
   mannequinInventoryData: {fileID: 11400000, guid: bca4aebc97be262448d7091826005dcf, type: 2}
   brokenHeater: {fileID: 11400000, guid: fd91ce7784e0a5b448a5c547cf860b8b, type: 2}
   brokenAlarm: {fileID: 11400000, guid: 77da245bb69f93f45ad531e2fa9a54bf, type: 2}

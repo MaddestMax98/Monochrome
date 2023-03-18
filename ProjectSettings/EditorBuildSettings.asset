@@ -15,12 +15,24 @@ EditorBuildSettings:
     path: Assets/Scenes/SaveRoom.unity
     guid: cfc68aca9a24a7b4d94d292c4cb034ac
   - enabled: 1
-    path: Assets/Scenes/OldTheatreDemo.unity
-    guid: 206f17d19718b1442a5f13a56fd22e9e
+    path: Assets/Scenes/ProjectorRoom.unity
+    guid: 7cb1fce375f53444a9edfbe4dc2157ae
   - enabled: 1
-    path: Assets/Scenes/CinemaRoom.unity
-    guid: acbd82bf0f9edab489ff74128d058c4c
+    path: Assets/Scenes/Maintenance.unity
+    guid: b91fc52f09080d542a9b8091e50c67d2
   - enabled: 1
-    path: Assets/Scenes/Floor1.unity
-    guid: 7c9c977b6d130f2408694c9377b124f5
+    path: Assets/Scenes/Bathroom.unity
+    guid: 6ef8d15be2d084f49b085564a2312cdc
+  - enabled: 1
+    path: Assets/Scenes/Hallway.unity
+    guid: 1989f1c77286f904a8ded9967a5e097a
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 2ac5c56d0c11ee64e9382c02bcd9ac67
+  - enabled: 1
+    path: Assets/Scenes/DressingRoom.unity
+    guid: 2165f03de5aaaa841a15871b5596e375
+  - enabled: 1
+    path: Assets/Scenes/TheatreRoom.unity
+    guid: b179d7093e5b01d4493f7f493b4e0361
   m_configObjects: {}

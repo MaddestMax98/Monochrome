@@ -10684,6 +10684,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1266724451}
     m_Modifications:
+    - target: {fileID: 5921884650974708758, guid: a6b08771356f26e4d94c4f7b576829b9, type: 3}
+      propertyPath: playerInventoryData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b2a53730dfff354fb758baa17f68baa, type: 2}
     - target: {fileID: 6463964725283900235, guid: a6b08771356f26e4d94c4f7b576829b9, type: 3}
       propertyPath: m_Size.x
       value: 0.007
@@ -11094,7 +11098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b338c203303f642bbacc29579e9636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 4
+  scene: 3
   spawnName: SPAWN_SaveRoomEntrance
   isTrigger: 0
 --- !u!114 &8165472889145282985

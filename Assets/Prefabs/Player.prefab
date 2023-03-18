@@ -5963,7 +5963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6341cbfe9a55a884abc4d2e70b987139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: d6beeae0d896fe64999dd7805e3c1984, type: 2}
+  inventoryData: {fileID: 11400000, guid: 8b2a53730dfff354fb758baa17f68baa, type: 2}
   signalState:
   - {fileID: 21300000, guid: c799c733b5e8f194a97ccd350ff6e54a, type: 3}
   - {fileID: 21300000, guid: ce8a7a6da1a469843ac5783237171d4a, type: 3}
@@ -6016,7 +6016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d82ad98dfa647a4abf3544c52182828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: d6beeae0d896fe64999dd7805e3c1984, type: 2}
+  inventory: {fileID: 11400000, guid: 8b2a53730dfff354fb758baa17f68baa, type: 2}
 --- !u!114 &2018880754535076864
 MonoBehaviour:
   m_ObjectHideFlags: 0
