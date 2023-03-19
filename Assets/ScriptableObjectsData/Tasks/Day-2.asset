@@ -19,3 +19,4 @@ MonoBehaviour:
   cleanItems:
   - {fileID: 11400000, guid: 2f84dfa3f14e29e4e993f3dd436f9d75, type: 2}
   - {fileID: 11400000, guid: e94c4a6eb3caec14ea528ad322d7f39a, type: 2}
+  storyItem: {fileID: 11400000, guid: 6005165a58783634db2bb0bd0acb1f3b, type: 2}

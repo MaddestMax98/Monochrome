@@ -1,3 +1,9 @@
+public enum StoryItemState
+{
+    Hidden,
+    Active,
+    Collected
+}
 public enum BrokenItemState
 {
     NotImportant,

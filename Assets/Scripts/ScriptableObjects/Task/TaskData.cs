@@ -12,6 +12,7 @@ namespace ScripatbleObj
         public string MainTaskDescription;
         public List<BrokenItemData> brokenItems;
         public List<CleanItemData> cleanItems;
+        public StoryItem storyItem;
     }
 
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   day: 1
   MainTaskDescription: Go do....
-  mainTaskDone: 0
   brokenItems:
   - {fileID: 11400000, guid: fd91ce7784e0a5b448a5c547cf860b8b, type: 2}
+  cleanItems: []

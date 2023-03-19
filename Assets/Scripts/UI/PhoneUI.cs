@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using PlayerCharacter;
 using System.Collections.Generic;
 using TMPro;
+using System;
 
 public class PhoneUI : MonoBehaviour
 {
@@ -42,6 +43,15 @@ public class PhoneUI : MonoBehaviour
     private void Awake()
     {
         MessageSystem.onPlayerNotified += HighlightContact;
+    }
+
+    private void Start()
+    {
+        MemoryShard memory = FindObjectOfType<MemoryShard>();
+        if(memory != null)
+        {
+            StoryItemToCollect();
+        }
     }
     public void UpdateSignal(int strength)
     {
@@ -146,43 +156,123 @@ public class PhoneUI : MonoBehaviour
         if (GetComponent<Phone>().CurrentTask != null)
         {
             string taskList = "";
-            List<BrokenItemData> tasks = GetComponent<Phone>().CurrentTask.brokenItems;
-
-            tasks.Sort((x, y) => x.isMainTask.CompareTo(y.isMainTask));
-
-            for (int i = 0; i < tasks.Count; i++)
-            {
-                string task = "Repair ";
-                task += tasks[i].name + " in " + tasks[i].place + " ";
-
-                if (tasks[i].isMainTask)
-                {
-                    task += "(Main Task):";
-                }
-                else
-                {
-                    task += "(Optional):";
-                }
-                task += " ";
-                if (tasks[i].state == BrokenItemState.IsRepaired)
-                {
-                    task += "Done";
-                }
-                else
-                {
-                    task += "To do";
-                }
-
-                task += ".\n";
-
-                taskList += task;
-            }
+            taskList += SetupBrokenItems(taskList);
+            taskList += SetupItemsToClean(taskList);
             taskText.text = taskList;
+
+            StoryItemToCollect();
         }
         else
         {
             taskText.text = "Go to the Task Machine to get your tasks!";
         }
+    }
+
+    private string SetupBrokenItems(string taskList)
+    {
+        List<BrokenItemData> tasks = GetComponent<Phone>().CurrentTask.brokenItems;
+
+        tasks.Sort((x, y) => x.isMainTask.CompareTo(y.isMainTask));
+        string task = "";
+
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            task += "Repair: ";
+            task += tasks[i].name + "\nLocation: " + tasks[i].place;
+
+            if (tasks[i].isMainTask)
+            {
+                task += "\nType: MAIN TASK";
+            }
+            else
+            {
+                task += "(Optional):";
+            }
+            task += " ";
+            if (tasks[i].state == BrokenItemState.IsRepaired)
+            {
+                task += "\nState: DONE";
+            }
+            else
+            {
+                task += "\nState: TO DO";
+            }
+
+            task += "\n\n";
+        }
+
+        return task;
+    }
+
+    private string SetupItemsToClean(string taskList)
+    {
+        List<CleanItemData> tasks = GetComponent<Phone>().CurrentTask.cleanItems;
+
+        tasks.Sort((x, y) => x.isMainTask.CompareTo(y.isMainTask));
+        string task = "";
+
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            task += "Clean: ";
+            task += tasks[i].name + "\nLocation: " + tasks[i].place;
+
+            if (tasks[i].isMainTask)
+            {
+                task += "\nType: MAIN TASK";
+            }
+            else
+            {
+                task += "\nType: OPTIONAL";
+            }
+            task += " ";
+            if (tasks[i].state == CleanItemState.Cleaned)
+            {
+                task += "\nState: DONE";
+            }
+            else
+            {
+                task += "\nState: TO DO";
+            }
+
+            task += "\n\n";
+        }
+
+        return task;
+    }
+
+    public void StoryItemToCollect()
+    {
+        string task = taskText.text.ToString();
+        StoryItem storyItem = GetComponent<Phone>().CurrentTask.storyItem;
+
+        if ( storyItem != null && storyItem.state != StoryItemState.Hidden)
+        {
+            task += "Collect: ";
+            task += storyItem.name + "\nLocation: " + storyItem.place;
+
+            if (storyItem.isMainTask)
+            {
+                task += "\nType: MAIN TASK";
+            }
+            else
+            {
+                task += "\nType: OPTIONAL";
+            }
+            task += " ";
+            if (storyItem.state == StoryItemState.Collected)
+            {
+                task += "\nState: DONE";
+            }
+            else
+            {
+                task += "\nState: TO DO";
+            }
+
+            task += "\n\n";
+        
+        }
+
+        taskText.text = task;
     }
 
     public void DisplayInventory()
@@ -213,8 +303,6 @@ public class PhoneUI : MonoBehaviour
     //TODO: Optimize code so that object are only deleted when nessecary
     private void DisplayItems()
     {
-
-
         //-1 0 +1
         if (previousItem.childCount > 0)
         {
