@@ -57,8 +57,12 @@ namespace AnomalySystem
         private void Start() 
         {
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player>();
-            AdjustToDay();
-            InvokeRepeating("TriggerRandomAnomaly", triggerTime, delayTime);
+            if (_handlerData != null)
+            {
+                AdjustToDay();
+                InvokeRepeating("TriggerRandomAnomaly", triggerTime, delayTime);
+            }
+
         }
         private void AdjustToDay() 
         {
@@ -148,6 +152,11 @@ namespace AnomalySystem
 
         public void UpdateAnomalyHandler()
         {
+            if (_handlerData == null)
+            {
+                return;
+            }
+
             _handlerData.currentAnomalies = _currentAnomalies;
 
             if (_handlerData.anomalies.Count > 0)

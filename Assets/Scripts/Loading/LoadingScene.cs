@@ -16,7 +16,7 @@ public static class LoadingScene
         Hallway,
         Lobby,
         DressingRoom,
-        Maintance,
+        Maintenance,
         ProjectorRoom,
         Bathroom,
         TheatreRoom
