@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using AnomalySystem.ScriptableObjects;
 using UnityEngine;
 using UnityEditor;
-using ScripatbleObj;
 
 namespace AnomalySystem
 {
@@ -31,7 +30,7 @@ namespace AnomalySystem
         private float _currentProbability = 0.25f;
         [SerializeField]
         [Tooltip("Sets maximum amount of anomalies that can be triggered on this room.")]
-        private int _maxAnomalies;
+        private int _maxAnomalies = 2;
 
         private int _currentAnomalies = 0;
 
@@ -47,12 +46,11 @@ namespace AnomalySystem
             if (_handlerData != null)
             {
                 _handlerData = data.Find(anomalyHandlerData => anomalyHandlerData.name == _handlerData.name);
-            }
-            
 
+            }
 
             _currentAnomalies = 0;
-            _roomName = gameObject.scene.name + "_";
+           _roomName = gameObject.scene.name + "_";
         }
         private void Start() 
         {
@@ -97,7 +95,8 @@ namespace AnomalySystem
         {
 
             if (_selectedAnomalies.Count > 0 && _currentAnomalies < _maxAnomalies && _currentAnomalies != _selectedAnomalies.Count)
-            {
+            { 
+
                 if (i > _selectedAnomalies.Count - 1)
                     i = 0;
 
@@ -105,6 +104,7 @@ namespace AnomalySystem
                 {
                     _selectedAnomalies[i].Manifest(_player);
                     _currentAnomalies++;
+
                     return;
                 }
                 else TriggerAnomaly(++i);
@@ -128,7 +128,7 @@ namespace AnomalySystem
             {
                 int temp = 0;
 
-                while (_currentAnomalies < _handlerData.currentAnomalies)
+                while (_currentAnomalies < _handlerData.currentAnomalies && temp < _anomalies.Count)
                 {
                     //Check from anomaly inventory and then setup
                     _anomalies[temp].transform.position = _handlerData.anomalies[temp].currentPos;
@@ -197,7 +197,7 @@ namespace AnomalySystem
                     EditorUtility.SetDirty(newData);
                     AssetDatabase.SaveAssetIfDirty(newData);
 
-                    AssetDatabase.CreateAsset(newData, "Assets/Scripts/Data/AnomalyStoragedData/AnomalyStoragedData" + _roomName + i + ".asset");
+                    AssetDatabase.CreateAsset(newData, "Assets/ScriptableObjectsData/AnomalyStoragedData" + _roomName + i + ".asset");
                     AssetDatabase.SaveAssets();
 #endif
                 }

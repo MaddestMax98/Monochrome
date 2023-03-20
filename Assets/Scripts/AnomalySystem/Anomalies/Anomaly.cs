@@ -21,7 +21,7 @@ public abstract class Anomaly : MonoBehaviour
     {
 
         if (Physics.CheckSphere(transform.position, 4.5f, _playerLayer.value)) player.SetSanity(-2);
-        else player.SetSanity(1);
+        else player.SetSanity(-1);
         
         if (onSanityTaken != null)
             onSanityTaken?.Invoke();
@@ -37,7 +37,7 @@ public abstract class Anomaly : MonoBehaviour
     }
     public AnomalyData GetData() { return _data; }
     public void SetData(AnomalyData data) { _data = data; }
-    public void Enable() { _isActive = true; }
+    public virtual void Enable() { _isActive = true; }
     public void Disable() { _isActive = false; }
     public bool isActive() { return _isActive; }
     public void setOriginalPos(Vector3 position, Quaternion rotation, Vector3 scale) {

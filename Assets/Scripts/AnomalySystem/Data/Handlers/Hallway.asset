@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30567506ada29047b9f73982238b25f, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 8270b617bbe0e1c459de3753edba1986, type: 3}
+  m_Name: Hallway
   m_EditorClassIdentifier: 
-  sanity: 10
+  anomalies:
+  - {fileID: 11400000, guid: b45d0115fc8f9eb4a9469cb04a69d791, type: 2}
+  - {fileID: 11400000, guid: e8b97fb91f50fbc4992fb3a460844084, type: 2}
+  currentAnomalies: 2

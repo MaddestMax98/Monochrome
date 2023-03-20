@@ -15,10 +15,14 @@ public class Anomaly_LightFlicker : Anomaly
     {
         if (_isFlickering)
         {
-            _light.intensity = Mathf.PingPong(Time.time * 45, 6);
+            _light.range = Mathf.PingPong(Time.time * 45, 3);
         }
     }
 
+    public override void Enable()
+    {
+        AlterObject();
+    }
     public override void AlterObject()
     {
         _isFlickering = true;
@@ -28,6 +32,7 @@ public class Anomaly_LightFlicker : Anomaly
     {
         base.Fix(player);
         _isFlickering = false;
+        _light.range = 3;
     }
 
     public override void Manifest(Player player)

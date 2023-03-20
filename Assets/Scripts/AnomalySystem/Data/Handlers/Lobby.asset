@@ -10,11 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8270b617bbe0e1c459de3753edba1986, type: 3}
-  m_Name: Floor1
+  m_Name: Lobby
   m_EditorClassIdentifier: 
   anomalies:
-  - {fileID: 11400000, guid: c6e309ea8223bd44c8515cac89127f80, type: 2}
-  - {fileID: 11400000, guid: a7ac81b2bba24ad4e9ec10219940ac6b, type: 2}
-  - {fileID: 11400000, guid: 91cf3aaf820ce854fb455a76a74088f1, type: 2}
-  - {fileID: 11400000, guid: 3e893b8874527fb4bae82e1ee1ad81f3, type: 2}
-  currentAnomalies: 2
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentAnomalies: 0

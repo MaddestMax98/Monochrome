@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: AnomalyHandlerInventory
   m_EditorClassIdentifier: 
   data:
-  - {fileID: 11400000, guid: d7ce954cd1a244545a3850135e49ea65, type: 2}
+  - {fileID: 11400000, guid: 5858fa34f5dbebe4aa0bbbb8777cbd9c, type: 2}
+  - {fileID: 11400000, guid: e92790b3862937e4fa4155669de3411c, type: 2}

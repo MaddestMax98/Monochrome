@@ -4348,6 +4348,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
+      propertyPath: delayTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
+      propertyPath: _handlerData
+      value: 
+      objectReference: {fileID: 11400000, guid: e92790b3862937e4fa4155669de3411c, type: 2}
+    - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
+      propertyPath: _maxAnomalies
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
+      propertyPath: _currentProbability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
+      propertyPath: _anomalies.Array.data[0]
+      value: 
+      objectReference: {fileID: 1362385358}
+    - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
+      propertyPath: _anomalies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1269778294}
     - target: {fileID: 4715731620623124957, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
       propertyPath: m_Name
       value: AnomalyHandler
@@ -5688,7 +5712,9 @@ GameObject:
   - component: {fileID: 1269778291}
   - component: {fileID: 1269778293}
   - component: {fileID: 1269778292}
-  m_Layer: 0
+  - component: {fileID: 1269778295}
+  - component: {fileID: 1269778294}
+  m_Layer: 12
   m_Name: Point Light (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5883,7 +5909,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
@@ -5894,6 +5920,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0.01
   m_ShadowAngle: 0
+--- !u!114 &1269778294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269778290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95176bfb6ae601d4bb3c1118a51ef723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: c887170132dcadb4cbbb93179d3e1588, type: 2}
+--- !u!65 &1269778295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269778290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &1362385353
 GameObject:
   m_ObjectHideFlags: 0
@@ -5905,7 +5957,9 @@ GameObject:
   - component: {fileID: 1362385354}
   - component: {fileID: 1362385356}
   - component: {fileID: 1362385355}
-  m_Layer: 0
+  - component: {fileID: 1362385357}
+  - component: {fileID: 1362385358}
+  m_Layer: 12
   m_Name: Point Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6100,7 +6154,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
@@ -6111,6 +6165,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0.01
   m_ShadowAngle: 0
+--- !u!65 &1362385357
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362385353}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &1362385358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362385353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95176bfb6ae601d4bb3c1118a51ef723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: c887170132dcadb4cbbb93179d3e1588, type: 2}
 --- !u!1 &1386400837
 GameObject:
   m_ObjectHideFlags: 0

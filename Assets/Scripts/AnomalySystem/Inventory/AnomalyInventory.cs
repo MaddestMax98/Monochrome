@@ -1,6 +1,4 @@
 using AnomalySystem.ScriptableObjects;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnomalyInventory : MonoBehaviour

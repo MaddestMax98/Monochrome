@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbcfdb6892f817343a0a3635a4185a2b, type: 3}
-  m_Name: AnomalyStoragedDataFloor1_2
+  m_Name: AnomalyStoragedDataHallway_1
   m_EditorClassIdentifier: 
-  originalPos: {x: 10.35, y: -0.0017929673, z: 4.83}
-  currentPos: {x: 10.35, y: -0.0017929673, z: 4.83}
-  originalRot: {x: 0.00002125377, y: 0.92388105, z: 0.0000513196, w: -0.38267994}
-  currentRot: {x: 0.00002125377, y: 0.92388105, z: 0.0000513196, w: -0.38267994}
+  originalPos: {x: -7.4509172, y: 6.745, z: -8.435484}
+  currentPos: {x: -7.4509172, y: 6.745, z: -8.435484}
+  originalRot: {x: 0.70251054, y: -0, z: -0, w: 0.7116733}
+  currentRot: {x: 0.70251054, y: -0, z: -0, w: 0.7116733}
   originalScale: {x: 1, y: 1, z: 1}
   currentScale: {x: 1, y: 1, z: 1}
-  isActive: 0
+  isActive: 1
