@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ScripatbleObj;
 
-public class MemoryShard : MonoBehaviour
+public abstract class MemoryShard : MonoBehaviour
 {
-    [SerializeField] private StoryItem itemData;
+    [SerializeField] protected StoryItem itemData;
+    [SerializeField] protected AudioSource alterPhoneSound;
     void Start()
     {
-        itemData.state = StoryItemState.Active;
+        if(itemData.state == StoryItemState.Hidden)
+        {
+            itemData.state = StoryItemState.Active;
+            alterPhoneSound.Play();
+        }
+       
     }
+
+    public abstract void PlayMemory();
 }

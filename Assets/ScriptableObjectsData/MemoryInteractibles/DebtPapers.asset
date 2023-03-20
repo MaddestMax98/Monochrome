@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMainTask: 1
   place: Cinema Room
-  state: 0
+  state: 2
