@@ -4,10 +4,12 @@ using UnityEngine;
 public class Anomaly_LightFlicker : Anomaly
 {
     private bool _isFlickering = false;
+    [SerializeField] private int _maxIntensity = 3;
     private Light _light;
 
     private void Awake()
     {
+        gameObject.AddComponent<AudioSource>();
         _originalPos = GetComponent<Transform>();
         _light = GetComponent<Light>();
     }
@@ -15,12 +17,13 @@ public class Anomaly_LightFlicker : Anomaly
     {
         if (_isFlickering)
         {
-            _light.range = Mathf.PingPong(Time.time * 45, 3);
+            _light.range = Mathf.PingPong(Time.time * 45, _maxIntensity);
         }
     }
 
     public override void Enable()
     {
+        base.Enable();
         AlterObject();
     }
     public override void AlterObject()

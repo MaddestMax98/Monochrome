@@ -68,7 +68,7 @@ namespace AnomalySystem
 
             if (day == 1)
             {
-                _currentProbability = 0.25f;
+                //_currentProbability = 0.25f;
 
                 for (int i = 0; i < _anomalies.Count; i++)
                 {
@@ -104,7 +104,6 @@ namespace AnomalySystem
                 {
                     _selectedAnomalies[i].Manifest(_player);
                     _currentAnomalies++;
-
                     return;
                 }
                 else TriggerAnomaly(++i);

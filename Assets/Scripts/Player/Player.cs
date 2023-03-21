@@ -171,7 +171,6 @@ namespace PlayerCharacter
         {
             sanity += amount;
             GameObject.Find("SceneManager").GetComponent<PlayerInfo>().PlayerData.sanity = sanity;
-            Debug.Log(sanity);
         }
 
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Hallway
   m_EditorClassIdentifier: 
   anomalies:
-  - {fileID: 11400000, guid: b45d0115fc8f9eb4a9469cb04a69d791, type: 2}
-  - {fileID: 11400000, guid: e8b97fb91f50fbc4992fb3a460844084, type: 2}
+  - {fileID: 11400000, guid: 164baae0f01984340a6b1f2473512723, type: 2}
+  - {fileID: 11400000, guid: a5a8d631fd9945d479dc2afe78ff7a67, type: 2}
   currentAnomalies: 2

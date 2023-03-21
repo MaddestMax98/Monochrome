@@ -8,6 +8,7 @@ public class Anomaly_Kinematic : Anomaly
 
     private void Awake()
     {
+        gameObject.AddComponent<AudioSource>();
         _originalPos = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody>();           
     }
@@ -23,6 +24,12 @@ public class Anomaly_Kinematic : Anomaly
 
         gameObject.transform.position = _originalPos.position;
         gameObject.transform.rotation = _originalPos.rotation;
+    }
+
+    public override void Enable()
+    {
+        base.Enable();
+        AlterObject();
     }
 
     public override void AlterObject()

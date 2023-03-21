@@ -6022,6 +6022,7 @@ MonoBehaviour:
   - {fileID: 4074528905973894780, guid: 5fea2c04621b2994994b24d03f91e97f, type: 3}
   - {fileID: 4074528905973894780, guid: cb0bb131495050641bfc18580dcd5743, type: 3}
   - {fileID: 9052025551538685947, guid: f1d8beca7920daf4ebab054501ca5eee, type: 3}
+  _responses: {fileID: 11400000, guid: b5e88495e0626724087c5affebfe89e0, type: 2}
   _playerMessages: {fileID: 11400000, guid: 3e016e9594fc77f4eabba36e7ff5c1fb, type: 2}
   _wifeMessages: {fileID: 11400000, guid: 5d4785434a2b22041989a10a29a47a69, type: 2}
   _workMessages: {fileID: 11400000, guid: 13094a2991daadc419e5111c96b545f5, type: 2}

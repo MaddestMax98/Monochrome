@@ -15,6 +15,8 @@ MonoBehaviour:
   anomalyName: Auditive
   description: Wait.. Your hear that? Mhm, must be my imagination.
   aType: 0
-  staticSound: {fileID: 0}
-  triggered: {fileID: 0}
-  triggeredNextToPlayer: {fileID: 0}
+  audioSource: {fileID: 0}
+  staticeGenerator: {fileID: 0}
+  staticSound: {fileID: 8300000, guid: 855f14218035fa548bea49c570b0b860, type: 3}
+  triggered: {fileID: 8300000, guid: d97df1760696acc4dae61966f2c49491, type: 3}
+  triggeredNextToPlayer: {fileID: 8300000, guid: 3ff0fcdd43af7434791d7561ee492cb9, type: 3}

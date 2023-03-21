@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Lobby
   m_EditorClassIdentifier: 
   anomalies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentAnomalies: 0
+  - {fileID: 11400000, guid: b1ee49d8abacd6343b075f81e5ee1d66, type: 2}
+  - {fileID: 11400000, guid: eb0283d517f6b5d4682c7404aa13c490, type: 2}
+  - {fileID: 11400000, guid: 9bdf95e8a8bfc9640a703b72f15cf4bd, type: 2}
+  - {fileID: 11400000, guid: 917475d6917acca4f9ea6d0039203212, type: 2}
+  - {fileID: 11400000, guid: 1dc6c682f91d86841b589e64f2640cfd, type: 2}
+  - {fileID: 11400000, guid: de9b67d4307f80e42ba874bab7cd47c9, type: 2}
+  - {fileID: 11400000, guid: 7b8f26d4dc4f56944a12f2243ce4a0e0, type: 2}
+  - {fileID: 11400000, guid: 483aaf8e488c74a47ae4591989f08c45, type: 2}
+  - {fileID: 11400000, guid: 4c1dc68b042392741a93cd3f396d8fa1, type: 2}
+  - {fileID: 11400000, guid: fa083c9a369ae274bb5258c958a3a70f, type: 2}
+  - {fileID: 11400000, guid: 8355f39f493291c42821f7e0ee54012d, type: 2}
+  - {fileID: 11400000, guid: 1baf3c67aefc51341869b8a861c26051, type: 2}
+  currentAnomalies: 12

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcfdb6892f817343a0a3635a4185a2b, type: 3}
+  m_Name: AnomalyStoragedDataLobby_11
+  m_EditorClassIdentifier: 
+  originalPos: {x: 21.011162, y: 8.185738, z: 11.001627}
+  currentPos: {x: 21.011162, y: 8.185738, z: 11.001627}
+  originalRot: {x: -0.0000004569226, y: 0.00000028258341, z: 0.00000016943525, w: 1}
+  currentRot: {x: -0.0000004569226, y: 0.00000028258341, z: 0.00000016943525, w: 1}
+  originalScale: {x: 105.15603, y: 105.15603, z: 105.15603}
+  currentScale: {x: 105.15603, y: 105.15603, z: 105.15603}
+  isActive: 0

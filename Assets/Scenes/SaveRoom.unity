@@ -286,7 +286,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30796
+  m_Name: pb_Mesh111058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3638,6 +3638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 321583402}
+  - component: {fileID: 321583403}
   m_Layer: 0
   m_Name: TutorialUI
   m_TagString: Untagged
@@ -3661,6 +3662,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &321583403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321583401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acda317df524844e967cc2f105ed401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMessageLinked: {fileID: 11400000, guid: b5e88495e0626724087c5affebfe89e0, type: 2}
 --- !u!1 &352907980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4017,7 +4031,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30728
+  m_Name: pb_Mesh110990
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6033,7 +6047,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30768
+  m_Name: pb_Mesh111030
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9015,7 +9029,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30782
+  m_Name: pb_Mesh111044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9636,7 +9650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 3
+  m_Intensity: 1.5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -9758,7 +9772,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10359,7 +10373,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31146
+  m_Name: pb_Mesh111410
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

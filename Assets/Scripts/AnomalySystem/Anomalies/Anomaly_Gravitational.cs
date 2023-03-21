@@ -24,6 +24,11 @@ public class Anomaly_Gravitational : Anomaly
         base.Manifest( player);
         AlterObject();
     }
+    public override void Enable()
+    {
+        base.Enable();
+        AlterObject();
+    }
 
     public override void Fix(Player player)
     {

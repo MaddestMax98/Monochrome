@@ -5,6 +5,7 @@ public class Anomaly_Auditive : Anomaly
 {
     private void Awake()
     {
+        gameObject.AddComponent<AudioSource>();
         _originalPos = GetComponent<Transform>();
     }
     public override void AlterObject()
@@ -15,6 +16,12 @@ public class Anomaly_Auditive : Anomaly
     public override void Fix(Player player)
     {
         base.Fix(player);
+    }
+
+    public override void Enable()
+    {
+        base.Enable();
+        AlterObject();
     }
 
     public override void Manifest(Player player)

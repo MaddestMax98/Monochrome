@@ -8,9 +8,9 @@ namespace AnomalySystem.ScriptableObjects
         public string anomalyName;
         public string description;
         public AnomalyType aType = AnomalyType.STANDARD;
-        public AudioSource staticSound;
-        public AudioSource triggered;
-        public AudioSource triggeredNextToPlayer;
+        public AudioClip staticSound;
+        public AudioClip triggered;
+        public AudioClip triggeredNextToPlayer;
     }
 }
 

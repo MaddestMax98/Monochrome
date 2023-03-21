@@ -13,6 +13,8 @@ public class MessageSystem : MonoBehaviour
     private SignalDetection _signalDetection;
 
     [SerializeField]
+    private MessageStorageData _responses;
+    [SerializeField]
     private MessageData _playerMessages;
     [SerializeField]
     private MessageData _wifeMessages;
@@ -51,13 +53,13 @@ public class MessageSystem : MonoBehaviour
         StatusChanger.onPlayerAnswer -= RespondToPlayer;
     }
 
-    void Awake()
+    private void Awake()
     {
-        _wifeMessages.current = 0;
-        _photos.current = 0;
         _playerMessages.current = 0;
-        _workMessages.current = 0;
+        _wifeMessages.current = 0;
         _psychMessages.current = 0;
+        _workMessages.current = 0;
+        _photos.current = 0;
     }
     private void Start()
     {
@@ -68,18 +70,25 @@ public class MessageSystem : MonoBehaviour
         if (mySignal != null)
             _signalDetection = mySignal.GetComponent<SignalDetection>(); //TODO - Define signal game object name
 
-        //TODO - Add if statement if the messages have already been sent
-        // Set up previous texts:
-        SetInitialDialogues();
-      
-        _initialPlayerTextIndex = _playerMessages.current;
+        if (_responses.isScenePersistenceLinked == false)
+        {
+            SetInitialDialogues(true);
+            _responses.isScenePersistenceLinked = true;
+        }
+        else
+        {
+            SetInitialDialogues(false);
+            ApplyScenePersistence();
+        }
 
-        StartNewConversation();
+         _initialPlayerTextIndex = _playerMessages.current;
     }
 
     private void RespondToPlayer()
     {
         _currentUser = CurrentUser.WIFE;
+        _responses.totalWifeRespones++;
+        NotifyUser();
         _isWaitingForAnswer = false;
 
         _player.SetSanity(2);
@@ -89,13 +98,38 @@ public class MessageSystem : MonoBehaviour
         _player.UpdateAnimator();
     }
 
+    private void ApplyScenePersistence()
+    {
+        for(int i = 0; i < _responses.totalWifeRespones; i++)
+        {
+            CreateDialogue(messagePrefab[1], null, _photos);
+            CreateDialogue(messagePrefab[0], _wifeMessages);
+            CreateDialogue(messagePrefab[2], _playerMessages, null, true);
+            CreateDialogue(messagePrefab[0], _wifeMessages);
+        }
+
+        if (_responses.isWaitingForResponse)
+        {
+            _responses.isWaitingForResponse = false;
+            StartNewConversationWithoutNotification();
+        }
+    }
+
     private void StartNewConversation()
     {
         if(_player.Sanity <= 4)
         {
+            _responses.isWaitingForResponse = true;
             _currentUser = CurrentUser.WIFE;
-            AddDialogueBox(1, true, true);
+            if(AddDialogueBox(1, true, true))
+                NotifyUser();
         }
+    }
+
+    private void StartNewConversationWithoutNotification()
+    {
+       _currentUser = CurrentUser.WIFE;
+       AddDialogueBox(1, true, true);
     }
 
     private void Update()
@@ -137,6 +171,7 @@ public class MessageSystem : MonoBehaviour
         {
             var theImage = newBox.transform.Find("Image").GetComponent<Image>();
             theImage.sprite = _photos.images[image.current];
+            _photos.current++;
         }
 
         if (prefab == messagePrefab[2])
@@ -167,7 +202,7 @@ public class MessageSystem : MonoBehaviour
         }
        
     }
-    private void AddDialogueBox(int i, bool hasImage, bool needsAnswer)
+    private bool AddDialogueBox(int i, bool hasImage, bool needsAnswer)
     {
         int temp = 0;
 
@@ -180,6 +215,7 @@ public class MessageSystem : MonoBehaviour
                     {
                         CreateNewWifeDialog(hasImage, needsAnswer);
                     }
+                    else return false;
                     break;
                 case CurrentUser.WORK:
                     if (_workMessages.current < _workMessages.texts.Length)
@@ -188,6 +224,7 @@ public class MessageSystem : MonoBehaviour
                         NotifyUser();
                         UpdateSignal(4);
                     }
+                    else return false;
                     break;
                 case CurrentUser.PSYCHOLOGIST:
                     if (_psychMessages.current < _psychMessages.texts.Length)
@@ -196,6 +233,7 @@ public class MessageSystem : MonoBehaviour
                         NotifyUser();
                         UpdateSignal(4);
                     }
+                    else return false;
                     break;
             }
 
@@ -203,8 +241,8 @@ public class MessageSystem : MonoBehaviour
 
             temp++;
         }
-        
 
+        return true;
     }
 
     private void NotifyUser()
@@ -220,11 +258,9 @@ public class MessageSystem : MonoBehaviour
         if (_photos.current < _photos.images.Length && hasImage)
         {
             CreateDialogue(messagePrefab[1], null, _photos);
-            NotifyUser();
         }
 
         CreateDialogue(messagePrefab[0], _wifeMessages);
-        NotifyUser();
 
         UpdateSignal(4);
 
@@ -293,11 +329,11 @@ public class MessageSystem : MonoBehaviour
         UpdateSignal(4);
     }
 
-    private void SetInitialDialogues()
+    private void SetInitialDialogues(bool notifyUser)
     {
         PrintWifeInitDialogue();
         _currentUser = CurrentUser.WORK;
-        NotifyUser();
+        if(notifyUser) NotifyUser();
         PrintWorkInitDialogue();
         PrintPsychInitDialogue();
 

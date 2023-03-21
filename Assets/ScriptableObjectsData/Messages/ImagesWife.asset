@@ -15,4 +15,4 @@ MonoBehaviour:
   images:
   - {fileID: 21300000, guid: eb61b619d3f060740adf264fec88596b, type: 3}
   - {fileID: 21300000, guid: 27f080c81d55b0c448fbffd9b4d1a9a2, type: 3}
-  current: 0
+  current: 2
