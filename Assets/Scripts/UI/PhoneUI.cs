@@ -5,6 +5,7 @@ using PlayerCharacter;
 using System.Collections.Generic;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PhoneUI : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class PhoneUI : MonoBehaviour
     [SerializeField] private GameObject Map;
     [SerializeField] private GameObject BackButton;
     [SerializeField] private ScrollRect ScrollRect;
+    [Header("Setttings UI")]
+    [SerializeField] private GameObject SettingsUI;
+    [SerializeField] private GameObject SettingsConfirmQuitUI;
 
     [Header ("Different text conversations")]
     [SerializeField] private GameObject wife;
@@ -68,6 +72,7 @@ public class PhoneUI : MonoBehaviour
         Map.SetActive(false);
         Contacts.SetActive(false);
         Messages.SetActive(false);
+        SettingsUI.SetActive(false);
 
         if (hasNewMessages)
             AppIcons.transform.GetChild(2).GetChild(0).gameObject.SetActive(true);
@@ -149,6 +154,26 @@ public class PhoneUI : MonoBehaviour
 
         TaskUI.SetActive(true);
         BackButton.SetActive(true);
+    }
+
+    public void DisplaySettings() 
+    {
+        AppIcons.SetActive(false);
+
+        SettingsUI.SetActive(true);
+        SettingsConfirmQuitUI.SetActive(false);
+
+        BackButton.SetActive(true);
+    }
+
+    public void DisplayQuitConfirm()
+    {
+        SettingsConfirmQuitUI.SetActive(true);
+    }
+
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void SetupTaskTest()

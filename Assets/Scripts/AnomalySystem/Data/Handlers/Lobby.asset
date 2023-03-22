@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa083c9a369ae274bb5258c958a3a70f, type: 2}
   - {fileID: 11400000, guid: 8355f39f493291c42821f7e0ee54012d, type: 2}
   - {fileID: 11400000, guid: 1baf3c67aefc51341869b8a861c26051, type: 2}
-  currentAnomalies: 12
+  currentAnomalies: 0

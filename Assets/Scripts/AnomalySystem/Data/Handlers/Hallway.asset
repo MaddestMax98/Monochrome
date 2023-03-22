@@ -15,4 +15,4 @@ MonoBehaviour:
   anomalies:
   - {fileID: 11400000, guid: 164baae0f01984340a6b1f2473512723, type: 2}
   - {fileID: 11400000, guid: a5a8d631fd9945d479dc2afe78ff7a67, type: 2}
-  currentAnomalies: 0
+  currentAnomalies: 2
