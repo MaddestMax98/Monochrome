@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectName: Plank
   Type: 0
-  mesh: {fileID: -8163526336849700479, guid: c9be9ab4e387c5741acf3d2c3d536ed6, type: 3}
-  material: {fileID: 2100000, guid: e717c383a18bb2945bea64a78afb08d4, type: 2}
+  mesh: {fileID: -2735251984287490357, guid: 9ca97bbbed41ea942b5e22a13b37cf19, type: 3}
+  material: {fileID: 2100000, guid: a57047cedb3fd9d4db0307a079df80ac, type: 2}
   isPickedUp: 0
   isUsed: 0
   isMainTask: 1
   pile: Plank
   state: 1
-  place: Save Room
+  place: Dressing Room

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectName: Hammer
   Type: 0
-  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: d95505374974a324aab06f2d5fe95bdb, type: 2}
+  mesh: {fileID: -2735251984287490357, guid: 7345c6c6abbc514449a3ec1c76530348, type: 3}
+  material: {fileID: 2100000, guid: a57047cedb3fd9d4db0307a079df80ac, type: 2}
   isPickedUp: 0
   isUsed: 0

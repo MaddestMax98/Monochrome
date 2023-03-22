@@ -2676,13 +2676,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7f9e8282962fe4c9566e7a541ca835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: b3e7081afff8b2d4ab3b2a253e99bbab, type: 2}
   playerInventoryData: {fileID: 11400000, guid: 8b2a53730dfff354fb758baa17f68baa, type: 2}
   mannequinInventoryData: {fileID: 11400000, guid: bca4aebc97be262448d7091826005dcf, type: 2}
   brokenHeater: {fileID: 11400000, guid: fd91ce7784e0a5b448a5c547cf860b8b, type: 2}
   brokenAlarm: {fileID: 11400000, guid: 77da245bb69f93f45ad531e2fa9a54bf, type: 2}
   mannequinHat: {fileID: 11400000, guid: afddd3ea5c8d44a479d8fce089b1b9b1, type: 2}
-  wrench: {fileID: 11400000, guid: b8153ea4dd8a3c5448b54537688db974, type: 2}
-  hammer: {fileID: 11400000, guid: 0d15cab9fe9cad1429621e3b35b2be50, type: 2}
+  deptPaper: {fileID: 11400000, guid: 6005165a58783634db2bb0bd0acb1f3b, type: 2}
+  messageStorage: {fileID: 11400000, guid: b5e88495e0626724087c5affebfe89e0, type: 2}
+  usableItems:
+  - {fileID: 11400000, guid: 0d15cab9fe9cad1429621e3b35b2be50, type: 2}
+  - {fileID: 11400000, guid: b8153ea4dd8a3c5448b54537688db974, type: 2}
+  cleanItemDatas:
+  - {fileID: 11400000, guid: 2f84dfa3f14e29e4e993f3dd436f9d75, type: 2}
+  - {fileID: 11400000, guid: e94c4a6eb3caec14ea528ad322d7f39a, type: 2}
+  - {fileID: 11400000, guid: a1124118e3c487047a1d25b76225d70b, type: 2}
+  anomalyHandlerDatas:
+  - {fileID: 11400000, guid: 6801f01e8a44845458410b9080824668, type: 2}
+  - {fileID: 11400000, guid: e92790b3862937e4fa4155669de3411c, type: 2}
+  - {fileID: 11400000, guid: 5858fa34f5dbebe4aa0bbbb8777cbd9c, type: 2}
+  - {fileID: 11400000, guid: 32fc2ad2fb8a7444e9bc6508ef316592, type: 2}
 --- !u!1 &821879245
 GameObject:
   m_ObjectHideFlags: 0
