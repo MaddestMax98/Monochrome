@@ -4156,11 +4156,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
       propertyPath: delayTime
-      value: 2
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
       propertyPath: triggerTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
       propertyPath: _handlerData
@@ -4172,7 +4172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
       propertyPath: _currentProbability
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4715731620623124956, guid: 3e18f45e1b46cf0488d0029b644ea1a7, type: 3}
       propertyPath: _anomalies.Array.data[0]
