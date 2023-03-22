@@ -53,4 +53,9 @@ public class DaySystem : MonoBehaviour
     {
         return daysList.taskList[currentDay - 1].cleanItems.ToArray(); //Arrays start at zero!
     }
+
+    public int GetDay()
+    {
+        return currentDay;
+    }
 }

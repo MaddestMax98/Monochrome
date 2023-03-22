@@ -9,8 +9,7 @@ public class Anomaly_LightFlicker : Anomaly
 
     private void Awake()
     {
-        gameObject.AddComponent<AudioSource>();
-        _originalPos = GetComponent<Transform>();
+        setOriginalPos(GetComponent<Transform>().position, GetComponent<Transform>().rotation, GetComponent<Transform>().localScale);
         _light = GetComponent<Light>();
     }
     private void Update()
@@ -35,7 +34,7 @@ public class Anomaly_LightFlicker : Anomaly
     {
         base.Fix(player);
         _isFlickering = false;
-        _light.range = 3;
+        _light.range = _maxIntensity;
     }
 
     public override void Manifest(Player player)

@@ -8,28 +8,21 @@ public class Anomaly_Kinematic : Anomaly
 
     private void Awake()
     {
-        gameObject.AddComponent<AudioSource>();
-        _originalPos = GetComponent<Transform>();
-        _rigidbody = GetComponent<Rigidbody>();           
+        setOriginalPos(GetComponent<Transform>().position, GetComponent<Transform>().rotation, GetComponent<Transform>().localScale);
+        _rigidbody = GetComponent<Rigidbody>();
     }
+
     public override void Manifest(Player player)
     {
         AlterObject();
-        base.Manifest(player);   
+        base.Manifest(player);
     }
 
     public override void Fix(Player player)
     {
         base.Fix(player);
-
-        gameObject.transform.position = _originalPos.position;
-        gameObject.transform.rotation = _originalPos.rotation;
-    }
-
-    public override void Enable()
-    {
-        base.Enable();
-        AlterObject();
+        gameObject.transform.position = _originalPos;
+        gameObject.transform.rotation = _originalRot;
     }
 
     public override void AlterObject()

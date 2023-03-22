@@ -4,12 +4,14 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Anomaly : MonoBehaviour
+public abstract class Anomaly : Interactable
 {
     [SerializeField] protected AnomalyData _data;
     [SerializeField] protected AudioSource _audioSource;
 
-    protected Transform _originalPos;
+    protected Vector3 _originalPos;
+    protected Quaternion _originalRot;
+    protected Vector3 _originalScale;
 
     private bool _isActive = false;
     private LayerMask _playerLayer = (1 << 10);
@@ -19,7 +21,6 @@ public abstract class Anomaly : MonoBehaviour
 
     public delegate void OnSanityGiven();
     public static OnSanityGiven onSanityGiven;
-
     public virtual void Manifest(Player player)
     {
         _isActive = true;
@@ -47,6 +48,8 @@ public abstract class Anomaly : MonoBehaviour
     public virtual void Fix(Player player) 
     {
         player.SetSanity(1);
+        _isActive = false;
+        _audioSource.Stop();
        
         if (onSanityGiven != null)
             onSanityGiven?.Invoke();
@@ -61,16 +64,23 @@ public abstract class Anomaly : MonoBehaviour
     public void Disable() { _isActive = false; }
     public bool isActive() { return _isActive; }
     public void setOriginalPos(Vector3 position, Quaternion rotation, Vector3 scale) {
-        _originalPos.position = position;
-        _originalPos.rotation = rotation;
-        _originalPos.localScale = scale;
+        _originalPos = position;
+        _originalRot = rotation;
+        _originalScale = scale;
     }
     IEnumerator PlayStatic()
     {
         yield return new WaitForSeconds(_audioSource.clip.length);
         ChangeSoundToStatic();
     }
-
+    public override void Interact()
+    {
+        if (_isActive)
+        {
+            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            Fix(player);
+        }
+    }
     private void ChangeSoundToStatic()
     {
         _audioSource.clip = _data.staticSound;
@@ -80,7 +90,9 @@ public abstract class Anomaly : MonoBehaviour
         _audioSource.rolloffMode = AudioRolloffMode.Linear;
         _audioSource.Play();
     }
-    public Transform GetOriginalPos() { return _originalPos; }
+    public Vector3 GetOriginalPos() { return _originalPos; }
+    public Quaternion GetOriginalRotation() { return _originalRot; }
+    public Vector3 GetOriginalScale() { return _originalScale; }
     public abstract void AlterObject();
 }
   

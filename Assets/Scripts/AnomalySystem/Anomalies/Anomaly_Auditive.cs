@@ -5,8 +5,7 @@ public class Anomaly_Auditive : Anomaly
 {
     private void Awake()
     {
-        gameObject.AddComponent<AudioSource>();
-        _originalPos = GetComponent<Transform>();
+        setOriginalPos(GetComponent<Transform>().position, GetComponent<Transform>().rotation, GetComponent<Transform>().localScale);
     }
     public override void AlterObject()
     {

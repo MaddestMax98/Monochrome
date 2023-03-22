@@ -7,7 +7,7 @@ public class Anomaly_Gravitational : Anomaly
 
     private void Awake()
     {
-        _originalPos = GetComponent<Transform>();
+        setOriginalPos(GetComponent<Transform>().position, GetComponent<Transform>().rotation, GetComponent<Transform>().localScale);
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -16,7 +16,7 @@ public class Anomaly_Gravitational : Anomaly
         if (isActive())
         {
             if (gameObject.transform.position.y >= 1) _rigidbody.AddForce(0, -0.1f, 0);
-            else if (gameObject.transform.position.y <= _originalPos.position.y + 0.2f) _rigidbody.AddForce(0, 0.1f, 0);
+            else if (gameObject.transform.position.y <= _originalPos.y + 0.2f) _rigidbody.AddForce(0, 0.1f, 0);
         }     
     }
     public override void Manifest(Player player)
@@ -33,14 +33,13 @@ public class Anomaly_Gravitational : Anomaly
     public override void Fix(Player player)
     {
         base.Fix(player);
-        gameObject.transform.position = _originalPos.position;
-        gameObject.transform.rotation = _originalPos.rotation;
+        gameObject.transform.position = _originalPos;
+        gameObject.transform.rotation = _originalRot;
     }
 
     public override void AlterObject()
     {
         _rigidbody.useGravity = false;
         _rigidbody.AddForce(0, 0.1f, 0);
-        _rigidbody.AddTorque(_originalPos.forward * 2);
     }
 }
