@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcfdb6892f817343a0a3635a4185a2b, type: 3}
+  m_Name: AnomalyStoragedDataDressingRoom_5
+  m_EditorClassIdentifier: 
+  originalPos: {x: -7.761, y: 1.45, z: -10.945}
+  currentPos: {x: -10.4800415, y: 0.5652637, z: -10.830078}
+  originalRot: {x: -0, y: -0.6115493, z: -0, w: 0.79120636}
+  currentRot: {x: 0.70524645, y: -0.70524734, z: -0.05125449, w: 0.051251255}
+  originalScale: {x: 1, y: 1, z: 1}
+  currentScale: {x: 1, y: 1, z: 1}
+  isActive: 1

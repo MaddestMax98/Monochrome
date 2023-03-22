@@ -67,7 +67,7 @@ namespace AnomalySystem
         {
             SetUpStoredData();
 
-            if (day < 2)
+            if (day <= 2)
             {
                 _currentProbability = 0.25f;
             }
@@ -75,7 +75,7 @@ namespace AnomalySystem
             {
                 _currentProbability = 0.35f;
             }
-            else if(day > 5)
+            else if(day >= 5)
             {
                 _currentProbability = 0.45f;
             }

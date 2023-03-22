@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcfdb6892f817343a0a3635a4185a2b, type: 3}
+  m_Name: AnomalyStoragedDataMaintenance_1
+  m_EditorClassIdentifier: 
+  originalPos: {x: -12.273, y: 0.66, z: -13.157}
+  currentPos: {x: -13.779906, y: 0.5674061, z: -13.146733}
+  originalRot: {x: 0.00000026027428, y: 0, z: -0, w: 1}
+  currentRot: {x: 0.0061266106, y: 0.0061126472, z: 0.70708644, w: 0.70707417}
+  originalScale: {x: 143.60432, y: 143.60432, z: 143.60432}
+  currentScale: {x: 143.60432, y: 143.60432, z: 143.60432}
+  isActive: 1
